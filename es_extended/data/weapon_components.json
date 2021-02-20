@@ -1,0 +1,3408 @@
+[
+  {
+    "nameHash": "COMPONENT_AT_RAILCOVER_01",
+    "hash": 1967214384,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_railcover_01",
+    "gxtName": "WCT_RAIL",
+    "gxtDescription": "WCD_AT_RAIL"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_AFGRIP",
+    "hash": 202788691,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_ar_afgrip",
+    "gxtName": "WCT_GRIP",
+    "gxtDescription": "WCD_GRIP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_FLSH",
+    "hash": 899381934,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "w_at_pi_flsh",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_FLSH",
+    "hash": 2076495324,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "w_at_ar_flsh",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "POLICE_TORCH_FLASHLIGHT",
+    "hash": -979169299,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MACRO",
+    "hash": -1657815255,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_macro",
+    "gxtName": "WCT_SCOPE_MAC",
+    "gxtDescription": "WCD_SCOPE_MAC"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MACRO_02",
+    "hash": 1019656791,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_macro_2",
+    "gxtName": "WCT_SCOPE_MAC",
+    "gxtDescription": "WCD_SCOPE_MAC"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_SMALL",
+    "hash": -1439939148,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_small",
+    "gxtName": "WCT_SCOPE_SML",
+    "gxtDescription": "WCD_SCOPE_SML"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_SMALL_02",
+    "hash": 1006677997,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_small_2",
+    "gxtName": "WCT_SCOPE_SML",
+    "gxtDescription": "WCD_SCOPE_SML"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MEDIUM",
+    "hash": -1596416958,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_medium",
+    "gxtName": "WCT_SCOPE_MED",
+    "gxtDescription": "WCD_SCOPE_MED"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_LARGE",
+    "hash": -767279652,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_large",
+    "gxtName": "WCT_SCOPE_LRG",
+    "gxtDescription": "WCD_SCOPE_LRG"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MAX",
+    "hash": -1135289737,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_max",
+    "gxtName": "WCT_SCOPE_MAX",
+    "gxtDescription": "WCD_SCOPE_MAX"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_SUPP",
+    "hash": -1023114086,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_pi_supp",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_PI_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_SUPP_02",
+    "hash": 1709866683,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_pi_supp_2",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_PI_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_SUPP",
+    "hash": -2089531990,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_ar_supp",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_AR_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_SUPP_02",
+    "hash": -1489156508,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_ar_supp_02",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_AR_SUPP2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SR_SUPP",
+    "hash": -435637410,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_sr_supp_2",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_SR_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_CLIP_01",
+    "hash": -19858063,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistol_mag1",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_P_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_CLIP_02",
+    "hash": -316253668,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistol_mag2",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_P_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPISTOL_CLIP_01",
+    "hash": 119648377,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_combatpistol_mag1",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CP_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPISTOL_CLIP_02",
+    "hash": -696561875,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_combatpistol_mag2",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CP_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_APPISTOL_CLIP_01",
+    "hash": 834974250,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_appistol_mag1",
+    "clipSize": 18,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_AP_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_APPISTOL_CLIP_02",
+    "hash": 614078421,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_appistol_mag2",
+    "clipSize": 36,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_AP_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_MICROSMG_CLIP_01",
+    "hash": -884429072,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_microsmg_mag1",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCDMSMG_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MICROSMG_CLIP_02",
+    "hash": 283556395,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_microsmg_mag2",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCDMSMG_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_CLIP_01",
+    "hash": 643254679,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smg_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_SMG_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_CLIP_02",
+    "hash": 889808635,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smg_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_SMG_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_CLIP_01",
+    "hash": -1101075946,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_AR_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_CLIP_02",
+    "hash": -1323216997,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_AR_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_CLIP_01",
+    "hash": -1614924820,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbinerifle_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CR_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_CLIP_02",
+    "hash": -1861183855,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbinerifle_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CR_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_ADVANCEDRIFLE_CLIP_01",
+    "hash": -91250417,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_advancedrifle_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_AR_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_ADVANCEDRIFLE_CLIP_02",
+    "hash": -1899902599,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_advancedrifle_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_AR_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_MG_CLIP_01",
+    "hash": -197857404,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_mg_mag1",
+    "clipSize": 54,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_MG_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MG_CLIP_02",
+    "hash": -2112517305,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_mg_mag2",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_MG_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_CLIP_01",
+    "hash": -503336118,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmg_mag1",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCDCMG_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_CLIP_02",
+    "hash": -691692330,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmg_mag2",
+    "clipSize": 200,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCDCMG_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_CLIP_01",
+    "hash": -781249480,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 8,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SAWNOFFSHOTGUN_CLIP_01",
+    "hash": -942267867,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 8,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTSHOTGUN_CLIP_01",
+    "hash": -1796727865,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_assaultshotgun_mag1",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_AS_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTSHOTGUN_CLIP_02",
+    "hash": -2034401422,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_assaultshotgun_mag2",
+    "clipSize": 32,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_AS_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SNIPERRIFLE_CLIP_01",
+    "hash": -1681506167,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_sniperrifle_mag1",
+    "clipSize": 10,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_SR_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_CLIP_01",
+    "hash": 1198478068,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysniper_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_HS_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MINIGUN_CLIP_01",
+    "hash": -924946682,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 15000,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_RPG_CLIP_01",
+    "hash": 1319465907,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 1,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_GRENADELAUNCHER_CLIP_01",
+    "hash": 296639639,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_lr_40mm",
+    "clipSize": 10,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL50_CLIP_01",
+    "hash": 580369945,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_PISTOL50_Mag1",
+    "clipSize": 9,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_P50_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL50_CLIP_02",
+    "hash": -640439150,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_PISTOL50_Mag2",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_P50_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTSMG_CLIP_01",
+    "hash": -1928132688,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_SB_ASSAULTSMG_Mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTSMG_CLIP_02",
+    "hash": -1152981993,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_SB_ASSAULTSMG_Mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPSHOTGUN_CLIP_01",
+    "hash": -917613298,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 14,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ADVANCEDRIFLE_VARMOD_LUXE",
+    "hash": 930927479,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_AR_AdvancedRifle_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_APPISTOL_VARMOD_LUXE",
+    "hash": -1686714580,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_PI_APPistol_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_VARMOD_LUXE",
+    "hash": 1319990579,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_AR_AssaultRifle_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_VARMOD_LUXE",
+    "hash": -660892072,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_AR_CarbineRifle_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_VARMOD_LUXE",
+    "hash": -684126074,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_PI_Pistol_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL50_VARMOD_LUXE",
+    "hash": 2008591151,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_PI_Pistol50_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MICROSMG_VARMOD_LUXE",
+    "hash": 1215999497,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_SB_MicroSMG_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SAWNOFFSHOTGUN_VARMOD_LUXE",
+    "hash": -2052698631,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_SG_Sawnoff_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_VARMOD_LUXE",
+    "hash": 663170192,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_SB_SMG_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNIPERRIFLE_VARMOD_LUXE",
+    "hash": 1077065191,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_SR_SniperRifle_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTSMG_VARMOD_LOWRIDER",
+    "hash": 663517359,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_sb_assaultsmg_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_VARMOD_LOWRIDER",
+    "hash": -1828795171,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_mg_combatmg_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER",
+    "hash": -966439566,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_pi_combatpistol_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MG_VARMOD_LOWRIDER",
+    "hash": -690308418,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_mg_mg_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER",
+    "hash": -1562927653,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_sg_pumpshotgun_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_CLIP_03",
+    "hash": -604986051,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_CLIP_03",
+    "hash": -1167922891,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbinerifle_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_BOX",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPDW_CLIP_03",
+    "hash": 1857603803,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_pdw_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_COMPACTRIFLE_CLIP_03",
+    "hash": -972590066,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSHOTGUN_CLIP_03",
+    "hash": -2000168365,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_heavyshotgun_boxmag",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_MACHINEPISTOL_CLIP_03",
+    "hash": -1444295948,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_compactsmg_boxmag",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_CLIP_03",
+    "hash": 2043113590,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smg_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_CLIP_03",
+    "hash": 1801039530,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbine_boxmag",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_DRM",
+    "gxtDescription": "WCD_CLIP3"
+  },
+  {
+    "nameHash": "COMPONENT_GUNRUN_MK2_UPGRADE",
+    "hash": 1623028892,
+    "type": "CWeaponComponentInfo",
+    "model": "",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HOMINGLAUNCHER_CLIP_01",
+    "hash": -132960961,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 1,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO",
+    "hash": -1371515465,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_02",
+    "hash": -1190793877,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_03",
+    "hash": -1497085720,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_04",
+    "hash": -1803148180,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_05",
+    "hash": -1975971886,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_06",
+    "hash": 36929477,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_07",
+    "hash": -268444834,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_08",
+    "hash": -574769446,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_09",
+    "hash": -882699739,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_10",
+    "hash": -1468181474,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CAMO_IND_01",
+    "hash": -974541230,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_bullpupriflemk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_01",
+    "hash": 25766362,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_bullpupriflemk2_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_02",
+    "hash": -273676760,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_bullpupriflemk2_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_ARMORPIERCING",
+    "hash": -89655827,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_AR_BullpupRifleMK2_Mag_AP",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_FMJ",
+    "hash": 1130501904,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_AR_BullpupRifleMK2_Mag_FMJ",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_INCENDIARY",
+    "hash": -1449330342,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_AR_BullpupRifleMK2_Mag_INC",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_MK2_CLIP_TRACER",
+    "hash": -2111807319,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_AR_BullpupRifleMK2_Mag_TR",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_BP_BARREL_01",
+    "hash": 1704640795,
+    "type": "CWeaponComponentInfo",
+    "model": "W_AR_BP_MK2_Barrel1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_BP_BARREL_02",
+    "hash": 1005743559,
+    "type": "CWeaponComponentInfo",
+    "model": "W_AR_BP_MK2_Barrel2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_DOUBLEACTION_CLIP_01",
+    "hash": 1328622785,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_wep1_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_REV_DA_CLIP"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO",
+    "hash": -1869284448,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_02",
+    "hash": 1931539634,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_03",
+    "hash": 1624199183,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_04",
+    "hash": -26834113,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_05",
+    "hash": -210406055,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_06",
+    "hash": 423313640,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_07",
+    "hash": 276639596,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_08",
+    "hash": -991356863,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_09",
+    "hash": -1682848301,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_10",
+    "hash": 996213771,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CAMO_IND_01",
+    "hash": -1214048550,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_marksmanriflemk2_camo_ind",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_01",
+    "hash": -1797182002,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag1",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_02",
+    "hash": -422587990,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag2",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_ARMORPIERCING",
+    "hash": -193998727,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag_ap",
+    "clipSize": 5,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_FMJ",
+    "hash": -515203373,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag_fmj",
+    "clipSize": 5,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_INCENDIARY",
+    "hash": 1842849902,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag_inc",
+    "clipSize": 5,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_MK2_CLIP_TRACER",
+    "hash": -679861550,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanriflemk2_mag_tr",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MRFL_BARREL_01",
+    "hash": 941317513,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_mr_mk2_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MRFL_BARREL_02",
+    "hash": 1748450780,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sr_mr_mk2_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO",
+    "hash": -474112444,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_02",
+    "hash": 387223451,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_03",
+    "hash": 617753366,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_04",
+    "hash": -222378256,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_05",
+    "hash": 8741501,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_06",
+    "hash": -601286203,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_07",
+    "hash": -511433605,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_08",
+    "hash": -655387818,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_09",
+    "hash": -282476598,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_10",
+    "hash": 1739501925,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CAMO_IND_01",
+    "hash": 1178671645,
+    "type": "CWeaponComponentInfo",
+    "model": "w_sg_pumpshotgunmk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CLIP_01",
+    "hash": -845938367,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_pumpshotgunmk2_mag1",
+    "clipSize": 8,
+    "gxtName": "WCT_SHELL",
+    "gxtDescription": "WCD_SHELL"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CLIP_ARMORPIERCING",
+    "hash": 1315288101,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_pumpshotgunmk2_mag_ap",
+    "clipSize": 8,
+    "gxtName": "WCT_SHELL_AP",
+    "gxtDescription": "WCD_SHELL_AP"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CLIP_EXPLOSIVE",
+    "hash": 1004815965,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_pumpshotgunmk2_mag_exp",
+    "clipSize": 8,
+    "gxtName": "WCT_SHELL_EX",
+    "gxtDescription": "WCD_SHELL_EX"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CLIP_HOLLOWPOINT",
+    "hash": -380098265,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_pumpshotgunmk2_mag_hp",
+    "clipSize": 8,
+    "gxtName": "WCT_SHELL_HP",
+    "gxtDescription": "WCD_SHELL_HP"
+  },
+  {
+    "nameHash": "COMPONENT_PUMPSHOTGUN_MK2_CLIP_INCENDIARY",
+    "hash": -1618338827,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_pumpshotgunmk2_mag_inc",
+    "clipSize": 8,
+    "gxtName": "WCT_SHELL_INC",
+    "gxtDescription": "WCD_SHELL_INC"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO",
+    "hash": -1069552225,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_02",
+    "hash": 11918884,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_03",
+    "hash": 176157112,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_04",
+    "hash": -220052855,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_05",
+    "hash": 288456487,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_06",
+    "hash": 398658626,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_07",
+    "hash": 628697006,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_08",
+    "hash": 925911836,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_09",
+    "hash": 1222307441,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_10",
+    "hash": 552442715,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CAMO_IND_01",
+    "hash": -648943513,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_revolvermk2_camo_ind",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CLIP_01",
+    "hash": -1172055874,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolvermk2_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1_RV",
+    "gxtDescription": "WCD_CLIP1_RV"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CLIP_FMJ",
+    "hash": 231258687,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolvermk2_mag5",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ_RV"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CLIP_HOLLOWPOINT",
+    "hash": 284438159,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolvermk2_mag2",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_HP",
+    "gxtDescription": "WCD_CLIP_HP_RV"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CLIP_INCENDIARY",
+    "hash": 15712037,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolvermk2_mag3",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC_RV"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_MK2_CLIP_TRACER",
+    "hash": -958864266,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolvermk2_mag4",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR_RV"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO",
+    "hash": 259780317,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_SLIDE",
+    "hash": -403805974,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_02",
+    "hash": -1973342474,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_02_SLIDE",
+    "hash": 691432737,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_03",
+    "hash": 1996130345,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_03_SLIDE",
+    "hash": 987648331,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_04",
+    "hash": -1455657812,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_04_SLIDE",
+    "hash": -431680535,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_05",
+    "hash": -1668263084,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_05_SLIDE",
+    "hash": -847582310,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_06",
+    "hash": 1308243489,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_06_SLIDE",
+    "hash": -92592218,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_07",
+    "hash": 1122574335,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_07_SLIDE",
+    "hash": -494548326,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_08",
+    "hash": 1420313469,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_08_SLIDE",
+    "hash": 730876697,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_09",
+    "hash": 109848390,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_09_SLIDE",
+    "hash": 583159708,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_10",
+    "hash": 593945703,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_Camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_10_SLIDE",
+    "hash": -1928503603,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMk2_SL_Camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_IND_01",
+    "hash": 1142457062,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_sns_pistolmk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CAMO_IND_01_SLIDE",
+    "hash": 520557834,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_SNS_PistolMK2_SL_Camo_Ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_01",
+    "hash": 21392614,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_sns_pistolmk2_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_02",
+    "hash": -829683854,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_sns_pistolmk2_mag2",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_FMJ",
+    "hash": -1055790298,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_SNS_PistolMK2_Mag_FMJ",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ_RV"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_HOLLOWPOINT",
+    "hash": -1928301566,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_SNS_PistolMK2_Mag_HP",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_HP",
+    "gxtDescription": "WCD_CLIP_HP_RV"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_INCENDIARY",
+    "hash": -424845447,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_SNS_PistolMK2_Mag_INC",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC_NS"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_MK2_CLIP_TRACER",
+    "hash": -1876057490,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_SNS_PistolMK2_Mag_TR",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR_RV"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO",
+    "hash": -737430213,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_02",
+    "hash": 1125852043,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_03",
+    "hash": 886015732,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_04",
+    "hash": -1262287139,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_05",
+    "hash": -295208411,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_06",
+    "hash": -544154504,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_07",
+    "hash": 172765678,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_08",
+    "hash": -1982877449,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_09",
+    "hash": 2072122460,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_10",
+    "hash": -1986220171,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CAMO_IND_01",
+    "hash": 1377355801,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_specialcarbinemk2_camo_ind",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_01",
+    "hash": 382112385,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_02",
+    "hash": -568352468,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_ARMORPIERCING",
+    "hash": 1362433589,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag_ap",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_FMJ",
+    "hash": 1346235024,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag_fmj",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_INCENDIARY",
+    "hash": -570355066,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag_inc",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_MK2_CLIP_TRACER",
+    "hash": -2023373174,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbinemk2_mag_tr",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SC_BARREL_01",
+    "hash": -415870039,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_sc_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SC_BARREL_02",
+    "hash": -109086661,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_sc_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_COMP_02",
+    "hash": -1434287169,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_pi_comp_2",
+    "gxtName": "WCT_COMP",
+    "gxtDescription": "WCD_COMP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_COMP_03",
+    "hash": 654802123,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_pi_comp_3",
+    "gxtName": "WCT_COMP",
+    "gxtDescription": "WCD_COMP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_RAIL_02",
+    "hash": 1205768792,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_pi_rail_2",
+    "gxtName": "WCT_SCOPE_PI",
+    "gxtDescription": "WCD_SCOPE_PI"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_FLSH_03",
+    "hash": 1246324211,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "w_at_pi_snsmk2_flsh_1",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_LARGE_FIXED_ZOOM_MK2",
+    "hash": 1528590652,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_large",
+    "gxtName": "WCT_SCOPE_LRG2",
+    "gxtDescription": "WCD_SCOPE_LRF"
+  },
+  {
+    "nameHash": "COMPONENT_RAYPISTOL_VARMOD_XMAS18",
+    "hash": -673450233,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_pi_raygun_ev",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_01",
+    "hash": -2045758401,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_02",
+    "hash": -785724817,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_ARMORPIERCING",
+    "hash": -1478681000,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag_ap",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_FMJ",
+    "hash": 1675665560,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag_fmj",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_INCENDIARY",
+    "hash": -76490669,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag_inc",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CLIP_TRACER",
+    "hash": -282298175,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultriflemk2_mag_tr",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_01",
+    "hash": 1283078430,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_02",
+    "hash": 1574296533,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_ARMORPIERCING",
+    "hash": 626875735,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag_ap",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_FMJ",
+    "hash": 1141059345,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag_fmj",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_INCENDIARY",
+    "hash": 1025884839,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag_inc",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CLIP_TRACER",
+    "hash": 391640422,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_carbineriflemk2_mag_tr",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_01",
+    "hash": 1227564412,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag1",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_02",
+    "hash": 400507625,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag2",
+    "clipSize": 200,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_ARMORPIERCING",
+    "hash": 696788003,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag_ap",
+    "clipSize": 80,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_FMJ",
+    "hash": 1475288264,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag_fmj",
+    "clipSize": 80,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_INCENDIARY",
+    "hash": -1020871238,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag_inc",
+    "clipSize": 80,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CLIP_TRACER",
+    "hash": -161179835,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_mg_combatmgmk2_mag_tr",
+    "clipSize": 100,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_01",
+    "hash": -98690520,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_02",
+    "hash": 752418717,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag2",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_ARMORPIERCING",
+    "hash": -130689324,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag_ap",
+    "clipSize": 4,
+    "gxtName": "WCT_CLIP_AP",
+    "gxtDescription": "WCD_CLIP_AP"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_EXPLOSIVE",
+    "hash": -1981031769,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag_ap2",
+    "clipSize": 4,
+    "gxtName": "WCT_CLIP_EX",
+    "gxtDescription": "WCD_CLIP_EX"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_FMJ",
+    "hash": 1005144310,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag_fmj",
+    "clipSize": 4,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CLIP_INCENDIARY",
+    "hash": 247526935,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_heavysnipermk2_mag_inc",
+    "clipSize": 4,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_01",
+    "hash": -1795936926,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag1",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_02",
+    "hash": 1591132456,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag2",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_FMJ",
+    "hash": 1329061674,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag_fmj",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_HOLLOWPOINT",
+    "hash": -2046910199,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag_hp",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP_HP",
+    "gxtDescription": "WCD_CLIP_HP"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_INCENDIARY",
+    "hash": 733837882,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag_inc",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CLIP_TRACER",
+    "hash": 634039983,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_pistolmk2_mag_tr",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_01",
+    "hash": 1277460590,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_02",
+    "hash": -1182573778,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_FMJ",
+    "hash": 190476639,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag_fmj",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_FMJ",
+    "gxtDescription": "WCD_CLIP_FMJ"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_HOLLOWPOINT",
+    "hash": 974903034,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag_hp",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_HP",
+    "gxtDescription": "WCD_CLIP_HP"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_INCENDIARY",
+    "hash": -644734235,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag_inc",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP_INC",
+    "gxtDescription": "WCD_CLIP_INC"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CLIP_TRACER",
+    "hash": 2146055916,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_smgmk2_mag_tr",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP_TR",
+    "gxtDescription": "WCD_CLIP_TR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_BARREL_01",
+    "hash": 1134861606,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_ar_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_BARREL_02",
+    "hash": 1447477866,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_ar_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_CR_BARREL_01",
+    "hash": -2093598721,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_cr_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_CR_BARREL_02",
+    "hash": -1958983669,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_cr_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MG_BARREL_01",
+    "hash": -1018236364,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_mg_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MG_BARREL_02",
+    "hash": -1243457701,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_mg_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SB_BARREL_01",
+    "hash": -653246751,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_sb_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SB_BARREL_02",
+    "hash": -1520117877,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_sb_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SR_BARREL_01",
+    "hash": -1869205321,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_sr_barrel_1",
+    "gxtName": "WCT_BARR",
+    "gxtDescription": "WCD_BARR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SR_BARREL_02",
+    "hash": 277524638,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_sr_barrel_2",
+    "gxtName": "WCT_BARR2",
+    "gxtDescription": "WCD_BARR2"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO",
+    "hash": -1860492113,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_02",
+    "hash": 937772107,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_03",
+    "hash": 1401650071,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_04",
+    "hash": 628662130,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_05",
+    "hash": -985047251,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_06",
+    "hash": -812944463,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_07",
+    "hash": -1447352303,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_08",
+    "hash": -60338860,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_09",
+    "hash": 2088750491,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_10",
+    "hash": -1513913454,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_ASSAULTRIFLE_MK2_CAMO_IND_01",
+    "hash": -1179558480,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_armk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO",
+    "hash": 1272803094,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_02",
+    "hash": 1080719624,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_03",
+    "hash": 792221348,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_04",
+    "hash": -452181427,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_05",
+    "hash": -746774737,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_06",
+    "hash": -2044296061,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_07",
+    "hash": -199171978,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_08",
+    "hash": -1428075016,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_09",
+    "hash": -1735153315,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_10",
+    "hash": 1796459838,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CARBINERIFLE_MK2_CAMO_IND_01",
+    "hash": -631911105,
+    "type": "CWeaponComponentInfo",
+    "model": "w_ar_carbineriflemk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO",
+    "hash": 1249283253,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_02",
+    "hash": -857707587,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_03",
+    "hash": -1097543898,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_04",
+    "hash": 1980349969,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_05",
+    "hash": 1219453777,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_06",
+    "hash": -1853459190,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_07",
+    "hash": -2074781016,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_08",
+    "hash": 457967755,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_09",
+    "hash": 235171324,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_10",
+    "hash": 42685294,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATMG_MK2_CAMO_IND_01",
+    "hash": -687617715,
+    "type": "CWeaponComponentInfo",
+    "model": "w_mg_combatmgmk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO",
+    "hash": -996700057,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_02",
+    "hash": 940943685,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_03",
+    "hash": 1263226800,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_04",
+    "hash": -328035840,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_05",
+    "hash": 1224100642,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_06",
+    "hash": 899228776,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_07",
+    "hash": 616006309,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_08",
+    "hash": -1561952511,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_09",
+    "hash": 572063080,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_10",
+    "hash": 1170588613,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SMG_MK2_CAMO_IND_01",
+    "hash": 966612367,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_smgmk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_SLIDE",
+    "hash": -1258515792,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO",
+    "hash": 1550611612,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_02_SLIDE",
+    "hash": 438243936,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo2",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_02",
+    "hash": 368550800,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_03_SLIDE",
+    "hash": -455079056,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo3",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_03",
+    "hash": -1769069349,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_04_SLIDE",
+    "hash": 740920107,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo4",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_04",
+    "hash": 24902297,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_05_SLIDE",
+    "hash": -541616347,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo5",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_05",
+    "hash": -228041614,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_06_SLIDE",
+    "hash": 1809261196,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo6",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_06",
+    "hash": -584961562,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_07_SLIDE",
+    "hash": -1646538868,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo7",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_07",
+    "hash": -1153175946,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_08_SLIDE",
+    "hash": -1290164948,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo8",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_08",
+    "hash": 1301287696,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_09_SLIDE",
+    "hash": -964465134,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo9",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_09",
+    "hash": 1597093459,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_10_SLIDE",
+    "hash": 1135718771,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Slide_Camo10",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_10",
+    "hash": 1769871776,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_IND_01_SLIDE",
+    "hash": 1253942266,
+    "type": "CWeaponComponentInfo",
+    "model": "W_PI_PistolMK2_Camo_Sl_Ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_PISTOL_MK2_CAMO_IND_01",
+    "hash": -1827882671,
+    "type": "CWeaponComponentInfo",
+    "model": "w_pi_pistolmk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO",
+    "hash": -130843390,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo1",
+    "gxtName": "WCT_CAMO_1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_02",
+    "hash": -977347227,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo2",
+    "gxtName": "WCT_CAMO_2",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_03",
+    "hash": -378461067,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo3",
+    "gxtName": "WCT_CAMO_3",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_04",
+    "hash": 329939175,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo4",
+    "gxtName": "WCT_CAMO_4",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_05",
+    "hash": 643374672,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo5",
+    "gxtName": "WCT_CAMO_5",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_06",
+    "hash": 807875052,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo6",
+    "gxtName": "WCT_CAMO_6",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_07",
+    "hash": -1401804168,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo7",
+    "gxtName": "WCT_CAMO_7",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_08",
+    "hash": -1096495395,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo8",
+    "gxtName": "WCT_CAMO_8",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_09",
+    "hash": -847811454,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo9",
+    "gxtName": "WCT_CAMO_9",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_10",
+    "hash": -1413108537,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo10",
+    "gxtName": "WCT_CAMO_10",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSNIPER_MK2_CAMO_IND_01",
+    "hash": 1815270123,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_heavysnipermk2_camo_ind1",
+    "gxtName": "WCT_CAMO_IND",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_FLSH_02",
+    "hash": 1140676955,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "w_at_pi_flsh_2",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "COMPONENT_AT_AR_AFGRIP_02",
+    "hash": -1654288262,
+    "type": "CWeaponComponentInfo",
+    "model": "w_at_afgrip_2",
+    "gxtName": "WCT_GRIP",
+    "gxtDescription": "WCD_GRIP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_01",
+    "hash": -1181482284,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_1",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_02",
+    "hash": -932732805,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_2",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_03",
+    "hash": -569259057,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_3",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_04",
+    "hash": -326080308,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_4",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_05",
+    "hash": 48731514,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_5",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_06",
+    "hash": 880736428,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_6",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_07",
+    "hash": 1303784126,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_7",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_08",
+    "hash": 1602080333,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_8",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ_SR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_MUZZLE_09",
+    "hash": 1764221345,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_muzzle_9",
+    "gxtName": "WCT_MUZZ",
+    "gxtDescription": "WCD_MUZZ_SR"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_COMP",
+    "hash": 568543123,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_pi_comp_1",
+    "gxtName": "WCT_COMP",
+    "gxtDescription": "WCD_COMP"
+  },
+  {
+    "nameHash": "COMPONENT_AT_PI_RAIL",
+    "hash": -1898661008,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_pi_rail_1",
+    "gxtName": "WCT_SCOPE_PI",
+    "gxtDescription": "WCD_SCOPE_PI"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MACRO_MK2",
+    "hash": 77277509,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_macro",
+    "gxtName": "WCT_SCOPE_MAC2",
+    "gxtDescription": "WCD_SCOPE_MAC"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MACRO_02_MK2",
+    "hash": -944910075,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_macro_2",
+    "gxtName": "WCT_SCOPE_MAC2",
+    "gxtDescription": "WCD_SCOPE_MAC"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MACRO_02_SMG_MK2",
+    "hash": -452809877,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_macro_2_mk2",
+    "gxtName": "WCT_SCOPE_MAC2",
+    "gxtDescription": "WCD_SCOPE_MAC"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_SMALL_MK2",
+    "hash": 1060929921,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_small",
+    "gxtName": "WCT_SCOPE_SML2",
+    "gxtDescription": "WCD_SCOPE_SML"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_SMALL_SMG_MK2",
+    "hash": 1038927834,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_small_mk2",
+    "gxtName": "WCT_SCOPE_SML2",
+    "gxtDescription": "WCD_SCOPE_SML"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_MEDIUM_MK2",
+    "hash": -966040254,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_medium_2",
+    "gxtName": "WCT_SCOPE_MED2",
+    "gxtDescription": "WCD_SCOPE_MED"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_LARGE_MK2",
+    "hash": -2101279869,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_large",
+    "gxtName": "WCT_SCOPE_LRG2",
+    "gxtDescription": "WCD_SCOPE_LRG"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_NV",
+    "hash": -1233121104,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_nv",
+    "gxtName": "WCT_SCOPE_NV",
+    "gxtDescription": "WCD_SCOPE_NV"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_THERMAL",
+    "hash": 776198721,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_nv",
+    "gxtName": "WCT_SCOPE_TH",
+    "gxtDescription": "WCD_SCOPE_TH"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SIGHTS",
+    "hash": 1108334355,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_sights_1",
+    "gxtName": "WCT_HOLO",
+    "gxtDescription": "WCD_HOLO"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SIGHTS_SMG",
+    "hash": -1613015470,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_sights_smg",
+    "gxtName": "WCT_HOLO",
+    "gxtDescription": "WCD_HOLO"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SR_SUPP_03",
+    "hash": -1404903567,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "w_at_sr_supp3",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_SR_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_FLASHLIGHT_LIGHT",
+    "hash": -575194865,
+    "type": "CWeaponComponentFlashLightInfo",
+    "model": "w_me_flashlight_flash",
+    "gxtName": "WCT_FLASH",
+    "gxtDescription": "WCD_FLASH"
+  },
+  {
+    "nameHash": "COMPONENT_FLAREGUN_CLIP_01",
+    "hash": -1813398119,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_flaregun_mag1",
+    "clipSize": 1,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCT_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_CERAMICPISTOL_CLIP_01",
+    "hash": 1423184737,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_Ceramic_Mag1",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_P_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_CERAMICPISTOL_CLIP_02",
+    "hash": -2122814295,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_sns_pistol_mag2",
+    "clipSize": 17,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_P_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_CERAMICPISTOL_SUPP",
+    "hash": -1828202758,
+    "type": "CWeaponComponentSuppressorInfo",
+    "model": "W_PI_Ceramic_Supp",
+    "gxtName": "WCT_SUPP",
+    "gxtDescription": "WCD_PI_SUPP"
+  },
+  {
+    "nameHash": "COMPONENT_NAVYREVOLVER_CLIP_01",
+    "hash": -1738620313,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_wep2_gun_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_REV_NV_CLIP"
+  },
+  {
+    "nameHash": "COMPONENT_MACHINEPISTOL_CLIP_01",
+    "hash": 1198425599,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_compactsmg_mag1",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_MCHP_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MACHINEPISTOL_CLIP_02",
+    "hash": -1188271751,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_compactsmg_mag2",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_MCHP_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_COMPACTRIFLE_CLIP_01",
+    "hash": 1363085923,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_smg_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_CMPR_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_COMPACTRIFLE_CLIP_02",
+    "hash": 1509923832,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_assaultrifle_smg_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_CMPR_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_DBSHOTGUN_CLIP_01",
+    "hash": 703231006,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_doublebarrel_mag1",
+    "clipSize": 2,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPDW_CLIP_01",
+    "hash": 1125642654,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_SB_PDW_Mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_PDW_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_COMBATPDW_CLIP_02",
+    "hash": 860508675,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_SB_PDW_Mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_PDW_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_CLIP_01",
+    "hash": -125817127,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_sns_pistol_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_SNSP_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_CLIP_02",
+    "hash": 2063610803,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_sns_pistol_mag2",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_SNSP_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SNSPISTOL_VARMOD_LOWRIDER",
+    "hash": -2144080721,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_pi_sns_pistol_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANPISTOL_CLIP_01",
+    "hash": -878820883,
+    "type": "CWeaponComponentClipInfo",
+    "model": "W_PI_SingleShot_Shell",
+    "clipSize": 1,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_BASE",
+    "hash": -213504205,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_PIMP",
+    "hash": -971770235,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_02",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_BALLAS",
+    "hash": -287703709,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_BG",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_DOLLAR",
+    "hash": 1351683121,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_DLR",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_DIAMOND",
+    "hash": -1755194916,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_DMD",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_HATE",
+    "hash": 2112683568,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_HT",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_LOVE",
+    "hash": 1062111910,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_LV",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_PLAYER",
+    "hash": 146278587,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_PC",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_KING",
+    "hash": -494162961,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_SLG",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_KNUCKLE_VARMOD_VAGOS",
+    "hash": 2062808965,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_ME_Knuckle_VG",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYPISTOL_CLIP_01",
+    "hash": 222992026,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_heavypistol_mag1",
+    "clipSize": 18,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_HPST_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYPISTOL_CLIP_02",
+    "hash": 1694090795,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_heavypistol_mag2",
+    "clipSize": 36,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_HPST_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_CLIP_01",
+    "hash": -959978111,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbine_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_SCRB_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_CLIP_02",
+    "hash": 2089537806,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_specialcarbine_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_SCRB_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_CLIP_01",
+    "hash": -979292288,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_bullpuprifle_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_BRIF_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_CLIP_02",
+    "hash": -1284994289,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_bullpuprifle_mag2",
+    "clipSize": 60,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_BRIF_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_VINTAGEPISTOL_CLIP_01",
+    "hash": 1168357051,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_vintage_pistol_mag1",
+    "clipSize": 7,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_VPST_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_VINTAGEPISTOL_CLIP_02",
+    "hash": 867832552,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_vintage_pistol_mag2",
+    "clipSize": 14,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_VPST_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_FIREWORK_CLIP_01",
+    "hash": -454770035,
+    "type": "CWeaponComponentClipInfo",
+    "model": "",
+    "clipSize": 1,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MUSKET_CLIP_01",
+    "hash": 1322387263,
+    "type": "CWeaponComponentClipInfo",
+    "model": "P_CS_Joint_02",
+    "clipSize": 1,
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_AT_SCOPE_LARGE_FIXED_ZOOM",
+    "hash": 471997210,
+    "type": "CWeaponComponentScopeInfo",
+    "model": "w_at_scope_large",
+    "gxtName": "WCT_SCOPE_LRG",
+    "gxtDescription": "WCD_SCOPE_LRF"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_CLIP_01",
+    "hash": -667205311,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanrifle_mag1",
+    "clipSize": 8,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_MKRF_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_CLIP_02",
+    "hash": -855823675,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sr_marksmanrifle_mag2",
+    "clipSize": 16,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_MKRF_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSHOTGUN_CLIP_01",
+    "hash": 844049759,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_heavyshotgun_mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_HVSG_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYSHOTGUN_CLIP_02",
+    "hash": -1759709443,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_heavyshotgun_mag2",
+    "clipSize": 12,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_HVSG_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_GUSENBERG_CLIP_01",
+    "hash": 484812453,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_gusenberg_mag1",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_GSNB_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_GUSENBERG_CLIP_02",
+    "hash": -355941776,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_gusenberg_mag2",
+    "clipSize": 50,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_GSNB_CLIP2"
+  },
+  {
+    "nameHash": "COMPONENT_RAILGUN_CLIP_01",
+    "hash": 59044840,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_ar_railgun_mag1",
+    "clipSize": 1,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_RLGN_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_HEAVYPISTOL_VARMOD_LUXE",
+    "hash": 2053798779,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_PI_HeavyPistol_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SPECIALCARBINE_VARMOD_LOWRIDER",
+    "hash": 1929467122,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_ar_specialcarbine_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_BULLPUPRIFLE_VARMOD_LOW",
+    "hash": -1470645128,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_ar_bullpuprifle_luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_MARKSMANRIFLE_VARMOD_LUXE",
+    "hash": 371102273,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "W_SR_MarksmanRifle_Luxe",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_CLIP_01",
+    "hash": -377062173,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_pi_revolver_Mag1",
+    "clipSize": 6,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_REV_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_VARMOD_BOSS",
+    "hash": 384708672,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_pi_revolver_b",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_REVOLVER_VARMOD_GOON",
+    "hash": -1802258419,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_pi_revolver_g",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SWITCHBLADE_VARMOD_BASE",
+    "hash": -1858624256,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_me_switchblade",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SWITCHBLADE_VARMOD_VAR1",
+    "hash": 1530822070,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_me_switchblade_b",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_SWITCHBLADE_VARMOD_VAR2",
+    "hash": -409758110,
+    "type": "CWeaponComponentVariantModelInfo",
+    "model": "w_me_switchblade_g",
+    "gxtName": "WCT_INVALID",
+    "gxtDescription": "WCD_INVALID"
+  },
+  {
+    "nameHash": "COMPONENT_AUTOSHOTGUN_CLIP_01",
+    "hash": 169463950,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sg_sweeper_mag1",
+    "clipSize": 10,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": ""
+  },
+  {
+    "nameHash": "COMPONENT_COMPACTLAUNCHER_CLIP_01",
+    "hash": 1235472140,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_lr_compactgl_mag1",
+    "clipSize": 1,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": ""
+  },
+  {
+    "nameHash": "COMPONENT_MINISMG_CLIP_01",
+    "hash": -2067221805,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_minismg_mag1",
+    "clipSize": 20,
+    "gxtName": "WCT_CLIP1",
+    "gxtDescription": "WCD_SCRP_CLIP1"
+  },
+  {
+    "nameHash": "COMPONENT_MINISMG_CLIP_02",
+    "hash": -1820405577,
+    "type": "CWeaponComponentClipInfo",
+    "model": "w_sb_minismg_mag2",
+    "clipSize": 30,
+    "gxtName": "WCT_CLIP2",
+    "gxtDescription": "WCD_SCRP_CLIP2"
+  }
+]

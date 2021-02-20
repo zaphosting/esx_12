@@ -1,0 +1,22 @@
+[
+  "account",
+  "async",
+  "class",
+  "command",
+  "datastore",
+  "db",
+  "events",
+  "game.hud",
+  "identity",
+  "input",
+  "interact",
+  "inventory",
+  "math",
+  "migrate",
+  "player",
+  "string",
+  "table",
+  "ui.hud",
+  "ui.menu",
+  "utils"
+]

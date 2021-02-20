@@ -1,0 +1,606 @@
+<html>  <head>    <title>class xPlayer</title>    <link rel="stylesheet" type="text/css" href="app.css" />  </head>  <body><h2>class xPlayer</h2>
+
+<p><em>server/classes/player.lua</em></p>
+
+<p><strong>addAccountMoney</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> accountName, <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> accountName <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add player account money</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addAccountMoney</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> accountName, <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> accountName <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add player account money</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addInventoryItem</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> name, <span style="color:#d300eb">number</span> count <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> name <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> count <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add player inventory item</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addMoney</strong> <strong>(</strong> <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Add amount for player 'money' account</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addWeapon</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#d300eb">number</span> ammo <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> ammo <em><span style="color: #888">Ammo</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add weapon to player</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addWeaponAmmo</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#d300eb">number</span> ammoCount <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> ammoCount <em><span style="color: #888">Ammo count</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add ammo to player weapon</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>addWeaponComponent</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#46a0f0">string</span> weaponComponent <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#46a0f0">string</span> weaponComponent <em><span style="color: #888">Weapon component</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Add weapon to player</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#f0ac46">boolean</span> <strong>canCarryItem</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Check if player can carry count of given item</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#f0ac46">boolean</span> <strong>canSwapItem</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> firstItem, <span style="color:#d300eb">number</span> firstItemCount, <span style="color:#46a0f0">string</span> testItem, <span style="color:#d300eb">number</span> testItemCount <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> firstItem <em><span style="color: #888">Item to be swapped with testItem</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> firstItemCount <em><span style="color: #888">Count of item to swap with testItem</span></em></p></li>
+<li><p><span style="color:#46a0f0">string</span> testItem <em><span style="color: #888">Item intended to replace firstItem</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> testItemCount <em><span style="color: #888">Count of item intended to replace firstItem</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Check if player can sawp item with other item</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#ccc">any</span> <strong>get</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> k <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> k <em><span style="color: #888">Field name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get field on this xPlayer instance</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getAccount</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> account <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> account <em><span style="color: #888">Account name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player account</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getAccounts</strong> <strong>(</strong> <span style="color:#f0ac46">boolean</span> minimal <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#f0ac46">boolean</span> minimal <em><span style="color: #888">Compact output</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player accounts</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#ccc">any</span> <strong>getCoords</strong> <strong>(</strong> <span style="color:#f0ac46">boolean</span> asVector <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#f0ac46">boolean</span> asVector <em><span style="color: #888">Get coords as vector or table ?</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Update player coords on server</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#46a0f0">string</span> <strong>getGroup</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get player group</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#46a0f0">string</span> <strong>getIdentifier</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get player identifier</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getInventory</strong> <strong>(</strong> <span style="color:#f0ac46">boolean</span> minimal <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#f0ac46">boolean</span> minimal <em><span style="color: #888">Compact output</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player inventory</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getInventoryItem</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> name <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> name <em><span style="color: #888">Account name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player inventory item</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getJob</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get player job</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getLoadout</strong> <strong>(</strong> <span style="color:#f0ac46">boolean</span> minimal <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#f0ac46">boolean</span> minimal <em><span style="color: #888">Compact output</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player inventory</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#d300eb">number</span> <strong>getMaxWeight</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get max player weight</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#d300eb">number</span> <strong>getMoney</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get amount for player 'money' account</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#46a0f0">string</span> <strong>getName</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get player name</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>getWeapon</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player weapon</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#d300eb">number</span> <strong>getWeaponTint</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Get player weapon tint index</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#d300eb">number</span> <strong>getWeight</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get player weight</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#f0ac46">boolean</span> <strong>hasWeapon</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Check if player has weapon</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#f0ac46">boolean</span> <strong>hasWeaponComponent</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#46a0f0">string</span> weaponComponent <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#46a0f0">string</span> weaponComponent <em><span style="color: #888">Weapon component</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Check if player weapon has component</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>kick</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> reason <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> reason <em><span style="color: #888">Reason to kick player for</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Kick player</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#d300eb">number</span> <strong>maxCarryItem</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Get max count of specific item player can carry</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeInventoryItem</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> name, <span style="color:#d300eb">number</span> count <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> name <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> count <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove player inventory item</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeInventoryItem</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> name, <span style="color:#d300eb">number</span> count <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> name <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> count <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove player inventory item</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeMoney</strong> <strong>(</strong> <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove amount for player 'money' account</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeWeapon</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove player weapon</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeWeaponAmmo</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#d300eb">number</span> ammoCount <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> ammoCount <em><span style="color: #888">Ammo count</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove player weapon ammo</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>removeWeaponComponent</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#46a0f0">string</span> weaponComponent <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#46a0f0">string</span> weaponComponent <em><span style="color: #888">Weapon component</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Remove player weapon component</em></p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>serialize</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Serialize player data</em>
+  Can be extended by listening for esx:player:serialize event</p>
+  
+  <p>AddEventHandler('esx:player:serialize', function(add)
+  add({somefield = somevalue})
+  end)</p>
+</blockquote>
+
+<hr />
+
+<p><span style="color:#32a83e">custom</span> <strong>serializeDB</strong> <strong>(</strong>  <strong>)</strong></p>
+
+<blockquote>
+  <p><em>Serialize player data for saving in database</em>
+  Can be extended by listening for esx:player:serialize:db event</p>
+  
+  <p>AddEventHandler('esx:player:serialize:db', function(add)
+  add({somefield = somevalue})
+  end)</p>
+</blockquote>
+
+<hr />
+
+<p><strong>set</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> k, <span style="color:#ccc">any</span> v <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> k <em><span style="color: #888">Field name</span></em></p></li>
+<li><p><span style="color:#ccc">any</span> v <em><span style="color: #888">Field value</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Set field on this xPlayer instance</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setAccountMoney</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> accountName, <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> accountName <em><span style="color: #888">Account name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Set player account money</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setCoords</strong> <strong>(</strong> <span style="color:#32a83e">custom</span> coords <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#32a83e">custom</span> coords <em><span style="color: #888">Coords</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Update player coords on both server and client</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setGroup</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> newGroup <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> newGroup <em><span style="color: #888">New group</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Set player group</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setJob</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> job, <span style="color:#d300eb">number</span> grade <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> job <em><span style="color: #888">New job</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> grade <em><span style="color: #888">New job grade</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Set player job</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setMaxWeight</strong> <strong>(</strong> <span style="color:#d300eb">number</span> newWeight <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#d300eb">number</span> newWeight <em><span style="color: #888">New weight</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Set max player weight</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setMoney</strong> <strong>(</strong> <span style="color:#d300eb">number</span> money <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#d300eb">number</span> money <em><span style="color: #888">Amount</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Set amount for player 'money' account</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setName</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> newName <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#46a0f0">string</span> newName <em><span style="color: #888">New name</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Set player name</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>setWeaponTint</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#d300eb">number</span> weaponTintIndex <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> weaponTintIndex <em><span style="color: #888">Weapon tint index</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Update player weapon ammo</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>showHelpNotification</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> msg, <span style="color:#f0ac46">boolean</span> thisFrame, <span style="color:#f0ac46">boolean</span> beep, <span style="color:#32a83e">custom</span> duration <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> msg <em><span style="color: #888">Notification body</span></em></p></li>
+<li><p><span style="color:#f0ac46">boolean</span> thisFrame <em><span style="color: #888">Show for 1 frame only</span></em></p></li>
+<li><p><span style="color:#f0ac46">boolean</span> beep <em><span style="color: #888">Weither to beep or not</span></em></p></li>
+<li><p><span style="color:#32a83e">custom</span> duration <em><span style="color: #888">duration</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Show notification to player</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>showNotification</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> msg, <span style="color:#f0ac46">boolean</span> flash, <span style="color:#f0ac46">boolean</span> saveToBrief, <span style="color:#32a83e">custom</span> hudColorIndex <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> msg <em><span style="color: #888">Notification body</span></em></p></li>
+<li><p><span style="color:#f0ac46">boolean</span> flash <em><span style="color: #888">Weither to flash or not</span></em></p></li>
+<li><p><span style="color:#f0ac46">boolean</span> saveToBrief <em><span style="color: #888">Save to brief (pause menu)</span></em></p></li>
+<li><p><span style="color:#32a83e">custom</span> hudColorIndex <em><span style="color: #888">color</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Show notification to player</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>triggerEvent</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> eventName, <span style="color:#ccc">any</span> ...rest <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> eventName <em><span style="color: #888">Event name</span></em></p></li>
+<li><p><span style="color:#ccc">any</span> ...rest <em><span style="color: #888">Event arguments</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Trigger event to player</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>updateCoords</strong> <strong>(</strong> <span style="color:#32a83e">custom</span> coords <strong>)</strong></p>
+
+<ul>
+<li><span style="color:#32a83e">custom</span> coords <em><span style="color: #888">Coords</span></em></li>
+</ul>
+
+<blockquote>
+  <p><em>Update player coords on server</em></p>
+</blockquote>
+
+<hr />
+
+<p><strong>updateWeaponAmmo</strong> <strong>(</strong> <span style="color:#46a0f0">string</span> weaponName, <span style="color:#d300eb">number</span> ammoCount <strong>)</strong></p>
+
+<ul>
+<li><p><span style="color:#46a0f0">string</span> weaponName <em><span style="color: #888">Weapon name</span></em></p></li>
+<li><p><span style="color:#d300eb">number</span> ammoCount <em><span style="color: #888">Ammo count</span></em></p></li>
+</ul>
+
+<blockquote>
+  <p><em>Update player weapon ammo</em></p>
+</blockquote>
+  </body></html>

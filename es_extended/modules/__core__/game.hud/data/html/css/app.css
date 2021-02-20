@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Pricedown';
+  src: url('../fonts/pdown.ttf')
+}
+
+@font-face {
+  font-family: 'bankgothic';
+  src: url('../fonts/bankgothic.ttf')
+}
+
+html {
+  overflow: hidden;
+}
+
+img {
+  height: 2vh;
+}
+
+#hud {
+  position: absolute;
+  font-family: 'Pricedown';
+  font-size: 3.57vh;
+  color: white;
+  padding: 0.41vh;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: right;
+  top: 2.04vh;
+  right: 2.04vh;
+}
+
+#inventory_notifications {
+  font-family: bankgothic;
+  position: absolute;
+  right: 4.08vh;
+  bottom: 4.08vh;
+  font-size: 2em;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

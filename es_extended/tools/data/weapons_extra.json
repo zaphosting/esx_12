@@ -1,0 +1,20 @@
+{
+  "nameHash" : {
+    "default"    : {
+      "equip" : {
+        "visible"  : false,
+        "bone"     : 24818,
+        "offset"   : {"x": 0, "y": 0, "z": 0},
+        "rotation" : {"x": 0, "y": 0, "z": 0}
+      }
+    },
+    "WEAPON_SPECIALCARBINE" : {
+      "equip" : {
+        "visible"  : true ,
+        "bone"     : 24818,
+        "offset"   : {"x": 0.09, "y": -0.15, "z": 0.1},
+        "rotation" : {"x": 10, "y": 160, "z": 10}
+      }
+    }
+  }
+}

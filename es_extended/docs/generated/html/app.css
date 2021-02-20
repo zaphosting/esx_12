@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+body {
+  font-family: 'IBM Plex Sans';
+  background-color: #111;
+  color: #CCC;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #1b1b1b;
+  outline: none;
+}
+
+blockquote {
+  margin-inline-start: 0.5em;
+  color: #AAA;
+}

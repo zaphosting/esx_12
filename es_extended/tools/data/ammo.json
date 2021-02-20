@@ -1,0 +1,562 @@
+[
+  {
+    "nameHash": "AMMO_MOBILEOPS_CANNON",
+    "hash": 764589401,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_APC_CANNON",
+    "hash": -767591211,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_APC_MISSILE",
+    "hash": 119573070,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_AVENGER_CANNON",
+    "hash": 1849772700,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_BARRAGE_GL",
+    "hash": 1364454752,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_VEHICLEBOMB",
+    "hash": -1615671818,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEBOMB_CLUSTER",
+    "hash": 1584038003,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEBOMB_GAS",
+    "hash": 314485403,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEBOMB_INCENDIARY",
+    "hash": -111286589,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_CHERNO_MISSILE",
+    "hash": -1278325590,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_DUNE_GRENADELAUNCHER",
+    "hash": 1742067183,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_HACKER_MISSILE",
+    "hash": -2009808731,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_HUNTER_MISSILE",
+    "hash": -119401255,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_HUNTER_BARRAGE",
+    "hash": 935462248,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_KHANJALI_GL",
+    "hash": -1630507076,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_KHANJALI_CANNON_HEAVY",
+    "hash": 617011510,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE",
+    "hash": 612448028,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_KINETIC",
+    "hash": -1140465749,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_EMP",
+    "hash": 1653442244,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_SPIKE",
+    "hash": 1782795920,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_SLICK",
+    "hash": -418520852,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_TAR",
+    "hash": -1733963618,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_KINETIC_RC",
+    "hash": -338616823,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_EMP_RC",
+    "hash": -930619152,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_SPIKE_RC",
+    "hash": -1317227407,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_SLICK_RC",
+    "hash": -590129723,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_VEHICLEMINE_TAR_RC",
+    "hash": -1955683003,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_MONSTER3_KINETIC",
+    "hash": 2074953483,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_MORTAR_EXPLOSIVE",
+    "hash": 814030577,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_MORTAR_KINETIC",
+    "hash": 648487681,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_MULE4_GL",
+    "hash": -206645419,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_OPPRESSOR_MISSILE",
+    "hash": 570854289,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_OPPRESSOR2_MISSILE",
+    "hash": 914231229,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_POUNDER2_MISSILE",
+    "hash": 948447183,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_POUNDER2_GL",
+    "hash": 1624456817,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_ROGUE_MISSILE",
+    "hash": -1421421393,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_SCRAMJET_MISSILE",
+    "hash": -1664293218,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_STRIKEFORCE_BARRAGE",
+    "hash": 987449399,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_STRIKEFORCE_MISSILE",
+    "hash": 770578418,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_SUBCAR_MISSILE",
+    "hash": 456482729,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_SUBCAR_TORPEDO",
+    "hash": -684945118,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_TAMPA_MORTAR",
+    "hash": -405037695,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_THRUSTER_MISSILE",
+    "hash": -379666311,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_TRAILER_AA",
+    "hash": 881918194,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_TRAILER_MISSILE",
+    "hash": -11173636,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_VIGILANTE_MISSILE",
+    "hash": 1507289724,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_VEHICLEBOMB_WIDE",
+    "hash": -117387562,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_RCTANK_ROCKET",
+    "hash": -1585454291,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_FIREWORK",
+    "hash": -1356599793,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_FLAREGUN",
+    "hash": 1173416293,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_HOMINGLAUNCHER",
+    "hash": -1726673363,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_PIPEBOMB",
+    "hash": 357983224,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_PROXMINE",
+    "hash": -1356724057,
+    "max": 5
+  },
+  {
+    "nameHash": "AMMO_RAILGUN",
+    "hash": 2034517757,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_PISTOL",
+    "hash": 1950175060,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_SMG",
+    "hash": 1820140472,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_RIFLE",
+    "hash": 218444191,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_MG",
+    "hash": 1788949567,
+    "max": 500
+  },
+  {
+    "nameHash": "AMMO_SHOTGUN",
+    "hash": -1878508229,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_STUNGUN",
+    "hash": -1339118112,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_SNIPER",
+    "hash": 1285032059,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_SNIPER_REMOTE",
+    "hash": -19235536,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_FIREEXTINGUISHER",
+    "hash": 1359393852,
+    "max": 2000
+  },
+  {
+    "nameHash": "AMMO_PETROLCAN",
+    "hash": -899475295,
+    "max": 4500
+  },
+  {
+    "nameHash": "AMMO_MINIGUN",
+    "hash": -1614428030,
+    "max": 250
+  },
+  {
+    "nameHash": "AMMO_GRENADELAUNCHER",
+    "hash": 1003267566,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_GRENADELAUNCHER_SMOKE",
+    "hash": 826266432,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_RPG",
+    "hash": 1742569970,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_STINGER",
+    "hash": -1857257158,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_GRENADE",
+    "hash": 1003688881,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_BALL",
+    "hash": -6986138,
+    "max": 1
+  },
+  {
+    "nameHash": "AMMO_STICKYBOMB",
+    "hash": 1411692055,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_SMOKEGRENADE",
+    "hash": -435287898,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_BZGAS",
+    "hash": -1686864220,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_FLARE",
+    "hash": 1808594799,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_MOLOTOV",
+    "hash": 1446246869,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_TANK",
+    "hash": -1474608608,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_SPACE_ROCKET",
+    "hash": 527765612,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_PLANE_ROCKET",
+    "hash": 1198741878,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_PLAYER_LASER",
+    "hash": -165357558,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_ENEMY_LASER",
+    "hash": -1372674932,
+    "max": 100
+  },
+  {
+    "nameHash": "AMMO_BIRD_CRAP",
+    "hash": 1117307028,
+    "max": 25
+  },
+  {
+    "nameHash": "AMMO_MG_ARMORPIERCING",
+    "hash": 784861712,
+    "max": 480
+  },
+  {
+    "nameHash": "AMMO_MG_FMJ",
+    "hash": 234717365,
+    "max": 480
+  },
+  {
+    "nameHash": "AMMO_MG_INCENDIARY",
+    "hash": 1461941360,
+    "max": 480
+  },
+  {
+    "nameHash": "AMMO_MG_TRACER",
+    "hash": 1226421483,
+    "max": 600
+  },
+  {
+    "nameHash": "AMMO_PISTOL_FMJ",
+    "hash": -1132792829,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_PISTOL_HOLLOWPOINT",
+    "hash": -836519658,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_PISTOL_INCENDIARY",
+    "hash": -1416716039,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_PISTOL_TRACER",
+    "hash": -1193480661,
+    "max": 360
+  },
+  {
+    "nameHash": "AMMO_RIFLE_ARMORPIERCING",
+    "hash": 423744068,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_RIFLE_FMJ",
+    "hash": 1586900444,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_RIFLE_INCENDIARY",
+    "hash": -1829688883,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_RIFLE_TRACER",
+    "hash": -1340502689,
+    "max": 360
+  },
+  {
+    "nameHash": "AMMO_SMG_FMJ",
+    "hash": 758230489,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_SMG_HOLLOWPOINT",
+    "hash": 670318226,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_SMG_INCENDIARY",
+    "hash": -332892697,
+    "max": 240
+  },
+  {
+    "nameHash": "AMMO_SMG_TRACER",
+    "hash": 1569785553,
+    "max": 360
+  },
+  {
+    "nameHash": "AMMO_SNIPER_ARMORPIERCING",
+    "hash": -1497580119,
+    "max": 80
+  },
+  {
+    "nameHash": "AMMO_SNIPER_EXPLOSIVE",
+    "hash": -1378784071,
+    "max": 40
+  },
+  {
+    "nameHash": "AMMO_SNIPER_FMJ",
+    "hash": -168704490,
+    "max": 80
+  },
+  {
+    "nameHash": "AMMO_SNIPER_INCENDIARY",
+    "hash": 796697766,
+    "max": 80
+  },
+  {
+    "nameHash": "AMMO_SNIPER_TRACER",
+    "hash": 1184011213,
+    "max": 320
+  },
+  {
+    "nameHash": "AMMO_SHOTGUN_ARMORPIERCING",
+    "hash": 1923327840,
+    "max": 160
+  },
+  {
+    "nameHash": "AMMO_SHOTGUN_EXPLOSIVE",
+    "hash": -309302955,
+    "max": 40
+  },
+  {
+    "nameHash": "AMMO_SHOTGUN_HOLLOWPOINT",
+    "hash": 2089185906,
+    "max": 160
+  },
+  {
+    "nameHash": "AMMO_SHOTGUN_INCENDIARY",
+    "hash": -609429612,
+    "max": 160
+  },
+  {
+    "nameHash": "AMMO_SNOWBALL",
+    "hash": -2112339603,
+    "max": 10
+  },
+  {
+    "nameHash": "AMMO_ARENA_HOMING_MISSILE",
+    "hash": 1669062227,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_RAYPISTOL",
+    "hash": -1526023308,
+    "max": 20
+  },
+  {
+    "nameHash": "AMMO_HAZARDCAN",
+    "hash": 1618528319,
+    "max": 4500
+  },
+  {
+    "nameHash": "AMMO_TRANQUILIZER",
+    "hash": 1964004553,
+    "max": 250
+  }
+]

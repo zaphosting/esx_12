@@ -1,0 +1,979 @@
+[
+  {
+    "nameHash": "firetruk",
+    "hash": 1938952078,
+    "weapons": [
+      "VEHICLE_WEAPON_WATER_CANNON"
+    ]
+  },
+  {
+    "nameHash": "LAZER",
+    "hash": -1281684762,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_LAZER",
+      "VEHICLE_WEAPON_PLANE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "SPMED",
+    "hash": -779089335,
+    "weapons": [
+      "VEHICLE_WEAPON_ENEMY_LASER"
+    ]
+  },
+  {
+    "nameHash": "SPSMALL",
+    "hash": -1289793643,
+    "weapons": [
+      "VEHICLE_WEAPON_ENEMY_LASER"
+    ]
+  },
+  {
+    "nameHash": "BULLDOZE",
+    "hash": 1854557578,
+    "weapons": []
+  },
+  {
+    "nameHash": "RHINO",
+    "hash": 782665360,
+    "weapons": [
+      "VEHICLE_WEAPON_TANK"
+    ]
+  },
+  {
+    "nameHash": "DINGHY",
+    "hash": 1033245328,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "DINGHY2",
+    "hash": 276773164,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "predator",
+    "hash": -488123221,
+    "weapons": [
+      "VEHICLE_WEAPON_RADAR"
+    ]
+  },
+  {
+    "nameHash": "ANNIHL",
+    "hash": -1890589379,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_BUZZARD",
+      "VEHICLE_WEAPON_SPACE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "BUZZARD",
+    "hash": 788747387,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_BUZZARD",
+      "VEHICLE_WEAPON_SPACE_ROCKET",
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "BUZZARD2",
+    "hash": 745926877,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "FROGGER",
+    "hash": 744705981,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "MAVERICK",
+    "hash": -1660661558,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "polmav",
+    "hash": 353883353,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "INSURGENT",
+    "hash": -1860900134,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT"
+    ]
+  },
+  {
+    "nameHash": "INSURGENT2",
+    "hash": 2071877360,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT"
+    ]
+  },
+  {
+    "nameHash": "BRUISER",
+    "hash": 668439077,
+    "weapons": [
+      "VEHICLE_WEAPON_BRUISER_50CAL"
+    ]
+  },
+  {
+    "nameHash": "BRUISER2",
+    "hash": -1694081890,
+    "weapons": [
+      "VEHICLE_WEAPON_BRUISER_50CAL",
+      "VEHICLE_WEAPON_BRUISER2_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "BRUTUS",
+    "hash": 2139203625,
+    "weapons": [
+      "VEHICLE_WEAPON_BRUTUS_50CAL"
+    ]
+  },
+  {
+    "nameHash": "BRUTUS2",
+    "hash": -1890996696,
+    "weapons": [
+      "VEHICLE_WEAPON_BRUTUS_50CAL",
+      "VEHICLE_WEAPON_BRUTUS2_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "CERBERUS",
+    "hash": -801550069,
+    "weapons": [
+      "VEHICLE_WEAPON_FLAMETHROWER",
+      "VEHICLE_WEAPON_FLAMETHROWER"
+    ]
+  },
+  {
+    "nameHash": "CERBERUS2",
+    "hash": 679453769,
+    "weapons": [
+      "VEHICLE_WEAPON_FLAMETHROWER_SCIFI",
+      "VEHICLE_WEAPON_FLAMETHROWER_SCIFI"
+    ]
+  },
+  {
+    "nameHash": "DEATHBIKE",
+    "hash": -27326686,
+    "weapons": [
+      "VEHICLE_WEAPON_DEATHBIKE_DUALMINIGUN"
+    ]
+  },
+  {
+    "nameHash": "DEATHBIKE2",
+    "hash": -1812949672,
+    "weapons": [
+      "VEHICLE_WEAPON_DEATHBIKE2_MINIGUN_LASER"
+    ]
+  },
+  {
+    "nameHash": "DOMINATOR4",
+    "hash": -688189648,
+    "weapons": [
+      "VEHICLE_WEAPON_DOMINATOR4_50CAL"
+    ]
+  },
+  {
+    "nameHash": "DOMINATOR5",
+    "hash": -1375060657,
+    "weapons": [
+      "VEHICLE_WEAPON_DOMINATOR4_50CAL",
+      "VEHICLE_WEAPON_DOMINATOR5_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "IMPALER2",
+    "hash": 1009171724,
+    "weapons": [
+      "VEHICLE_WEAPON_IMPALER2_50CAL"
+    ]
+  },
+  {
+    "nameHash": "IMPALER3",
+    "hash": -1924800695,
+    "weapons": [
+      "VEHICLE_WEAPON_IMPALER2_50CAL",
+      "VEHICLE_WEAPON_IMPALER3_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "IMPERATOR",
+    "hash": 444994115,
+    "weapons": [
+      "VEHICLE_WEAPON_IMPERATOR_50CAL",
+      "VEHICLE_WEAPON_MORTAR_KINETIC"
+    ]
+  },
+  {
+    "nameHash": "IMPERATOR2",
+    "hash": 1637620610,
+    "weapons": [
+      "VEHICLE_WEAPON_IMPERATOR_50CAL",
+      "VEHICLE_WEAPON_MORTAR_KINETIC",
+      "VEHICLE_WEAPON_IMPERATOR2_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "ISSI4",
+    "hash": 628003514,
+    "weapons": [
+      "VEHICLE_WEAPON_ISSI4_50CAL",
+      "VEHICLE_WEAPON_MORTAR_KINETIC"
+    ]
+  },
+  {
+    "nameHash": "ISSI5",
+    "hash": 1537277726,
+    "weapons": [
+      "VEHICLE_WEAPON_ISSI4_50CAL",
+      "VEHICLE_WEAPON_ISSI5_50CAL_LASER",
+      "VEHICLE_WEAPON_MORTAR_KINETIC"
+    ]
+  },
+  {
+    "nameHash": "MONSTER3",
+    "hash": 1721676810,
+    "weapons": [
+      "VEHICLE_WEAPON_MONSTER3_GLKIN"
+    ]
+  },
+  {
+    "nameHash": "SCARAB",
+    "hash": -1146969353,
+    "weapons": [
+      "VEHICLE_WEAPON_SCARAB_50CAL"
+    ]
+  },
+  {
+    "nameHash": "SCARAB2",
+    "hash": 1542143200,
+    "weapons": [
+      "VEHICLE_WEAPON_SCARAB_50CAL",
+      "VEHICLE_WEAPON_SCARAB2_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "SLAMVAN4",
+    "hash": -2061049099,
+    "weapons": [
+      "VEHICLE_WEAPON_SLAMVAN4_50CAL"
+    ]
+  },
+  {
+    "nameHash": "SLAMVAN5",
+    "hash": 373261600,
+    "weapons": [
+      "VEHICLE_WEAPON_SLAMVAN4_50CAL",
+      "VEHICLE_WEAPON_SLAMVAN5_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "ZR380",
+    "hash": 540101442,
+    "weapons": [
+      "VEHICLE_WEAPON_ZR380_50CAL"
+    ]
+  },
+  {
+    "nameHash": "ZR3802",
+    "hash": -1106120762,
+    "weapons": [
+      "VEHICLE_WEAPON_ZR380_50CAL",
+      "VEHICLE_WEAPON_ZR3802_50CAL_LASER"
+    ]
+  },
+  {
+    "nameHash": "VOLATUS",
+    "hash": -1845487887,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "DUNE3",
+    "hash": 1897744184,
+    "weapons": [
+      "VEHICLE_WEAPON_DUNE_MG",
+      "VEHICLE_WEAPON_DUNE_GRENADELAUNCHER",
+      "VEHICLE_WEAPON_DUNE_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "TAMPA3",
+    "hash": -1210451983,
+    "weapons": [
+      "VEHICLE_WEAPON_TAMPA_MISSILE",
+      "VEHICLE_WEAPON_TAMPA_MORTAR",
+      "VEHICLE_WEAPON_TAMPA_FIXEDMINIGUN",
+      "VEHICLE_WEAPON_TAMPA_DUALMINIGUN"
+    ]
+  },
+  {
+    "nameHash": "HALFTRACK",
+    "hash": -32236122,
+    "weapons": [
+      "VEHICLE_WEAPON_HALFTRACK_DUALMG",
+      "VEHICLE_WEAPON_HALFTRACK_QUADMG"
+    ]
+  },
+  {
+    "nameHash": "APC",
+    "hash": 562680400,
+    "weapons": [
+      "VEHICLE_WEAPON_APC_CANNON",
+      "VEHICLE_WEAPON_APC_MISSILE",
+      "VEHICLE_WEAPON_APC_MG",
+      "VEHICLE_WEAPON_APC_MG"
+    ]
+  },
+  {
+    "nameHash": "ARDENT",
+    "hash": 159274291,
+    "weapons": [
+      "VEHICLE_WEAPON_ARDENT_MG"
+    ]
+  },
+  {
+    "nameHash": "TECHNICAL3",
+    "hash": 1356124575,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_TECHNICAL",
+      "VEHICLE_WEAPON_TECHNICAL_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "INSURGENT3",
+    "hash": -1924433270,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT",
+      "VEHICLE_WEAPON_INSURGENT_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "TRAILERSMALL2",
+    "hash": -1881846085,
+    "weapons": [
+      "VEHICLE_WEAPON_TRAILER_QUADMG",
+      "VEHICLE_WEAPON_TRAILER_MISSILE",
+      "VEHICLE_WEAPON_TRAILER_DUALAA"
+    ]
+  },
+  {
+    "nameHash": "NIGHTSHARK",
+    "hash": 433954513,
+    "weapons": [
+      "VEHICLE_WEAPON_NIGHTSHARK_MG"
+    ]
+  },
+  {
+    "nameHash": "OPPRESSOR",
+    "hash": 884483972,
+    "weapons": [
+      "VEHICLE_WEAPON_OPPRESSOR_MG",
+      "VEHICLE_WEAPON_OPPRESSOR_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "TRAILERLARGE",
+    "hash": 1502869817,
+    "weapons": [
+      "VEHICLE_WEAPON_MOBILEOPS_CANNON",
+      "VEHICLE_WEAPON_MOBILEOPS_CANNON",
+      "VEHICLE_WEAPON_MOBILEOPS_CANNON"
+    ]
+  },
+  {
+    "nameHash": "HYDRA",
+    "hash": 970385471,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_LAZER",
+      "VEHICLE_WEAPON_SPACE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "INSURGENT",
+    "hash": -1860900134,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT"
+    ]
+  },
+  {
+    "nameHash": "INSURGENT2",
+    "hash": 2071877360,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT"
+    ]
+  },
+  {
+    "nameHash": "SAVAGE",
+    "hash": -82626025,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_SAVAGE",
+      "VEHICLE_WEAPON_SPACE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "TECHNICAL",
+    "hash": -2096818938,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_TECHNICAL"
+    ]
+  },
+  {
+    "nameHash": "VALKYR",
+    "hash": -324583184,
+    "weapons": [
+      "VEHICLE_WEAPON_NOSE_TURRET_VALKYRIE",
+      "VEHICLE_WEAPON_TURRET_VALKYRIE",
+      "VEHICLE_WEAPON_TURRET_VALKYRIE"
+    ]
+  },
+  {
+    "nameHash": "JB7002",
+    "hash": 394110044,
+    "weapons": [
+      "VEHICLE_WEAPON_JB700_MG"
+    ]
+  },
+  {
+    "nameHash": "MINITANK",
+    "hash": -1254331310,
+    "weapons": [
+      "VEHICLE_WEAPON_RCTANK_GUN",
+      "VEHICLE_WEAPON_RCTANK_FLAME",
+      "VEHICLE_WEAPON_RCTANK_ROCKET",
+      "VEHICLE_WEAPON_RCTANK_LAZER"
+    ]
+  },
+  {
+    "nameHash": "TECHNICAL2",
+    "hash": 1180875963,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_TECHNICAL"
+    ]
+  },
+  {
+    "nameHash": "BLAZER5",
+    "hash": -1590337689,
+    "weapons": [
+      "VEHICLE_WEAPON_CANNON_BLAZER"
+    ]
+  },
+  {
+    "nameHash": "BOXVILLE5",
+    "hash": 682434785,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_BOXVILLE"
+    ]
+  },
+  {
+    "nameHash": "RUINER2",
+    "hash": 941494461,
+    "weapons": [
+      "VEHICLE_WEAPON_RUINER_BULLET",
+      "VEHICLE_WEAPON_RUINER_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "LIMO2",
+    "hash": -114627507,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_LIMO"
+    ]
+  },
+  {
+    "nameHash": "SVOLITO",
+    "hash": -2011477158,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "VALKYR2",
+    "hash": 1929962148,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_VALKYRIE",
+      "VEHICLE_WEAPON_TURRET_VALKYRIE"
+    ]
+  },
+  {
+    "nameHash": "SWIFT2",
+    "hash": 1075432268,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "HUNTER",
+    "hash": -42959138,
+    "weapons": [
+      "VEHICLE_WEAPON_HUNTER_MG",
+      "VEHICLE_WEAPON_HUNTER_MISSILE",
+      "VEHICLE_WEAPON_HUNTER_CANNON",
+      "VEHICLE_WEAPON_HUNTER_BARRAGE"
+    ]
+  },
+  {
+    "nameHash": "TULA",
+    "hash": 1043222410,
+    "weapons": [
+      "VEHICLE_WEAPON_TULA_NOSEMG",
+      "VEHICLE_WEAPON_TULA_MG",
+      "VEHICLE_WEAPON_TULA_DUALMG",
+      "VEHICLE_WEAPON_TULA_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "SEABREEZE",
+    "hash": -392675425,
+    "weapons": [
+      "VEHICLE_WEAPON_SEABREEZE_MG"
+    ]
+  },
+  {
+    "nameHash": "MICROLIGHT",
+    "hash": -1763555241,
+    "weapons": [
+      "VEHICLE_WEAPON_MICROLIGHT_MG"
+    ]
+  },
+  {
+    "nameHash": "PYRO",
+    "hash": -1386191424,
+    "weapons": [
+      "VEHICLE_WEAPON_DOGFIGHTER_MG",
+      "VEHICLE_WEAPON_DOGFIGHTER_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "STARLING",
+    "hash": -1700874274,
+    "weapons": [
+      "VEHICLE_WEAPON_DOGFIGHTER_MG",
+      "VEHICLE_WEAPON_DOGFIGHTER_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "MOGUL",
+    "hash": -749299473,
+    "weapons": [
+      "VEHICLE_WEAPON_MOGUL_NOSE",
+      "VEHICLE_WEAPON_MOGUL_DUALNOSE",
+      "VEHICLE_WEAPON_MOGUL_TURRET",
+      "VEHICLE_WEAPON_MOGUL_DUALTURRET"
+    ]
+  },
+  {
+    "nameHash": "ROGUE",
+    "hash": -975345305,
+    "weapons": [
+      "VEHICLE_WEAPON_ROGUE_MG",
+      "VEHICLE_WEAPON_ROGUE_CANNON",
+      "VEHICLE_WEAPON_ROGUE_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "NOKOTA",
+    "hash": 1036591958,
+    "weapons": [
+      "VEHICLE_WEAPON_DOGFIGHTER_MG",
+      "VEHICLE_WEAPON_DOGFIGHTER_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "BOMBUSHKA",
+    "hash": -32878452,
+    "weapons": [
+      "VEHICLE_WEAPON_BOMBUSHKA_DUALMG",
+      "VEHICLE_WEAPON_BOMBUSHKA_CANNON",
+      "VEHICLE_WEAPON_BOMBUSHKA_CANNON",
+      "VEHICLE_WEAPON_BOMBUSHKA_DUALMG",
+      "VEHICLE_WEAPON_BOMBUSHKA_CANNON"
+    ]
+  },
+  {
+    "nameHash": "MOLOTOK",
+    "hash": 1565978651,
+    "weapons": [
+      "VEHICLE_WEAPON_DOGFIGHTER_MG",
+      "VEHICLE_WEAPON_DOGFIGHTER_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "HAVOK",
+    "hash": -1984275979,
+    "weapons": [
+      "VEHICLE_WEAPON_HAVOK_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "VIGILANTE",
+    "hash": -1242608589,
+    "weapons": [
+      "VEHICLE_WEAPON_VIGILANTE_MG",
+      "VEHICLE_WEAPON_VIGILANTE_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "PARAGON2",
+    "hash": 1416466158,
+    "weapons": [
+      "VEHICLE_WEAPON_PARAGON2_MG"
+    ]
+  },
+  {
+    "nameHash": "SWIFT",
+    "hash": -339587598,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "LIMO2",
+    "hash": -114627507,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_LIMO"
+    ]
+  },
+  {
+    "nameHash": "SVOLITO",
+    "hash": -2011477158,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "VALKYR2",
+    "hash": 1929962148,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_VALKYRIE",
+      "VEHICLE_WEAPON_TURRET_VALKYRIE"
+    ]
+  },
+  {
+    "nameHash": "CARACARA",
+    "hash": 1254014755,
+    "weapons": [
+      "VEHICLE_WEAPON_CARACARA_MG",
+      "VEHICLE_WEAPON_CARACARA_MINIGUN"
+    ]
+  },
+  {
+    "nameHash": "SEASPARROW",
+    "hash": -726768679,
+    "weapons": [
+      "VEHICLE_WEAPON_HAVOK_MINIGUN",
+      "VEHICLE_WEAPON_SPACE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "MENACER",
+    "hash": 2044532910,
+    "weapons": [
+      "VEHICLE_WEAPON_TURRET_INSURGENT",
+      "VEHICLE_WEAPON_INSURGENT_MINIGUN",
+      "VEHICLE_WEAPON_MENACER_MG"
+    ]
+  },
+  {
+    "nameHash": "MULE4",
+    "hash": 1945374990,
+    "weapons": [
+      "VEHICLE_WEAPON_MULE4_MG",
+      "VEHICLE_WEAPON_MULE4_MISSILE",
+      "VEHICLE_WEAPON_MULE4_TURRET_GL"
+    ]
+  },
+  {
+    "nameHash": "OPPRESSOR2",
+    "hash": 2069146067,
+    "weapons": [
+      "VEHICLE_WEAPON_OPPRESSOR2_MG",
+      "VEHICLE_WEAPON_OPPRESSOR2_CANNON",
+      "VEHICLE_WEAPON_OPPRESSOR2_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "POUNDER2",
+    "hash": 1653666139,
+    "weapons": [
+      "VEHICLE_WEAPON_POUNDER2_MINI",
+      "VEHICLE_WEAPON_POUNDER2_MISSILE",
+      "VEHICLE_WEAPON_POUNDER2_BARRAGE",
+      "VEHICLE_WEAPON_POUNDER2_GL"
+    ]
+  },
+  {
+    "nameHash": "SCRAMJET",
+    "hash": -638562243,
+    "weapons": [
+      "VEHICLE_WEAPON_SCRAMJET_MG",
+      "VEHICLE_WEAPON_SCRAMJET_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "SPEEDO4",
+    "hash": 219613597,
+    "weapons": [
+      "VEHICLE_WEAPON_SPEEDO4_MG",
+      "VEHICLE_WEAPON_SPEEDO4_TURRET_MG",
+      "VEHICLE_WEAPON_SPEEDO4_TURRET_MINI"
+    ]
+  },
+  {
+    "nameHash": "STRIKEFORCE",
+    "hash": 1692272545,
+    "weapons": [
+      "VEHICLE_WEAPON_STRIKEFORCE_CANNON",
+      "VEHICLE_WEAPON_STRIKEFORCE_MISSILE",
+      "VEHICLE_WEAPON_STRIKEFORCE_BARRAGE"
+    ]
+  },
+  {
+    "nameHash": "TERRORBYTE",
+    "hash": -1973454289,
+    "weapons": [
+      "VEHICLE_WEAPON_HACKER_MISSILE",
+      "VEHICLE_WEAPON_HACKER_MISSILE_HOMING"
+    ]
+  },
+  {
+    "nameHash": "AKULA",
+    "hash": 1181327175,
+    "weapons": [
+      "VEHICLE_WEAPON_AKULA_TURRET_SINGLE",
+      "VEHICLE_WEAPON_AKULA_MISSILE",
+      "VEHICLE_WEAPON_AKULA_TURRET_DUAL",
+      "VEHICLE_WEAPON_AKULA_MINIGUN",
+      "VEHICLE_WEAPON_AKULA_BARRAGE"
+    ]
+  },
+  {
+    "nameHash": "AVENGER",
+    "hash": -2118308144,
+    "weapons": [
+      "VEHICLE_WEAPON_AVENGER_CANNON",
+      "VEHICLE_WEAPON_AVENGER_CANNON",
+      "VEHICLE_WEAPON_AVENGER_CANNON"
+    ]
+  },
+  {
+    "nameHash": "BARRAGE",
+    "hash": -212993243,
+    "weapons": [
+      "VEHICLE_WEAPON_BARRAGE_TOP_MG",
+      "VEHICLE_WEAPON_BARRAGE_TOP_MINIGUN",
+      "VEHICLE_WEAPON_BARRAGE_REAR_MG",
+      "VEHICLE_WEAPON_BARRAGE_REAR_MINIGUN",
+      "VEHICLE_WEAPON_BARRAGE_REAR_GL"
+    ]
+  },
+  {
+    "nameHash": "CHERNOBOG",
+    "hash": -692292317,
+    "weapons": [
+      "VEHICLE_WEAPON_CHERNO_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "COMET4",
+    "hash": 1561920505,
+    "weapons": [
+      "VEHICLE_WEAPON_COMET_MG"
+    ]
+  },
+  {
+    "nameHash": "DELUXO",
+    "hash": 1483171323,
+    "weapons": [
+      "VEHICLE_WEAPON_DELUXO_MG",
+      "VEHICLE_WEAPON_DELUXO_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "KHANJALI",
+    "hash": -1435527158,
+    "weapons": [
+      "VEHICLE_WEAPON_KHANJALI_CANNON",
+      "VEHICLE_WEAPON_KHANJALI_CANNON_HEAVY",
+      "VEHICLE_WEAPON_KHANJALI_MG",
+      "VEHICLE_WEAPON_KHANJALI_GL",
+      "VEHICLE_WEAPON_KHANJALI_GL"
+    ]
+  },
+  {
+    "nameHash": "REVOLTER",
+    "hash": -410205223,
+    "weapons": [
+      "VEHICLE_WEAPON_REVOLTER_MG"
+    ]
+  },
+  {
+    "nameHash": "RIOT2",
+    "hash": -1693015116,
+    "weapons": [
+      "VEHICLE_WEAPON_WATER_CANNON",
+      "VEHICLE_WEAPON_WATER_CANNON"
+    ]
+  },
+  {
+    "nameHash": "SAVESTRA",
+    "hash": 903794909,
+    "weapons": [
+      "VEHICLE_WEAPON_SAVESTRA_MG"
+    ]
+  },
+  {
+    "nameHash": "STROMBER",
+    "hash": -2107254279,
+    "weapons": [
+      "VEHICLE_WEAPON_SUBCAR_MG",
+      "VEHICLE_WEAPON_SUBCAR_MISSILE",
+      "VEHICLE_WEAPON_SUBCAR_TORPEDO"
+    ]
+  },
+  {
+    "nameHash": "THRUSTER",
+    "hash": 1489874736,
+    "weapons": [
+      "VEHICLE_WEAPON_THRUSTER_MG",
+      "VEHICLE_WEAPON_THRUSTER_MISSILE"
+    ]
+  },
+  {
+    "nameHash": "VISERIS",
+    "hash": -391595372,
+    "weapons": [
+      "VEHICLE_WEAPON_VISERIS_MG"
+    ]
+  },
+  {
+    "nameHash": "VOLATOL",
+    "hash": 447548909,
+    "weapons": [
+      "VEHICLE_WEAPON_VOLATOL_DUALMG",
+      "VEHICLE_WEAPON_VOLATOL_DUALMG"
+    ]
+  },
+  {
+    "nameHash": "firetruk",
+    "hash": 1938952078,
+    "weapons": [
+      "VEHICLE_WEAPON_WATER_CANNON"
+    ]
+  },
+  {
+    "nameHash": "LAZER",
+    "hash": -1281684762,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_LAZER",
+      "VEHICLE_WEAPON_PLANE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "SPMED",
+    "hash": -779089335,
+    "weapons": [
+      "VEHICLE_WEAPON_ENEMY_LASER"
+    ]
+  },
+  {
+    "nameHash": "SPSMALL",
+    "hash": -1289793643,
+    "weapons": [
+      "VEHICLE_WEAPON_ENEMY_LASER"
+    ]
+  },
+  {
+    "nameHash": "BULLDOZE",
+    "hash": 1854557578,
+    "weapons": []
+  },
+  {
+    "nameHash": "RHINO",
+    "hash": 782665360,
+    "weapons": [
+      "VEHICLE_WEAPON_TANK"
+    ]
+  },
+  {
+    "nameHash": "DINGHY",
+    "hash": 1033245328,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "DINGHY2",
+    "hash": 276773164,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "predator",
+    "hash": -488123221,
+    "weapons": [
+      "VEHICLE_WEAPON_RADAR"
+    ]
+  },
+  {
+    "nameHash": "ANNIHL",
+    "hash": -1890589379,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_BUZZARD",
+      "VEHICLE_WEAPON_SPACE_ROCKET"
+    ]
+  },
+  {
+    "nameHash": "BUZZARD",
+    "hash": 788747387,
+    "weapons": [
+      "VEHICLE_WEAPON_PLAYER_BUZZARD",
+      "VEHICLE_WEAPON_SPACE_ROCKET",
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "BUZZARD2",
+    "hash": 745926877,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "FROGGER",
+    "hash": 744705981,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "MAVERICK",
+    "hash": -1660661558,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  },
+  {
+    "nameHash": "polmav",
+    "hash": 353883353,
+    "weapons": [
+      "VEHICLE_WEAPON_SEARCHLIGHT"
+    ]
+  }
+]
