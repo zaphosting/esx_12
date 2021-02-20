@@ -1,4 +1,4 @@
-USE `es_extended`;
+
 
 CREATE TABLE `user_parkings` (
   

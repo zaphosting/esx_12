@@ -1,4 +1,4 @@
-USE `es_extended`;
+
 
 CREATE TABLE `shops` (
 	`id` int NOT NULL AUTO_INCREMENT,

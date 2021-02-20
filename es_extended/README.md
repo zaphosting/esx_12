@@ -184,7 +184,3 @@ xPlayer.createDBAccessor(
   end
 )
 ```
-
-## Want to contribute? <a name="contributions"></a>
-
-Take a look at our [Esx Contributing Guide](CONTRIBUTING.md) to get familiar with the project and the guideliness.
