@@ -6,6 +6,25 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ADD_COLUMN_IF_NOT_EXISTS`$$
+CREATE DEFINER=`zap65083-51`@`%` PROCEDURE `ADD_COLUMN_IF_NOT_EXISTS` (IN `dbName` TINYTEXT, IN `tableName` TINYTEXT, IN `fieldName` TINYTEXT, IN `fieldDef` TEXT)  BEGIN
+  IF NOT EXISTS (
+    SELECT * FROM information_schema.COLUMNS
+    WHERE `column_name`  = fieldName
+    AND   `table_name`   = tableName
+    AND   `table_schema` = dbName
+  )
+  THEN
+    SET @ddl=CONCAT('ALTER TABLE ', dbName, '.', tableName, ' ADD COLUMN ', fieldName, ' ', fieldDef);
+    PREPARE stmt from @ddl;
+    EXECUTE stmt;
+  END IF;
+END$$
+
+DELIMITER ;
+
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE IF NOT EXISTS `accounts` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -23,16 +42,16 @@ CREATE TABLE IF NOT EXISTS `addon_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
-  ('bank_savings', 'Bank Savings', 0),
-  ('caution', 'caution', 0),
-  ('property_black_money', 'Dirty Money Property', 0),
-  ('society_ambulance', 'EMS', 1),
-  ('society_banker', 'Banker', 1),
-  ('society_cardealer', 'Cardealer', 1),
-  ('society_mechanic', 'Mechanic', 1),
-  ('society_police', 'Police', 1),
-  ('society_realestateagent', 'Agent immobilier', 1),
-  ('society_taxi', 'Taxi', 1);
+('bank_savings', 'Bank Savings', 0),
+('caution', 'caution', 0),
+('property_black_money', 'Dirty Money Property', 0),
+('society_ambulance', 'EMS', 1),
+('society_banker', 'Banker', 1),
+('society_cardealer', 'Cardealer', 1),
+('society_mechanic', 'Mechanic', 1),
+('society_police', 'Police', 1),
+('society_realestateagent', 'Agent immobilier', 1),
+('society_taxi', 'Taxi', 1);
 
 DROP TABLE IF EXISTS `addon_account_data`;
 CREATE TABLE IF NOT EXISTS `addon_account_data` (
@@ -120,6 +139,7 @@ INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 ('user_glasses', 'Glasses', 0),
 ('user_helmet', 'Helmet', 0),
 ('user_mask', 'Mask', 0);
+('society_taxi', 'Taxi', 1);
 
 DROP TABLE IF EXISTS `datastores`;
 CREATE TABLE IF NOT EXISTS `datastores` (
