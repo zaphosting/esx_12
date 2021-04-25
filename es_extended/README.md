@@ -1,186 +1,95 @@
-# ESX 2
+# es_extended LEGACY / BROKEN / WONTFIX
 
-### Sill looking for old version ? => https://github.com/ESX-Org/es_extended/tree/v1-final
+### Things hapenning here now https://github.com/ESX-Org/es_extended/tree/develop (WIP)
 
-### How to run latest ESX
+es_extended is a roleplay framework for FiveM. The to-go framework for creating an economy based roleplay server on FiveM and most popular on the platform, too!
+
+Featuring many extra resources to fit roleplaying servers, here's a taste of what's available:
+
+- esx_ambulancejob: play as a medic to revive players who are bleeding out. Complete with garages and respawn & bleedout system
+- esx_policejob: patrol the city and arrest players commiting crime, with armory, outfit room and garages
+- esx_vehicleshop: roleplay working in an vehicle dealership where you sell cars to players
+
+ESX was initially developed by Gizz back in 2017 for his friend as the were creating an FiveM server and there wasn't any economy roleplaying frameworks available. The original code was written within a week or two and later open sourced, it has ever since been improved and parts been rewritten to further improve on it.
+
+## Links & Read more
+
+- [ESX Forum](https://forum.esx-framework.org/)
+- [ESX Documentation](https://wiki.esx-framework.org/)
+- [ESX Development Discord](https://discord.me/esx)
+- [FiveM Native Reference](https://runtime.fivem.net/doc/reference.html)
+
+## Features
+
+- Weight based inventory system
+- Weapons support, including support for attachments and tints
+- Supports different money accounts (defaulted with cash, bank and black money)
+- Many official resources available in our GitHub
+- Job system, with grades and clothes support
+- Supports multiple languages, most strings are localized
+- Easy to use API for developers to easily integrate ESX to their projects
+- Register your own commands easily, with argument validation, chat suggestion and using FXServer ACL
+
+## Requirements
+
+- [mysql-async](https://github.com/brouznouf/fivem-mysql-async)
+- [async](https://github.com/ESX-Org/async)
+
+
+## Download & Installation
+
+
+### Using Git
 
 ```
-# minimum resources and config to get it working
-
-set mysql_connection_string "mysql://john:smith@localhost/es_extended?charset=utf8mb4"
-
-stop webadmin
-
-ensure mapmanager
-ensure chat
-ensure spawnmanager
-ensure sessionmanager
-ensure hardcap
-ensure rconlog
-ensure baseevents
-
-ensure mysql-async
-ensure cron
-ensure skinchanger
-
-ensure es_extended
+cd resources
+git clone https://github.com/ESX-Org/es_extended [essential]/es_extended
+git clone https://github.com/ESX-Org/esx_menu_default [esx]/[ui]/esx_menu_default
+git clone https://github.com/ESX-Org/esx_menu_dialog [esx]/[ui]/esx_menu_dialog
+git clone https://github.com/ESX-Org/esx_menu_list [esx]/[ui]/esx_menu_list
 ```
 
+### Manually
 
+- Download https://github.com/ESX-Org/es_extended/releases/latest
+- Put it in the `resource/[essential]` directory
+- Download https://github.com/ESX-Org/esx_menu_default/releases/latest
+- Put it in the `resource/[esx]/[ui]` directory
+- Download https://github.com/ESX-Org/esx_menu_dialog/releases/latest
+- Put it in the `resource/[esx]/[ui]` directory
+- Download https://github.com/ESX-Org/esx_menu_list/releases/latest
+- Put it in the `resource/[esx]/[ui]` directory
 
-### Changelog
+### Installation
+
+- Import `es_extended.sql` in your database
+- Configure your `server.cfg` to look like this
 
 ```
-- Switched to a module-based single resource for ease of use and performance
-- Performance improvements
-- Split all base functionnalities into their own module
-- Module can either encapsulate its own functionality or declare global stuff
-- Loading modules via method M('themodule') ensure correct loading order of modules
-- Automated database schema generation (RIP SQL files everywhere)
-- Database schema can also be expanded by other modules
-- Custom event system to avoid serialization of event data and cross-resource communication, that make it possible to pass metatables through these events (You can still use TriggerEvent and such to escape that thing)
-- xPlayer fully customizable without rewriting core resources (Hello second job, faction system and such...)
-- Added some modules to optimize common things like input, marker and static npc management
-- Extend base lua functionnality when appropriate via module. example: table.indexOf
-- OOP System based on http://lua-users.org/wiki/InheritanceTutorial and improved
-- Neat menu API
-- Open as many pages as you want in single NUI frame with Frame API
-- EventEmitter class
-- WIP rewrite of well-known datastore / inventory / account stuff
+add_principal group.admin group.user
+add_ace resource.es_extended command.add_ace allow
+add_ace resource.es_extended command.add_principal allow
+add_ace resource.es_extended command.remove_principal allow
+add_ace resource.es_extended command.stop allow
+
+start mysql-async
+start es_extended
+
+start esx_menu_default
+start esx_menu_list
+start esx_menu_dialog
 ```
 
-### Code examples
+## Legal
 
+### License
 
-```lua
--- Menu
+es_extended - ESX framework for FiveM
 
-M('ui.menu') -- This module provides global Menu factory method
+Copyright (C) 2015-2020 Jérémie N'gadi
 
-local menu = Menu:create('test', {
-  title = 'Test menu',
-  float = 'top|left',
-  items = {
-    {name = 'a', label = 'Fufu c\'est ma bro', type = 'slider'},
-    {name = 'b', label = 'Fuck that shit',     type = 'check'},
-    {name = 'c', label = 'Fuck that shit',     type = 'text'},
-    {name = 'd', label = 'Lorem ipsum'},
-    {name = 'e', label = 'Submit',             type = 'button'},
-  }
-})
+This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
 
-menu:on('ready', function()
-  menu.items[1].label = 'TEST';-- label changed instantly in webview
-end)
+This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
 
-menu:on('item.change', function(item, prop, val, index)
-
-  if (item.name == 'a') and (prop == 'value') then
-
-    item.label = 'Dynamic label ' .. tostring(val);
-
-  end
-
-  if (item.name == 'b') and (prop == 'value') then
-
-    local c = table.find(menu.items, function(e) return e.name == 'c' end)
-
-    c.value = 'Dynamic text ' .. tostring(val);
-
-  end
-
-end)
-
-menu:on('item.click', function(item, index)
-  print('index', index)
-end)
-```
-
-
-![Menu](https://cdn.discordapp.com/attachments/711547420479193088/714823698061721630/unknown.png)
-
-```lua
--- DataStore
-
-M('datastore')
-
-on('esx:db:ready', function()
-
-  local ds = DataStore:create('test', true, {sample = 'data'}) -- name, shared, initial data
-
-  ds:on('save', function()
-    print(ds.name .. ' saved => ' .. json.encode(ds:get()))
-  end)
-
-  ds:on('ready', function()
-
-    ds:set('foo', 'bar')
-
-    ds:save(function()
-      print('callbacks also')
-    end)
-
-  end)
-
-end)
-```
-
-```lua
--- Here is how datastore schema is declared, no need to feed some SQL file
-
-M('events')
-
-on('esx:db:init', function(initTable, extendTable)
-
-  initTable('datastores', 'name', {
-    {name = 'name',  type = 'VARCHAR',  length = 255, default = nil,    extra = 'NOT NULL'},
-    {name = 'owner', type = 'VARCHAR',  length = 64,  default = 'NULL', extra = nil},
-    {name = 'data',  type = 'LONGTEXT', length = nil, default = nil,    extra = nil},
-  })
-
-end)
-```
-
-```lua
--- Want to create faction system ?
-
-M('player')
-
-xPlayer.createDBAccessor('faction', {name = 'faction', type = 'VARCHAR', length = 64, default = 'gang.ballas', extra = nil})
-
--- Now any player (which is instance of xPlayer) have the following methods
--- Also user table has now a faction column added automatically
-
-local player = xPlayer:fromId(2)
-
-print(player:getFaction())
-
-player:setFaction('another.faction')
-
-player:save()
-```
-
-```lua
--- I want to store JSON :(
--- No problem
-
-xPlayer.createDBAccessor('someData', {name = 'some_data', type = 'TEXT', length = nil, default = '{}', extra = nil}, json.encode, json.decode)
-```
-
-```lua
--- I want to store WHATEVER (comma-separated list for example) :(
--- No problem
-
-M('string')
-
-xPlayer.createDBAccessor(
-  'someWeirdData',
-  {name = 'some_weird_data', type = 'TEXT', length = nil, default = '1,2,3,4,5', extra = nil},
-  function(x) -- encode
-    return table.concat(x, ',')
-  end,
-  function(x) -- decode
-    return string.split(x, ',')
-  end
-)
-```
+You should have received a copy Of the GNU General Public License along with this program. If Not, see http://www.gnu.org/licenses/.
