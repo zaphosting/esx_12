@@ -1,3 +1,4 @@
+
 CREATE TABLE `weashops` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`zone` varchar(255) NOT NULL,

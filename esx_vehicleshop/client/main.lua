@@ -705,24 +705,20 @@ AddEventHandler('esx_vehicleshop:hasEnteredMarker', function(zone)
 					end
 				end
 
-				if vehicleData then
-					resellPrice = ESX.Math.Round(vehicleData.price / 100 * Config.ResellPercentage)
-					model = GetEntityModel(vehicle)
-					plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
+				resellPrice = ESX.Math.Round(vehicleData.price / 100 * Config.ResellPercentage)
+				model = GetEntityModel(vehicle)
+				plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 
-					CurrentAction     = 'resell_vehicle'
-					CurrentActionMsg  = _U('sell_menu', vehicleData.name, ESX.Math.GroupDigits(resellPrice))
+				CurrentAction     = 'resell_vehicle'
+				CurrentActionMsg  = _U('sell_menu', vehicleData.name, ESX.Math.GroupDigits(resellPrice))
 
-					CurrentActionData = {
-						vehicle = vehicle,
-						label = vehicleData.name,
-						price = resellPrice,
-						model = model,
-						plate = plate
-					}
-				else
-					ESX.ShowNotification(_U('invalid_vehicle'))
-				end
+				CurrentActionData = {
+					vehicle = vehicle,
+					label = vehicleData.name,
+					price = resellPrice,
+					model = model,
+					plate = plate
+				}
 			end
 		end
 

@@ -1,15 +1,3 @@
--- Copyright (c) Jérémie N'gadi
---
--- All rights reserved.
---
--- Even if 'All rights reserved' is very clear :
---
---   You shall not use any piece of this software in a commercial product / service
---   You shall not resell this software
---   You shall not provide any facility to install this particular software in a commercial product / service
---   If you redistribute this software, you must link to ORIGINAL repository at https://github.com/ESX-Org/es_extended
---   This copyright should appear in every part of the project code
-
 Locales['sc'] = {
   -- Inventory
   ['inventory'] = '库存 %s / %s',
@@ -54,7 +42,7 @@ Locales['sc'] = {
 
   -- Salary related
   ['received_salary'] = '你收到了你的工资: ~g~$%s~s~',
-  ['received_help'] = '鉴于你良好的表现，系统赠送给你一些奖励: ~g~$%s~s~',
+  ['received_help'] = '你领取到了你的失业救济金: ~g~$%s~s~',
   ['company_nomoney'] = '你受雇的公司太穷了，无法支付你的工资。',
   ['received_paycheck'] = '收到转账',
   ['bank'] = '花园银行',
@@ -234,9 +222,4 @@ Locales['sc'] = {
   ['tint_lspd'] = '洛圣都警局色调',
   ['tint_orange'] = '橙色调',
   ['tint_platinum'] = '铂金色调',
-
-  -- Identity
-  ['identity_register'] = 'Please register your character.',
-  ['identity_welcome'] = 'Welcome, ~b~%s %s',
-  ['identity_fill_in'] = 'Please fill in all fields before submitting!',
 }

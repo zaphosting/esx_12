@@ -1,15 +1,3 @@
--- Copyright (c) Jérémie N'gadi
---
--- All rights reserved.
---
--- Even if 'All rights reserved' is very clear :
---
---   You shall not use any piece of this software in a commercial product / service
---   You shall not resell this software
---   You shall not provide any facility to install this particular software in a commercial product / service
---   If you redistribute this software, you must link to ORIGINAL repository at https://github.com/ESX-Org/es_extended
---   This copyright should appear in every part of the project code
-
 Locales['cs'] = {
   -- Inventory
   ['inventory'] = 'inventář %s / %s',
@@ -234,9 +222,4 @@ Locales['cs'] = {
   ['tint_lspd'] = 'modry skin',
   ['tint_orange'] = 'oranzovy skin',
   ['tint_platinum'] = 'platinovy skin',
-
-  -- Identity
-  ['identity_register'] = 'Zaregistrujte svou postavu.',
-  ['identity_welcome'] = 'Vítejte, ~b~%s %s',
-  ['identity_fill_in'] = 'Před odesláním vyplňte všechna pole!',
 }

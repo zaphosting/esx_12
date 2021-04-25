@@ -1,110 +1,104 @@
--- Copyright (c) Jérémie N'gadi
---
--- All rights reserved.
---
--- Even if 'All rights reserved' is very clear :
---
---   You shall not use any piece of this software in a commercial product / service
---   You shall not resell this software
---   You shall not provide any facility to install this particular software in a commercial product / service
---   If you redistribute this software, you must link to ORIGINAL repository at https://github.com/ESX-Org/es_extended
---   This copyright should appear in every part of the project code
+fx_version 'adamant'
 
-local esx_config = {
-  enable_loadscreen = true
-}
+game 'gta5'
 
-fx_version      'adamant'
-game            'gta5'
-description     'ESX'
-version         '2.0.1'
-ui_page         'hud/index.html'
-ui_page_preload 'yes'
+description 'ES Extended'
 
-dependencies {
-  'spawnmanager',
-  'baseevents',
-  'mysql-async',
-  'async',
-  'cron',
-  'skinchanger'
-}
-
-files {
-
-  'data/**/*',
-  'hud/**/*',
-  'modules.json',
-
-  'modules/__core__/modules.json',
-  'modules/__core__/**/data/**/*',
-  'modules/__core__/**/*.lua',
-
-  'modules/**/data/**/*',
-  'modules/**/*.lua',
-
-}
+version '1.2.0'
 
 server_scripts {
+	'@async/async.lua',
+	'@mysql-async/lib/MySQL.lua',
 
-  '@async/async.lua',
-  '@mysql-async/lib/MySQL.lua',
+	'locale.lua',
+	'locales/de.lua',
+	'locales/br.lua',
+	'locales/fr.lua',
+	'locales/en.lua',
+	'locales/fi.lua',
+	'locales/sv.lua',
+	'locales/pl.lua',
+	'locales/cs.lua',
+	'locales/sc.lua',
+	'locales/tc.lua',
 
-  'locale.lua',
-  'locales/*.lua',
+	'config.lua',
+	'config.weapons.lua',
 
-  'config/default/config.lua',
-  'config/default/config.weapons.lua',
-  'config/default/config.items.lua',
-  'config/default/modules/core/*.lua',
-  'config/default/modules/*.lua',
+	'server/common.lua',
+	'server/classes/player.lua',
+	'server/functions.lua',
+	'server/paycheck.lua',
+	'server/main.lua',
+	'server/commands.lua',
 
-  'config/modules/core/*.lua',
-  'config/modules/*.lua',
-
-  'boot/shared/module.lua',
-  'boot/server/module.lua',
-  'boot/shared/events.lua',
-  'boot/server/events.lua',
-  'boot/shared/main.lua',
-  'boot/server/main.lua',
-
+	'common/modules/math.lua',
+	'common/modules/table.lua',
+	'common/functions.lua'
 }
 
 client_scripts {
+	'locale.lua',
+	'locales/de.lua',
+	'locales/br.lua',
+	'locales/fr.lua',
+	'locales/en.lua',
+	'locales/fi.lua',
+	'locales/sv.lua',
+	'locales/pl.lua',
+	'locales/cs.lua',
+	'locales/sc.lua',
+	'locales/tc.lua',
 
-  'locale.lua',
-  'locales/*.lua',
+	'config.lua',
+	'config.weapons.lua',
 
-  'config/default/config.lua',
-  'config/default/config.weapons.lua',
-  'config/default/config.items.lua',
-  'config/default/modules/core/*.lua',
-  'config/default/modules/*.lua',
+	'client/common.lua',
+	'client/entityiter.lua',
+	'client/functions.lua',
+	'client/wrapper.lua',
+	'client/main.lua',
 
-  'config/modules/core/*.lua',
-  'config/modules/*.lua',
+	'client/modules/death.lua',
+	'client/modules/scaleform.lua',
+	'client/modules/streaming.lua',
 
-  'boot/shared/module.lua',
-  'boot/client/module.lua',
-  'boot/shared/events.lua',
-  'boot/client/events.lua',
-  'boot/shared/main.lua',
-  'boot/client/main.lua',
-
+	'common/modules/math.lua',
+	'common/modules/table.lua',
+	'common/functions.lua'
 }
 
-if esx_config.enable_loadscreen then
+ui_page {
+	'html/ui.html'
+}
 
-  files {
-    'loadscreen/data/index.html',
-    'loadscreen/data/css/index.css',
-    'loadscreen/data/js/index.js',
-    'loadscreen/data/vid/esx_intro.mp4',
-    'loadscreen/data/vid/esx_loop.mp4'
-  }
+files {
+	'locale.js',
+	'html/ui.html',
 
-  loadscreen 'loadscreen/data/index.html'
-  loadscreen_manual_shutdown 'yes'
+	'html/css/app.css',
 
-end
+	'html/js/mustache.min.js',
+	'html/js/wrapper.js',
+	'html/js/app.js',
+
+	'html/fonts/pdown.ttf',
+	'html/fonts/bankgothic.ttf',
+
+	'html/img/accounts/bank.png',
+	'html/img/accounts/black_money.png',
+	'html/img/accounts/money.png'
+}
+
+exports {
+	'getSharedObject'
+}
+
+server_exports {
+	'getSharedObject'
+}
+
+dependencies {
+	'mysql-async',
+	'async'
+}
