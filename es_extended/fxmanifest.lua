@@ -1,104 +1,110 @@
-fx_version 'adamant'
+-- Copyright (c) Jérémie N'gadi
+--
+-- All rights reserved.
+--
+-- Even if 'All rights reserved' is very clear :
+--
+--   You shall not use any piece of this software in a commercial product / service
+--   You shall not resell this software
+--   You shall not provide any facility to install this particular software in a commercial product / service
+--   If you redistribute this software, you must link to ORIGINAL repository at https://github.com/ESX-Org/es_extended
+--   This copyright should appear in every part of the project code
 
-game 'gta5'
-
-description 'ES Extended'
-
-version '1.2.0'
-
-server_scripts {
-	'@async/async.lua',
-	'@mysql-async/lib/MySQL.lua',
-
-	'locale.lua',
-	'locales/de.lua',
-	'locales/br.lua',
-	'locales/fr.lua',
-	'locales/en.lua',
-	'locales/fi.lua',
-	'locales/sv.lua',
-	'locales/pl.lua',
-	'locales/cs.lua',
-	'locales/sc.lua',
-	'locales/tc.lua',
-
-	'config.lua',
-	'config.weapons.lua',
-
-	'server/common.lua',
-	'server/classes/player.lua',
-	'server/functions.lua',
-	'server/paycheck.lua',
-	'server/main.lua',
-	'server/commands.lua',
-
-	'common/modules/math.lua',
-	'common/modules/table.lua',
-	'common/functions.lua'
+local esx_config = {
+  enable_loadscreen = true
 }
 
-client_scripts {
-	'locale.lua',
-	'locales/de.lua',
-	'locales/br.lua',
-	'locales/fr.lua',
-	'locales/en.lua',
-	'locales/fi.lua',
-	'locales/sv.lua',
-	'locales/pl.lua',
-	'locales/cs.lua',
-	'locales/sc.lua',
-	'locales/tc.lua',
+fx_version      'adamant'
+game            'gta5'
+description     'ESX'
+version         '2.0.1'
+ui_page         'hud/index.html'
+ui_page_preload 'yes'
 
-	'config.lua',
-	'config.weapons.lua',
-
-	'client/common.lua',
-	'client/entityiter.lua',
-	'client/functions.lua',
-	'client/wrapper.lua',
-	'client/main.lua',
-
-	'client/modules/death.lua',
-	'client/modules/scaleform.lua',
-	'client/modules/streaming.lua',
-
-	'common/modules/math.lua',
-	'common/modules/table.lua',
-	'common/functions.lua'
-}
-
-ui_page {
-	'html/ui.html'
+dependencies {
+  'spawnmanager',
+  'baseevents',
+  'mysql-async',
+  'async',
+  'cron',
+  'skinchanger'
 }
 
 files {
-	'locale.js',
-	'html/ui.html',
 
-	'html/css/app.css',
+  'data/**/*',
+  'hud/**/*',
+  'modules.json',
 
-	'html/js/mustache.min.js',
-	'html/js/wrapper.js',
-	'html/js/app.js',
+  'modules/__core__/modules.json',
+  'modules/__core__/**/data/**/*',
+  'modules/__core__/**/*.lua',
 
-	'html/fonts/pdown.ttf',
-	'html/fonts/bankgothic.ttf',
+  'modules/**/data/**/*',
+  'modules/**/*.lua',
 
-	'html/img/accounts/bank.png',
-	'html/img/accounts/black_money.png',
-	'html/img/accounts/money.png'
 }
 
-exports {
-	'getSharedObject'
+server_scripts {
+
+  '@async/async.lua',
+  '@mysql-async/lib/MySQL.lua',
+
+  'locale.lua',
+  'locales/*.lua',
+
+  'config/default/config.lua',
+  'config/default/config.weapons.lua',
+  'config/default/config.items.lua',
+  'config/default/modules/core/*.lua',
+  'config/default/modules/*.lua',
+
+  'config/modules/core/*.lua',
+  'config/modules/*.lua',
+
+  'boot/shared/module.lua',
+  'boot/server/module.lua',
+  'boot/shared/events.lua',
+  'boot/server/events.lua',
+  'boot/shared/main.lua',
+  'boot/server/main.lua',
+
 }
 
-server_exports {
-	'getSharedObject'
+client_scripts {
+
+  'locale.lua',
+  'locales/*.lua',
+
+  'config/default/config.lua',
+  'config/default/config.weapons.lua',
+  'config/default/config.items.lua',
+  'config/default/modules/core/*.lua',
+  'config/default/modules/*.lua',
+
+  'config/modules/core/*.lua',
+  'config/modules/*.lua',
+
+  'boot/shared/module.lua',
+  'boot/client/module.lua',
+  'boot/shared/events.lua',
+  'boot/client/events.lua',
+  'boot/shared/main.lua',
+  'boot/client/main.lua',
+
 }
 
-dependencies {
-	'mysql-async',
-	'async'
-}
+if esx_config.enable_loadscreen then
+
+  files {
+    'loadscreen/data/index.html',
+    'loadscreen/data/css/index.css',
+    'loadscreen/data/js/index.js',
+    'loadscreen/data/vid/esx_intro.mp4',
+    'loadscreen/data/vid/esx_loop.mp4'
+  }
+
+  loadscreen 'loadscreen/data/index.html'
+  loadscreen_manual_shutdown 'yes'
+
+end
