@@ -8,21 +8,6 @@ SET time_zone = "+00:00";
 
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS `ADD_COLUMN_IF_NOT_EXISTS`$$
-CREATE DEFINER=`zap65083-51`@`%` PROCEDURE `ADD_COLUMN_IF_NOT_EXISTS` (IN `dbName` TINYTEXT, IN `tableName` TINYTEXT, IN `fieldName` TINYTEXT, IN `fieldDef` TEXT)  BEGIN
-  IF NOT EXISTS (
-    SELECT * FROM information_schema.COLUMNS
-    WHERE `column_name`  = fieldName
-    AND   `table_name`   = tableName
-    AND   `table_schema` = dbName
-  )
-  THEN
-    SET @ddl=CONCAT('ALTER TABLE ', dbName, '.', tableName, ' ADD COLUMN ', fieldName, ' ', fieldDef);
-    PREPARE stmt from @ddl;
-    EXECUTE stmt;
-  END IF;
-END$$
-
 DELIMITER ;
 
 DROP TABLE IF EXISTS `accounts`;
