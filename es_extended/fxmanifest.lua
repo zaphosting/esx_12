@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'ES Extended'
 
-version 'legacy'
+version '1.2.0'
 
 server_scripts {
 	'@async/async.lua',
@@ -73,7 +73,6 @@ ui_page {
 }
 
 files {
-	'imports.lua',
 	'locale.js',
 	'html/ui.html',
 
@@ -101,6 +100,5 @@ server_exports {
 
 dependencies {
 	'mysql-async',
-	'async',
-	'spawnmanager',
+	'async'
 }

@@ -41,11 +41,6 @@
 		ESX.refreshHUD();
 	};
 
-	ESX.resetHUDElements = function () {
-		ESX.HUDElements = [];
-		ESX.refreshHUD();
-	};
-
 	ESX.refreshHUD = function () {
 		$('#hud').html('');
 
@@ -97,11 +92,6 @@
 
 			case 'deleteHUDElement': {
 				ESX.deleteHUDElement(data.name);
-				break;
-			}
-
-			case 'resetHUDElements': {
-				ESX.resetHUDElements();
 				break;
 			}
 
