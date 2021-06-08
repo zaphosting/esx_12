@@ -1,28 +1,28 @@
 ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+local isLegacy = not not ESX.GetExtendedPlayers
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() ~= resourceName) then
 	  	return
 	end
 
-	local players = ESX.GetPlayers()
-
-	for _,playerId in ipairs(players) do
-		local xPlayer = ESX.GetPlayerFromId(playerId)
-
+	local xPlayers = isLegacy and ESX.GetExtendedPlayers() or ESX.GetPlayers()
+	
+	for k,v in pairs(xPlayers) do
+		local xPlayer = type(v) == 'table' and v or ESX.GetPlayerFromId(v)
 		MySQL.Async.fetchAll('SELECT status FROM users WHERE identifier = @identifier', {
 			['@identifier'] = xPlayer.identifier
 		}, function(result)
 			local data = {}
-
+	
 			if result[1].status then
 				data = json.decode(result[1].status)
 			end
-
+		
 			xPlayer.set('status', data)
-			TriggerClientEvent('esx_status:load', playerId, data)
+			TriggerClientEvent('esx_status:load', k, data)
 		end)
 	end
 end)
@@ -84,8 +84,6 @@ Citizen.CreateThread(function()
 end)
 
 function SaveData()
-	local xPlayers = ESX.GetPlayers()
-
 	-- Example of a bulk update statement that we are building below
 	--[[
 	UPDATE users
@@ -102,8 +100,10 @@ function SaveData()
 	local firstItem = true
 	local playerCount = 0
 
-	for i=1, #xPlayers, 1 do
-		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+	local xPlayers = isLegacy and ESX.GetExtendedPlayers() or ESX.GetPlayers()
+	
+	for k,v in pairs(xPlayers) do
+		local xPlayer = type(v) == 'table' and v or ESX.GetPlayerFromId(v)
 		local status  = xPlayer.get('status')
 
 		whenList = whenList .. string.format('when identifier = \'%s\' then \'%s\' ', xPlayer.identifier, json.encode(status))
@@ -119,7 +119,6 @@ function SaveData()
 
 	if playerCount > 0 then
 		local sql = string.format(updateStatement, whenList, whereList)
-
 		MySQL.Async.execute(sql)
 
 	end
