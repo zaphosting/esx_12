@@ -23,8 +23,9 @@ function RemoveOwnedVehicle(plate)
 end
 
 AddEventHandler('onResourceStart', function(resourceName)
-	Wait(1000)
-	SQLVehiclesAndCategories()
+  if resourceName == GetCurrentResourceName() then
+    MySQL.ready(function() SQLVehiclesAndCategories() end)
+  end
 end)
 
 function SQLVehiclesAndCategories()
@@ -334,7 +335,7 @@ end)
 ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function(source, cb, plate, model)
 	local xPlayer, resellPrice = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'cardealer' then
+	if xPlayer.job.name == 'cardealer' or not Config.EnablePlayerManagement then
 		-- calculate the resell price
 		for i=1, #vehicles, 1 do
 			if GetHashKey(vehicles[i].model) == model then
