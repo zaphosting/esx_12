@@ -137,6 +137,7 @@ function CreateSkinCam()
     RenderScriptCams(true, true, 500, true, true)
 
     isCameraActive = true
+    SetCamCoord(cam, GetEntityCoords(playerPed))
     SetCamRot(cam, 0.0, 0.0, 270.0, true)
     SetEntityHeading(playerPed, 0.0)
 end
@@ -152,7 +153,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
-        if not skinLoaded and isCameraActive then
+        if isCameraActive then
             DisableControlAction(2, 30, true)
             DisableControlAction(2, 31, true)
             DisableControlAction(2, 32, true)
@@ -254,7 +255,7 @@ AddEventHandler('esx:onPlayerSpawn', function()
             Citizen.Wait(100)
         end
 
-        if firstSpawn then
+        if firstSpawn and ESX.GetConfig().Multichar ~= true then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
                 if skin == nil then
                     TriggerEvent('skinchanger:loadSkin', {sex = 0}, OpenSaveableMenu)
