@@ -56,7 +56,7 @@ if not Config.UseDeferrals then
 			if callback then
 				ESX.ShowNotification(_U('thank_you_for_registering'))
 				EnableGui(false)
-				if not ESX.GetConfig().Multichar then TriggerEvent('esx_skin:playerRegistered') end
+				TriggerEvent('esx_skin:playerRegistered')
 			else
 				ESX.ShowNotification(_U('registration_error'))
 			end
@@ -65,7 +65,7 @@ if not Config.UseDeferrals then
 
 	Citizen.CreateThread(function()
 		while true do
-			Citizen.Wait(5)
+			Citizen.Wait(0)
 
 			if guiEnabled then
 				DisableControlAction(0, 1,   true) -- LookLeftRight
@@ -87,6 +87,8 @@ if not Config.UseDeferrals then
 				DisableControlAction(0, 143, true) -- disable melee
 				DisableControlAction(0, 75,  true) -- disable exit vehicle
 				DisableControlAction(27, 75, true) -- disable exit vehicle
+			else
+				Citizen.Wait(500)
 			end
 		end
 	end)
