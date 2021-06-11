@@ -13,7 +13,7 @@ end)
 function onPlayerJoined(playerId)
 	local identifier
 
-	for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+	for k,v in pairs(GetPlayerIdentifiers(playerId)) do
 		if string.match(v, 'license:') then
 			identifier = string.sub(v, 9)
 			break
@@ -63,7 +63,8 @@ AddEventHandler('playerConnecting', function(name, setCallback, deferrals)
 	local playerId, identifier = source
 	Citizen.Wait(100)
 
-	for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+	for k,v in pairs(GetPlayerIdentifiers(playerId)) do
+		print(k,v)
 		if string.match(v, 'license:') then
 			identifier = string.sub(v, 9)
 			break
