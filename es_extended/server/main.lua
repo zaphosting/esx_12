@@ -64,7 +64,6 @@ AddEventHandler('playerConnecting', function(name, setCallback, deferrals)
 	Citizen.Wait(100)
 
 	for k,v in pairs(GetPlayerIdentifiers(playerId)) do
-		print(k,v)
 		if string.match(v, 'license:') then
 			identifier = string.sub(v, 9)
 			break
