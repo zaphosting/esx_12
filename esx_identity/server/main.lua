@@ -10,14 +10,14 @@ if Config.UseDeferrals then
 		Citizen.Wait(100)
 	
 		if Config.UseSteamID then
-			for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+			for k,v in pairs(GetPlayerIdentifiers(playerId)) do
 				if string.match(v, 'steam:') then
 					identifier = v
 					break
 				end
 			end
 		else
-			for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+			for k,v in pairs(GetPlayerIdentifiers(playerId)) do
 				if string.match(v, 'license:') then
 					identifier = string.sub(v, 9)
 					break
@@ -122,14 +122,14 @@ elseif not Config.UseDeferrals then
 		Citizen.Wait(100)
 
 		if Config.UseSteamID then
-			for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+			for k,v in pairs(GetPlayerIdentifiers(playerId)) do
 				if string.match(v, 'steam:') then
 					identifier = v
 					break
 				end
 			end
 		else
-			for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+			for k,v in pairs(GetPlayerIdentifiers(playerId)) do
 				if string.match(v, 'license:') then
 					identifier = string.sub(v, 9)
 					break
