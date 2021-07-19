@@ -10,6 +10,7 @@ AddEventHandler('instance:onCreate', function(instance)
 end)
 
 AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
+	local garageName = name
 	if part == 'ExteriorEntryPoint' then
 		local playerPed = PlayerPedId()
 		local coords    = GetEntityCoords(playerPed)
@@ -17,7 +18,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		thisGarage 		= garage
 		
 		for i=1, #Config.Garages, 1 do
-			if Config.Garages[i].name ~= name then
+			if Config.Garages[i].name ~= garageName then
 				Config.Garages[i].disabled = true
 			end
 		end
@@ -80,7 +81,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 									end
 								end
 							end
-						end, name)
+						end, garageName)
 					end)
 				else
 					ESX.Game.Teleport(playerPed, {
@@ -119,7 +120,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 									end
 								end
 							end
-						end, name)
+						end, garageName)
 					end)
 				end
 			end
@@ -159,7 +160,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 							end
 						end
 					end
-				end, name)
+				end, garageName)
 			end)
 		end
 	end
@@ -215,7 +216,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		end
 		
 		for i=1, #Config.Garages, 1 do
-			if Config.Garages[i].name ~= name then
+			if Config.Garages[i].garageName ~= garageName then
 				Config.Garages[i].disabled = false
 			end
 		end
@@ -234,7 +235,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 
 			local vehicleProps  = ESX.Game.GetVehicleProperties(vehicle)
 
-			TriggerServerEvent('esx_garage:setParking', name, parking, vehicleProps)
+			TriggerServerEvent('esx_garage:setParking', garageName, parking, vehicleProps)
 
 			if Config.EnableOwnedVehicles then
 				TriggerServerEvent('esx_garage:updateOwnedVehicle', vehicleProps)
