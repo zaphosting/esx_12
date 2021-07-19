@@ -1,7 +1,4 @@
-ESX = nil
 local playersHealing, deadPlayers = {}, {}
-
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('esx_phone:registerNumber', 'ambulance', _U('alert_ambulance'), true, true)
 
@@ -9,26 +6,41 @@ TriggerEvent('esx_society:registerSociety', 'ambulance', 'Ambulance', 'society_a
 
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
-	local xPlayer = ESX.GetPlayerFromId(source)
+	playerId = tonumber(playerId)
+	if source == '' and GetInvokingResource() == 'monitor' then -- txAdmin support
+        local xTarget = ESX.GetPlayerFromId(playerId)
+        if xTarget then
+            if deadPlayers[playerId] then
+                print(_U('revive_complete', xTarget.name))
+                xTarget.triggerEvent('esx_ambulancejob:revive')
+            else
+                print(_U('player_not_unconscious'))
+            end
+        else
+            print(_U('revive_fail_offline'))
+        end
+	else
+		local xPlayer = source and ESX.GetPlayerFromId(source)
 
-	if xPlayer and xPlayer.job.name == 'ambulance' then
-		local xTarget = ESX.GetPlayerFromId(playerId)
+		if xPlayer and xPlayer.job.name == 'ambulance' then
+			local xTarget = ESX.GetPlayerFromId(playerId)
 
-		if xTarget then
-			if deadPlayers[playerId] then
-				if Config.ReviveReward > 0 then
-					xPlayer.showNotification(_U('revive_complete_award', xTarget.name, Config.ReviveReward))
-					xPlayer.addMoney(Config.ReviveReward)
-					xTarget.triggerEvent('esx_ambulancejob:revive')
+			if xTarget then
+				if deadPlayers[playerId] then
+					if Config.ReviveReward > 0 then
+						xPlayer.showNotification(_U('revive_complete_award', xTarget.name, Config.ReviveReward))
+						xPlayer.addMoney(Config.ReviveReward)
+						xTarget.triggerEvent('esx_ambulancejob:revive')
+					else
+						xPlayer.showNotification(_U('revive_complete', xTarget.name))
+						xTarget.triggerEvent('esx_ambulancejob:revive')
+					end
 				else
-					xPlayer.showNotification(_U('revive_complete', xTarget.name))
-					xTarget.triggerEvent('esx_ambulancejob:revive')
+					xPlayer.showNotification(_U('player_not_unconscious'))
 				end
 			else
-				xPlayer.showNotification(_U('player_not_unconscious'))
+				xPlayer.showNotification(_U('revive_fail_offline'))
 			end
-		else
-			xPlayer.showNotification(_U('revive_fail_offline'))
 		end
 	end
 end)
@@ -297,7 +309,7 @@ ESX.RegisterServerCallback('esx_ambulancejob:getDeathStatus', function(source, c
 	MySQL.Async.fetchScalar('SELECT is_dead FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
 	}, function(isDead)
-		local isDead = isDead == 1 and true or false
+				
 		if isDead then
 			print(('[esx_ambulancejob] [^2INFO^7] "%s" attempted combat logging'):format(xPlayer.identifier))
 		end

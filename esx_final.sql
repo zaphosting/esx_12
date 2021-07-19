@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `addon_account_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `money` int(11) NOT NULL,
-  `owner` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_addon_account_data_account_name_owner` (`account_name`,`owner`),
   KEY `index_addon_account_data_account_name` (`account_name`)
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
   `inventory_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `count` int(11) NOT NULL,
-  `owner` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_addon_inventory_items_inventory_name_name` (`inventory_name`,`name`),
   KEY `index_addon_inventory_items_inventory_name_name_owner` (`inventory_name`,`name`,`owner`),
@@ -88,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
 DROP TABLE IF EXISTS `billing`;
 CREATE TABLE IF NOT EXISTS `billing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sender` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sender` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `target_type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -138,7 +138,7 @@ DROP TABLE IF EXISTS `datastore_data`;
 CREATE TABLE IF NOT EXISTS `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `data` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
@@ -395,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `owned_properties` (
 
 DROP TABLE IF EXISTS `owned_vehicles`;
 CREATE TABLE IF NOT EXISTS `owned_vehicles` (
-  `owner` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `plate` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'car',
@@ -571,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DROP TABLE IF EXISTS `user_contacts`;
 CREATE TABLE IF NOT EXISTS `user_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(22) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -582,7 +582,7 @@ DROP TABLE IF EXISTS `user_licenses`;
 CREATE TABLE IF NOT EXISTS `user_licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

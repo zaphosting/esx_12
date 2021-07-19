@@ -1,25 +1,50 @@
+local NewPlayer, LoadPlayer = -1, -1
 Citizen.CreateThread(function()
 	SetMapName('San Andreas')
-	SetGameType('Roleplay')
+	SetGameType('ESX Legacy')
+	
+	local query = '`accounts`, `job`, `job_grade`, `group`, `position`, `inventory`, `skin`, `loadout`' -- Select these fields from the database
+	if Config.Multichar or Config.Identity then	-- append these fields to the select query
+		query = query..', `firstname`, `lastname`, `dateofbirth`, `sex`, `height`'
+	end
+
+	if Config.Multichar then -- insert identity data with creation
+		MySQL.Async.store("INSERT INTO `users` SET `accounts` = ?, `identifier` = ?, `group` = ?, `firstname` = ?, `lastname` = ?, `dateofbirth` = ?, `sex` = ?, `height` = ?", function(storeId)
+			NewPlayer = storeId
+		end)
+	else
+		MySQL.Async.store("INSERT INTO `users` SET `accounts` = ?, `identifier` = ?, `group` = ?", function(storeId)
+			NewPlayer = storeId
+		end)
+	end
+
+	MySQL.Async.store("SELECT "..query.." FROM `users` WHERE identifier = ?", function(storeId)
+		LoadPlayer = storeId
+	end)
 end)
 
-RegisterNetEvent('esx:onPlayerJoined')
-AddEventHandler('esx:onPlayerJoined', function()
-	if not ESX.Players[source] then
-		onPlayerJoined(source)
-	end
-end)
+if Config.Multichar then
+	AddEventHandler('esx:onPlayerJoined', function(src, char, data)
+		if not ESX.Players[src] then
+			local identifier = char..':'..ESX.GetIdentifier(src)
+			if data then
+				createESXPlayer(identifier, src, data)
+			else
+				loadESXPlayer(identifier, src, false)
+			end
+		end
+	end)
+else
+	RegisterNetEvent('esx:onPlayerJoined')
+	AddEventHandler('esx:onPlayerJoined', function()
+		if not ESX.Players[source] then
+			onPlayerJoined(source)
+		end
+	end)
+end
 
 function onPlayerJoined(playerId)
-	local identifier
-
-	for k,v in pairs(GetPlayerIdentifiers(playerId)) do
-		if string.match(v, 'license:') then
-			identifier = string.sub(v, 9)
-			break
-		end
-	end
-
+	local identifier = ESX.GetIdentifier(playerId)
 	if identifier then
 		if ESX.GetPlayerFromIdentifier(identifier) then
 			DropPlayer(playerId, ('there was an error loading your character!\nError code: identifier-active-ingame\n\nThis error is caused by a player on this server who has the same identifier as you have. Make sure you are not playing on the same Rockstar account.\n\nYour Rockstar identifier: %s'):format(identifier))
@@ -28,29 +53,8 @@ function onPlayerJoined(playerId)
 				['@identifier'] = identifier
 			}, function(result)
 				if result then
-					loadESXPlayer(identifier, playerId)
-				else
-					local accounts = {}
-
-					for account,money in pairs(Config.StartingAccountMoney) do
-						accounts[account] = money
-					end
-
-					if IsPlayerAceAllowed(playerId, "command") then
-						print(('[es_extended] [^2INFO^7] The player id %s just connected for the first time and will be given the admin group due to ace permissions.'):format(playerId))
-						defaultGroup = "admin"
-					else
-						defaultGroup = "user"
-					end
-
-					MySQL.Async.execute('INSERT INTO users (`accounts`, `identifier`, `group`) VALUES (@accounts, @identifier, @group)', {
-						['@accounts'] = json.encode(accounts),
-						['@identifier'] = identifier,
-						['@group'] = defaultGroup
-					}, function(rowsChanged)
-						loadESXPlayer(identifier, playerId)
-					end)
-				end
+					loadESXPlayer(identifier, playerId, false)
+				else createESXPlayer(identifier, playerId) end
 			end)
 		end
 	else
@@ -58,21 +62,53 @@ function onPlayerJoined(playerId)
 	end
 end
 
+function createESXPlayer(identifier, playerId, data)
+	local accounts = {}
+
+	for account,money in pairs(Config.StartingAccountMoney) do
+		accounts[account] = money
+	end
+
+	if IsPlayerAceAllowed(playerId, "command") then
+		print(('^2[INFO] ^0 Player ^5%s ^0Has been granted admin permissions via ^5Ace Perms.^7'):format(playerId))
+		defaultGroup = "admin"
+	else
+		defaultGroup = "user"
+	end
+
+	if not Config.Multichar then
+		MySQL.Async.execute(NewPlayer, {
+				json.encode(accounts),
+				identifier,
+				defaultGroup,
+		}, function(rowsChanged)
+			loadESXPlayer(identifier, playerId, true)
+		end)
+	else
+		MySQL.Async.execute(NewPlayer, {
+				json.encode(accounts),
+				identifier,
+				defaultGroup,
+				data.firstname,
+				data.lastname,
+				data.dateofbirth,
+				data.sex,
+				data.height,
+		}, function(rowsChanged)
+			loadESXPlayer(identifier, playerId, true)
+		end)
+	end
+end
+
 AddEventHandler('playerConnecting', function(name, setCallback, deferrals)
 	deferrals.defer()
-	local playerId, identifier = source
+	local playerId = source
+	local identifier = ESX.GetIdentifier(playerId)
 	Citizen.Wait(100)
-
-	for k,v in pairs(GetPlayerIdentifiers(playerId)) do
-		if string.match(v, 'license:') then
-			identifier = string.sub(v, 9)
-			break
-		end
-	end
 
 	if identifier then
 		if ESX.GetPlayerFromIdentifier(identifier) then
-			deferrals.done(('There was an error loading your character!\nError code: identifier-active\n\nThis error is caused by a player on this server who has the same identifier as you have. Make sure you are not playing on the same Rockstar account.\n\nYour Rockstar identifier: %s'):format(identifier))
+			deferrals.done(('There was an error loading your character!\nError code: identifier-active\n\nThis error is caused by a player on this server who has the same identifier as you have. Make sure you are not playing on the same account.\n\nYour identifier: %s'):format(identifier))
 		else
 			deferrals.done()
 		end
@@ -81,8 +117,7 @@ AddEventHandler('playerConnecting', function(name, setCallback, deferrals)
 	end
 end)
 
-
-function loadESXPlayer(identifier, playerId)
+function loadESXPlayer(identifier, playerId, isNew)
 	local tasks = {}
 
 	local userData = {
@@ -95,8 +130,7 @@ function loadESXPlayer(identifier, playerId)
 	}
 
 	table.insert(tasks, function(cb)
-		MySQL.Async.fetchAll('SELECT accounts, job, job_grade, `group`, loadout, position, inventory FROM users WHERE identifier = @identifier', {
-			['@identifier'] = identifier
+		MySQL.Async.fetchAll(LoadPlayer, { identifier
 		}, function(result)
 			local job, grade, jobObject, gradeObject = result[1].job, tostring(result[1].job_grade)
 			local foundAccounts, foundItems = {}, {}
@@ -122,7 +156,7 @@ function loadESXPlayer(identifier, playerId)
 			if ESX.DoesJobExist(job, grade) then
 				jobObject, gradeObject = ESX.Jobs[job], ESX.Jobs[job].grades[grade]
 			else
-				print(('[es_extended] [^3WARNING^7] Ignoring invalid job for %s [job: %s, grade: %s]'):format(identifier, job, grade))
+				print(('[^3WARNING^7] Ignoring invalid job for %s [job: %s, grade: %s]'):format(identifier, job, grade))
 				job, grade = 'unemployed', '0'
 				jobObject, gradeObject = ESX.Jobs[job], ESX.Jobs[job].grades[grade]
 			end
@@ -152,7 +186,7 @@ function loadESXPlayer(identifier, playerId)
 					if item then
 						foundItems[name] = count
 					else
-						print(('[es_extended] [^3WARNING^7] Ignoring invalid item "%s" for "%s"'):format(name, identifier))
+						print(('[^3WARNING^7] Ignoring invalid item "%s" for "%s"'):format(name, identifier))
 					end
 				end
 			end
@@ -178,7 +212,11 @@ function loadESXPlayer(identifier, playerId)
 
 			-- Group
 			if result[1].group then
-				userData.group = result[1].group
+				if result[1].group == "superadmin" then
+					userData.group = "admin"
+				else
+					userData.group = result[1].group
+				end
 			else
 				userData.group = 'user'
 			end
@@ -209,8 +247,25 @@ function loadESXPlayer(identifier, playerId)
 			if result[1].position and result[1].position ~= '' then
 				userData.coords = json.decode(result[1].position)
 			else
-				print('[es_extended] [^3WARNING^7] Column "position" in "users" table is missing required default value. Using backup coords, fix your database.')
+				print('[^3WARNING^7] Column ^5"position"^0 in ^5"users"^0 table is missing required default value. Using backup coords, fix your database.')
 				userData.coords = {x = -269.4, y = -955.3, z = 31.2, heading = 205.8}
+			end
+
+			-- Skin
+			if result[1].skin and result[1].skin ~= '' then
+				userData.skin = json.decode(result[1].skin)
+			else
+				if userData.sex == 'f' then userData.skin = {sex=1} else userData.skin = {sex=0} end
+			end
+
+			-- Identity
+			if result[1].firstname and result[1].firstname ~= '' then
+				userData.firstname = result[1].firstname
+				userData.lastname = result[1].lastname
+				userData.playerName = userData.firstname..' '..userData.lastname
+				if result[1].dateofbirth then userData.dateofbirth = result[1].dateofbirth end
+				if result[1].sex then userData.sex = result[1].sex end
+				if result[1].height then userData.height = result[1].height end
 			end
 
 			cb()
@@ -220,7 +275,16 @@ function loadESXPlayer(identifier, playerId)
 	Async.parallel(tasks, function(results)
 		local xPlayer = CreateExtendedPlayer(playerId, identifier, userData.group, userData.accounts, userData.inventory, userData.weight, userData.job, userData.loadout, userData.playerName, userData.coords)
 		ESX.Players[playerId] = xPlayer
-		TriggerEvent('esx:playerLoaded', playerId, xPlayer)
+
+		if userData.firstname then 
+			xPlayer.set('firstName', userData.firstname)
+			xPlayer.set('lastName', userData.lastname)
+			if userData.dateofbirth then xPlayer.set('dateofbirth', userData.dateofbirth) end
+			if userData.sex then xPlayer.set('sex', userData.sex) end
+			if userData.height then xPlayer.set('height', userData.height) end
+		end
+
+		TriggerEvent('esx:playerLoaded', playerId, xPlayer, isNew)
 
 		xPlayer.triggerEvent('esx:playerLoaded', {
 			accounts = xPlayer.getAccounts(),
@@ -230,12 +294,13 @@ function loadESXPlayer(identifier, playerId)
 			job = xPlayer.getJob(),
 			loadout = xPlayer.getLoadout(),
 			maxWeight = xPlayer.getMaxWeight(),
-			money = xPlayer.getMoney()
-		})
+			money = xPlayer.getMoney(),
+			dead = false
+		}, isNew, userData.skin)
 
 		xPlayer.triggerEvent('esx:createMissingPickups', ESX.Pickups)
 		xPlayer.triggerEvent('esx:registerSuggestions', ESX.RegisteredCommands)
-		print(('[es_extended] [^2INFO^7] A player with name "%s^7" has connected to the server with assigned player id %s'):format(xPlayer.getName(), playerId))
+		print(('[^2INFO^0] Player ^5"%s" ^0has connected to the server. ID: ^5%s^7'):format(xPlayer.getName(), playerId))
 	end)
 end
 
@@ -259,6 +324,20 @@ AddEventHandler('playerDropped', function(reason)
 		end)
 	end
 end)
+
+if Config.Multichar then
+	AddEventHandler('esx:playerLogout', function(playerId)
+		local xPlayer = ESX.GetPlayerFromId(playerId)
+		if xPlayer then
+			TriggerEvent('esx:playerDropped', playerId, reason)
+
+			ESX.SavePlayer(xPlayer, function()
+				ESX.Players[playerId] = nil
+			end)
+		end
+		TriggerClientEvent("esx:onPlayerLogout", playerId)
+	end)
+end
 
 RegisterNetEvent('esx:updateCoords')
 AddEventHandler('esx:updateCoords', function(coords)
@@ -509,5 +588,11 @@ ESX.RegisterServerCallback('esx:getPlayerNames', function(source, cb, players)
 	cb(players)
 end)
 
-ESX.StartDBSync()
-ESX.StartPayCheck()
+AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
+	if eventData.secondsRemaining == 60 then
+		Citizen.CreateThread(function()
+			Citizen.Wait(50000)
+			ESX.SavePlayers()
+		end)
+	end
+end)

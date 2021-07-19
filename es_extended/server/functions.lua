@@ -1,6 +1,6 @@
 ESX.Trace = function(msg)
 	if Config.EnableDebug then
-		print(('[es_extended] [^2TRACE^7] %s^7'):format(msg))
+		print(('[^2TRACE^7] %s^7'):format(msg))
 	end
 end
 
@@ -30,7 +30,7 @@ ESX.RegisterCommand = function(name, group, cb, allowConsole, suggestion)
 	end
 
 	if ESX.RegisteredCommands[name] then
-		print(('[es_extended] [^3WARNING^7] An command "%s" is already registered, overriding command'):format(name))
+		print(('[^3WARNING^7] Command ^5"%s" already registered, overriding command'):format(name))
 
 		if ESX.RegisteredCommands[name].suggestion then
 			TriggerClientEvent('chat:removeSuggestion', -1, ('/%s'):format(name))
@@ -50,7 +50,7 @@ ESX.RegisterCommand = function(name, group, cb, allowConsole, suggestion)
 		local command = ESX.RegisteredCommands[name]
 
 		if not command.allowConsole and playerId == 0 then
-			print(('[es_extended] [^3WARNING^7] %s'):format(_U('commanderror_console')))
+			print(('[^3WARNING^7] ^5%s'):format(_U('commanderror_console')))
 		else
 			local xPlayer, error = ESX.GetPlayerFromId(playerId), nil
 
@@ -122,14 +122,14 @@ ESX.RegisterCommand = function(name, group, cb, allowConsole, suggestion)
 
 			if error then
 				if playerId == 0 then
-					print(('[es_extended] [^3WARNING^7] %s^7'):format(error))
+					print(('[^3WARNING^7] %s^7'):format(error))
 				else
 					xPlayer.triggerEvent('chat:addMessage', {args = {'^1SYSTEM', error}})
 				end
 			else
 				cb(xPlayer or false, args, function(msg)
 					if playerId == 0 then
-						print(('[es_extended] [^3WARNING^7] %s^7'):format(msg))
+						print(('[^3WARNING^7] %s^7'):format(msg))
 					else
 						xPlayer.triggerEvent('chat:addMessage', {args = {'^1SYSTEM', msg}})
 					end
@@ -159,30 +159,35 @@ ESX.TriggerServerCallback = function(name, requestId, source, cb, ...)
 	if ESX.ServerCallbacks[name] then
 		ESX.ServerCallbacks[name](source, cb, ...)
 	else
-		print(('[es_extended] [^3WARNING^7] Server callback "%s" does not exist. Make sure that the server sided file really is loading, an error in that file might cause it to not load.'):format(name))
+		print(('[^3WARNING^7] Server callback ^5"%s"^0 does not exist. ^1Please Check The Server File for Errors!'):format(name))
 	end
 end
+
+local savePlayers = -1
+Citizen.CreateThread(function()
+	savePlayers = MySQL.Sync.store("UPDATE users SET `accounts` = ?, `job` = ?, `job_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?")
+end)
 
 ESX.SavePlayer = function(xPlayer, cb)
 	local asyncTasks = {}
 
 	table.insert(asyncTasks, function(cb2)
-		MySQL.Async.execute('UPDATE users SET accounts = @accounts, job = @job, job_grade = @job_grade, `group` = @group, loadout = @loadout, position = @position, inventory = @inventory WHERE identifier = @identifier', {
-			['@accounts'] = json.encode(xPlayer.getAccounts(true)),
-			['@job'] = xPlayer.job.name,
-			['@job_grade'] = xPlayer.job.grade,
-			['@group'] = xPlayer.getGroup(),
-			['@loadout'] = json.encode(xPlayer.getLoadout(true)),
-			['@position'] = json.encode(xPlayer.getCoords()),
-			['@identifier'] = xPlayer.getIdentifier(),
-			['@inventory'] = json.encode(xPlayer.getInventory(true))
+		MySQL.Async.execute(savePlayers, {
+			json.encode(xPlayer.getAccounts(true)),
+			xPlayer.job.name,
+			xPlayer.job.grade,
+			xPlayer.getGroup(),
+			json.encode(xPlayer.getCoords()),
+			json.encode(xPlayer.getInventory(true)),
+			json.encode(xPlayer.getLoadout(true)),
+			xPlayer.getIdentifier()
 		}, function(rowsChanged)
 			cb2()
 		end)
 	end)
 
 	Async.parallel(asyncTasks, function(results)
-		print(('[es_extended] [^2INFO^7] Saved player "%s^7"'):format(xPlayer.getName()))
+		print(('[^2INFO^7] Saved player ^5"%s^7"'):format(xPlayer.getName()))
 
 		if cb then
 			cb()
@@ -191,30 +196,47 @@ ESX.SavePlayer = function(xPlayer, cb)
 end
 
 ESX.SavePlayers = function(cb)
-	local xPlayers, asyncTasks = ESX.GetPlayers(), {}
+	local xPlayers = ESX.GetExtendedPlayers()
+	if #xPlayers > 0 then
+		local time = os.time()
 
-	for i=1, #xPlayers, 1 do
-		table.insert(asyncTasks, function(cb2)
-			local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-			ESX.SavePlayer(xPlayer, cb2)
+		local selectListWithNames = "SELECT '%s' AS identifier, '%s' AS new_accounts, '%s' AS new_job, %s AS new_job_grade, '%s' AS new_group, '%s' AS new_loadout, '%s' AS new_position, '%s' AS new_inventory "
+		local selectListNoNames = "SELECT '%s', '%s', '%s' , %s, '%s', '%s', '%s', '%s' "
+
+		local updateCommand = 'UPDATE users u JOIN ('
+
+		local selectList = selectListNoNames
+		local first = true
+		for k, xPlayer in pairs(xPlayers) do
+			if first == false then
+				updateCommand = updateCommand .. ' UNION '
+			else
+				selectList = selectListWithNames
+			end
+
+			updateCommand = updateCommand .. string.format(selectList,
+				xPlayer.identifier,
+				json.encode(xPlayer.getAccounts(true)),
+				xPlayer.job.name,
+				xPlayer.job.grade,
+				xPlayer.getGroup(),
+				json.encode(xPlayer.getLoadout(true)),
+				json.encode(xPlayer.getCoords()),
+				json.encode(xPlayer.getInventory(true))
+			)
+	
+			first = false
+		end
+
+		updateCommand = updateCommand .. ' ) vals ON u.identifier = vals.identifier SET accounts = new_accounts, job = new_job, job_grade = new_job_grade, `group` = new_group, loadout = new_loadout, `position` = new_position, inventory = new_inventory'
+
+		MySQL.Async.fetchAll(updateCommand, {},
+		function(result)
+			if result then
+				if cb then cb() else print(('[^2INFO^7] Saved %s of %s player(s) over %s seconds'):format(result.affectedRows, #xPlayers, os.time() - time)) end
+			end
 		end)
 	end
-
-	Async.parallelLimit(asyncTasks, 8, function(results)
-		print(('[es_extended] [^2INFO^7] Saved %s player(s)'):format(#xPlayers))
-		if cb then
-			cb()
-		end
-	end)
-end
-
-ESX.StartDBSync = function()
-	function saveData()
-		ESX.SavePlayers()
-		SetTimeout(10 * 60 * 1000, saveData)
-	end
-
-	SetTimeout(10 * 60 * 1000, saveData)
 end
 
 ESX.GetPlayers = function()
@@ -227,6 +249,20 @@ ESX.GetPlayers = function()
 	return sources
 end
 
+ESX.GetExtendedPlayers = function(key, val)
+	local xPlayers = {}
+	for k, v in pairs(ESX.Players) do
+		if key then
+			if (key == 'job' and v.job.name == val) or v[key] == val then
+				table.insert(xPlayers, v)
+			end
+		else
+			table.insert(xPlayers, v)
+		end
+	end
+	return xPlayers
+end
+
 ESX.GetPlayerFromId = function(source)
 	return ESX.Players[tonumber(source)]
 end
@@ -235,6 +271,15 @@ ESX.GetPlayerFromIdentifier = function(identifier)
 	for k,v in pairs(ESX.Players) do
 		if v.identifier == identifier then
 			return v
+		end
+	end
+end
+
+ESX.GetIdentifier = function(playerId)
+	for k,v in ipairs(GetPlayerIdentifiers(playerId)) do
+		if string.match(v, 'license:') then
+			local identifier = string.gsub(v, 'license:', '')
+			return identifier
 		end
 	end
 end
