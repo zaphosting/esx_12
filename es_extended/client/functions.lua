@@ -41,7 +41,13 @@ ESX.GetPlayerData = function()
 end
 
 ESX.SetPlayerData = function(key, val)
+	local current = ESX.PlayerData[key]
 	ESX.PlayerData[key] = val
+	if key ~= 'inventory' and key ~= 'loadout' then
+		if type(val) == 'table' or val ~= current then
+			TriggerEvent('esx:setPlayerData', key, val, current)
+		end
+	end
 end
 
 ESX.ShowNotification = function(msg)
@@ -138,6 +144,13 @@ ESX.UI.HUD.RemoveElement = function(name)
 		action    = 'deleteHUDElement',
 		name      = name
 	})
+end
+
+ESX.UI.HUD.Reset = function()
+	SendNUIMessage({
+		action    = 'resetHUDElements'
+	})
+	ESX.UI.HUD.RegisteredElements = {}
 end
 
 ESX.UI.HUD.UpdateElement = function(name, data)
@@ -308,21 +321,16 @@ ESX.Game.GetPedMugshot = function(ped, transparent)
 end
 
 ESX.Game.Teleport = function(entity, coords, cb)
+	local vector = type(coords) == "vector4" and coords or type(coords) == "vector3" and vector4(coords, 0.0) or vec(coords.x, coords.y, coords.z, coords.heading or 0.0)
+
 	if DoesEntityExist(entity) then
-		RequestCollisionAtCoord(coords.x, coords.y, coords.z)
-		local timeout = 0
-
-		-- we can get stuck here if any of the axies are "invalid"
-		while not HasCollisionLoadedAroundEntity(entity) and timeout < 2000 do
+		RequestCollisionAtCoord(vector.xyz)
+		while not HasCollisionLoadedAroundEntity(entity) do
 			Citizen.Wait(0)
-			timeout = timeout + 1
 		end
 
-		SetEntityCoords(entity, coords.x, coords.y, coords.z, false, false, false, false)
-
-		if type(coords) == 'table' and coords.heading then
-			SetEntityHeading(entity, coords.heading)
-		end
+		SetEntityCoords(entity, vector.xyz, false, false, false, false)
+		SetEntityHeading(entity, vector.w)
 	end
 
 	if cb then
@@ -330,32 +338,23 @@ ESX.Game.Teleport = function(entity, coords, cb)
 	end
 end
 
-ESX.Game.SpawnObject = function(model, coords, cb)
-	local model = (type(model) == 'number' and model or GetHashKey(model))
+ESX.Game.SpawnObject = function(object, coords, cb, networked)
+	local model = type(object) == 'number' and object or GetHashKey(object)
+	local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
+	networked = networked == nil and true or networked
 
 	Citizen.CreateThread(function()
 		ESX.Streaming.RequestModel(model)
-		local obj = CreateObject(model, coords.x, coords.y, coords.z, true, false, true)
-		SetModelAsNoLongerNeeded(model)
 
+		local obj = CreateObject(model, vector.xyz, networked, false, true)
 		if cb then
 			cb(obj)
 		end
 	end)
 end
 
-ESX.Game.SpawnLocalObject = function(model, coords, cb)
-	local model = (type(model) == 'number' and model or GetHashKey(model))
-
-	Citizen.CreateThread(function()
-		ESX.Streaming.RequestModel(model)
-		local obj = CreateObject(model, coords.x, coords.y, coords.z, false, false, true)
-		SetModelAsNoLongerNeeded(model)
-
-		if cb then
-			cb(obj)
-		end
-	end)
+ESX.Game.SpawnLocalObject = function(object, coords, cb)
+	ESX.Game.SpawnObject(object, coords, cb, false)
 end
 
 ESX.Game.DeleteVehicle = function(vehicle)
@@ -368,28 +367,28 @@ ESX.Game.DeleteObject = function(object)
 	DeleteObject(object)
 end
 
-ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
-	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
-
+ESX.Game.SpawnVehicle = function(vehicle, coords, heading, cb, networked)
+	local model = (type(vehicle) == 'number' and vehicle or GetHashKey(vehicle))
+	local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
+	networked = networked == nil and true or networked
 	Citizen.CreateThread(function()
 		ESX.Streaming.RequestModel(model)
 
-		local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
-		local networkId = NetworkGetNetworkIdFromEntity(vehicle)
-		local timeout = 0
+		local vehicle = CreateVehicle(model, vector.xyz, heading, networked, false)
 
-		SetNetworkIdCanMigrate(networkId, true)
-		SetEntityAsMissionEntity(vehicle, true, false)
+		if networked then
+			local id = NetworkGetNetworkIdFromEntity(vehicle)
+			SetNetworkIdCanMigrate(id, true)
+			SetEntityAsMissionEntity(vehicle, true, false)
+		end
 		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
 		SetVehicleNeedsToBeHotwired(vehicle, false)
-		SetVehRadioStation(vehicle, 'OFF')
 		SetModelAsNoLongerNeeded(model)
-		RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+		SetVehRadioStation(vehicle, 'OFF')
 
-		-- we can get stuck here if any of the axies are "invalid"
-		while not HasCollisionLoadedAroundEntity(vehicle) and timeout < 2000 do
+		RequestCollisionAtCoord(vector.xyz)
+		while not HasCollisionLoadedAroundEntity(vehicle) do
 			Citizen.Wait(0)
-			timeout = timeout + 1
 		end
 
 		if cb then
@@ -398,32 +397,8 @@ ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
 	end)
 end
 
-ESX.Game.SpawnLocalVehicle = function(modelName, coords, heading, cb)
-	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
-
-	Citizen.CreateThread(function()
-		ESX.Streaming.RequestModel(model)
-
-		local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, false, false)
-		local timeout = 0
-
-		SetEntityAsMissionEntity(vehicle, true, false)
-		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
-		SetVehicleNeedsToBeHotwired(vehicle, false)
-		SetVehRadioStation(vehicle, 'OFF')
-		SetModelAsNoLongerNeeded(model)
-		RequestCollisionAtCoord(coords.x, coords.y, coords.z)
-
-		-- we can get stuck here if any of the axies are "invalid"
-		while not HasCollisionLoadedAroundEntity(vehicle) and timeout < 2000 do
-			Citizen.Wait(0)
-			timeout = timeout + 1
-		end
-
-		if cb then
-			cb(vehicle)
-		end
-	end)
+ESX.Game.SpawnLocalVehicle = function(vehicle, coords, heading, cb)
+	ESX.Game.SpawnVehicle(vehicle, coords, heading, cb, false)
 end
 
 ESX.Game.IsVehicleEmpty = function(vehicle)
@@ -433,36 +408,24 @@ ESX.Game.IsVehicleEmpty = function(vehicle)
 	return passengers == 0 and driverSeatFree
 end
 
-ESX.Game.GetObjects = function()
-	local objects = {}
-
-	for object in EnumerateObjects() do
-		table.insert(objects, object)
-	end
-
-	return objects
+ESX.Game.GetObjects = function() -- Leave the function for compatibility
+	return GetGamePool('CObject')
 end
 
 ESX.Game.GetPeds = function(onlyOtherPeds)
-	local peds, myPed = {}, PlayerPedId()
+	local peds, myPed, pool = {}, ESX.PlayerData.ped, GetGamePool('CPed')
 
-	for ped in EnumeratePeds() do
-		if ((onlyOtherPeds and ped ~= myPed) or not onlyOtherPeds) then
-			table.insert(peds, ped)
-		end
-	end
+	for i=1, #pool do
+        if ((onlyOtherPeds and pool[i] ~= myPed) or not onlyOtherPeds) then
+            table.insert(peds, pool[i])
+        end
+    end
 
 	return peds
 end
 
-ESX.Game.GetVehicles = function()
-	local vehicles = {}
-
-	for vehicle in EnumerateVehicles() do
-		table.insert(vehicles, vehicle)
-	end
-
-	return vehicles
+ESX.Game.GetVehicles = function() -- Leave the function for compatibility
+	return GetGamePool('CVehicle')
 end
 
 ESX.Game.GetPlayers = function(onlyOtherPlayers, returnKeyValue, returnPeds)
@@ -483,13 +446,34 @@ ESX.Game.GetPlayers = function(onlyOtherPlayers, returnKeyValue, returnPeds)
 	return players
 end
 
-ESX.Game.GetClosestObject = function(coords, modelFilter) return ESX.Game.GetClosestEntity(ESX.Game.GetObjects(), false, coords, modelFilter) end
-ESX.Game.GetClosestPed = function(coords, modelFilter) return ESX.Game.GetClosestEntity(ESX.Game.GetPeds(true), false, coords, modelFilter) end
-ESX.Game.GetClosestPlayer = function(coords) return ESX.Game.GetClosestEntity(ESX.Game.GetPlayers(true, true), true, coords, nil) end
-ESX.Game.GetClosestVehicle = function(coords, modelFilter) return ESX.Game.GetClosestEntity(ESX.Game.GetVehicles(), false, coords, modelFilter) end
-ESX.Game.GetPlayersInArea = function(coords, maxDistance) return EnumerateEntitiesWithinDistance(ESX.Game.GetPlayers(true, true), true, coords, maxDistance) end
-ESX.Game.GetVehiclesInArea = function(coords, maxDistance) return EnumerateEntitiesWithinDistance(ESX.Game.GetVehicles(), false, coords, maxDistance) end
-ESX.Game.IsSpawnPointClear = function(coords, maxDistance) return #ESX.Game.GetVehiclesInArea(coords, maxDistance) == 0 end
+ESX.Game.GetClosestObject = function(coords, modelFilter)
+	return ESX.Game.GetClosestEntity(ESX.Game.GetObjects(), false, coords, modelFilter)
+end
+
+ESX.Game.GetClosestPed = function(coords, modelFilter)
+	return ESX.Game.GetClosestEntity(ESX.Game.GetPeds(true), false, coords, modelFilter)
+end
+
+ESX.Game.GetClosestPlayer = function(coords)
+	return ESX.Game.GetClosestEntity(ESX.Game.GetPlayers(true, true), true, coords, nil)
+end
+
+ESX.Game.GetClosestVehicle = function(coords, modelFilter)
+	return ESX.Game.GetClosestEntity(ESX.Game.GetVehicles(), false, coords, modelFilter)
+end
+
+ESX.Game.GetPlayersInArea = function(coords, maxDistance)
+	return EnumerateEntitiesWithinDistance(ESX.Game.GetPlayers(true, true), true, coords, maxDistance)
+end
+
+ESX.Game.GetVehiclesInArea = function(coords, maxDistance)
+	return EnumerateEntitiesWithinDistance(ESX.Game.GetVehicles(), false, coords, maxDistance)
+end
+
+ESX.Game.IsSpawnPointClear = function(coords, maxDistance)
+	return #ESX.Game.GetVehiclesInArea(coords, maxDistance) == 0
+end
+
 
 ESX.Game.GetClosestEntity = function(entities, isPlayerEntities, coords, modelFilter)
 	local closestEntity, closestEntityDistance, filteredEntities = -1, -1, nil
@@ -497,7 +481,7 @@ ESX.Game.GetClosestEntity = function(entities, isPlayerEntities, coords, modelFi
 	if coords then
 		coords = vector3(coords.x, coords.y, coords.z)
 	else
-		local playerPed = PlayerPedId()
+		local playerPed = ESX.PlayerData.ped
 		coords = GetEntityCoords(playerPed)
 	end
 
@@ -523,14 +507,15 @@ ESX.Game.GetClosestEntity = function(entities, isPlayerEntities, coords, modelFi
 end
 
 ESX.Game.GetVehicleInDirection = function()
-	local playerPed    = PlayerPedId()
+	local playerPed    = ESX.PlayerData.ped
 	local playerCoords = GetEntityCoords(playerPed)
 	local inDirection  = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 5.0, 0.0)
 	local rayHandle    = StartShapeTestRay(playerCoords, inDirection, 10, playerPed, 0)
 	local numRayHandle, hit, endCoords, surfaceNormal, entityHit = GetShapeTestResult(rayHandle)
 
 	if hit == 1 and GetEntityType(entityHit) == 2 then
-		return entityHit
+		local entityCoords = GetEntityCoords(entityHit)
+		return entityHit, entityCoords
 	end
 
 	return nil
@@ -730,10 +715,10 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 end
 
 ESX.Game.Utils.DrawText3D = function(coords, text, size, font)
-	coords = vector3(coords.x, coords.y, coords.z)
+	local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
 
 	local camCoords = GetGameplayCamCoords()
-	local distance = #(coords - camCoords)
+	local distance = #(vector - camCoords)
 
 	if not size then size = 1 end
 	if not font then font = 0 end
@@ -744,26 +729,23 @@ ESX.Game.Utils.DrawText3D = function(coords, text, size, font)
 
 	SetTextScale(0.0 * scale, 0.55 * scale)
 	SetTextFont(font)
-	SetTextColour(255, 255, 255, 255)
-	SetTextDropshadow(0, 0, 0, 0, 255)
-	SetTextDropShadow()
-	SetTextOutline()
+	SetTextProportional(1)
+	SetTextColour(255, 255, 255, 215)
+	SetTextEntry('STRING')
 	SetTextCentre(true)
-
-	SetDrawOrigin(coords, 0)
-	BeginTextCommandDisplayText('STRING')
-	AddTextComponentSubstringPlayerName(text)
-	EndTextCommandDisplayText(0.0, 0.0)
+	AddTextComponentString(text)
+	SetDrawOrigin(vector.xyz, 0)
+	DrawText(0.0, 0.0)
 	ClearDrawOrigin()
 end
 
 ESX.ShowInventory = function()
-	local playerPed = PlayerPedId()
+	local playerPed = ESX.PlayerData.ped
 	local elements, currentWeight = {}, 0
 
 	for k,v in pairs(ESX.PlayerData.accounts) do
 		if v.money > 0 then
-			local formattedMoney = _U('locale_currency', ESX.Math.GroupDigits(v.money))
+		local formattedMoney = _U('locale_currency', ESX.Math.GroupDigits(v.money))
 			local canDrop = v.name ~= 'bank'
 
 			table.insert(elements, {
@@ -1029,16 +1011,17 @@ end)
 -- SetTimeout
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
-		local currTime = GetGameTimer()
-
-		for i=1, #ESX.TimeoutCallbacks, 1 do
-			if ESX.TimeoutCallbacks[i] then
+		local sleep = 100
+		if #ESX.TimeoutCallbacks > 0 then
+			local currTime = GetGameTimer()
+			sleep = 0
+			for i=1, #ESX.TimeoutCallbacks, 1 do
 				if currTime >= ESX.TimeoutCallbacks[i].time then
 					ESX.TimeoutCallbacks[i].cb()
 					ESX.TimeoutCallbacks[i] = nil
 				end
 			end
 		end
+		Citizen.Wait(sleep)
 	end
 end)
