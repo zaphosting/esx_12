@@ -211,7 +211,6 @@ INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Murder of an LEO', 30000, 3),
 	('Involuntary manslaughter', 1800, 3),
 	('Fraud', 2000, 2);
-;
 
 DROP TABLE IF EXISTS `inventories`;
 CREATE TABLE IF NOT EXISTS `inventories` (
