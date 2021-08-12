@@ -400,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `owned_vehicles` (
   `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'car',
   `job` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stored` tinyint(4) NOT NULL DEFAULT 0,
+  `stored` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`plate`),
   KEY `owner` (`owner`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -506,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `rented_vehicles` (
   `player_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `base_price` int(11) NOT NULL,
   `rent_price` int(11) NOT NULL,
-  `owner` varchar(22) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`plate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
