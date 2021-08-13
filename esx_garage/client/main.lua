@@ -10,8 +10,6 @@ AddEventHandler('instance:onCreate', function(instance)
 end)
 
 AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
-	local garageName = name
-	thisGarage = Config.Garages[name]
 	if part == 'ExteriorEntryPoint' then
 		local playerPed = PlayerPedId()
 		local coords    = GetEntityCoords(playerPed)
@@ -19,8 +17,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		thisGarage 		= garage
 		
 		for i=1, #Config.Garages, 1 do
-			if Config.Garages[i].name ~= garageName then
-				Config.Garages[i].isClosed = true
+			if Config.Garages[i].name ~= name then
 				Config.Garages[i].disabled = true
 			end
 		end
@@ -83,7 +80,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 									end
 								end
 							end
-						end, garageName)
+						end, name)
 					end)
 				else
 					ESX.Game.Teleport(playerPed, {
@@ -122,7 +119,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 									end
 								end
 							end
-						end, garageName)
+						end, name)
 					end)
 				end
 			end
@@ -162,7 +159,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 							end
 						end
 					end
-				end, garageName)
+				end, name)
 			end)
 		end
 	end
@@ -195,6 +192,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 					SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), true, true)
 				end)
 			end)
+
 		else
 
 			ESX.Game.Teleport(playerPed,{
@@ -217,7 +215,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		end
 		
 		for i=1, #Config.Garages, 1 do
-			if Config.Garages[i].name ~= garageName then
+			if Config.Garages[i].name ~= name then
 				Config.Garages[i].disabled = false
 			end
 		end
@@ -236,7 +234,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 
 			local vehicleProps  = ESX.Game.GetVehicleProperties(vehicle)
 
-			TriggerServerEvent('esx_garage:setParking', garageName, parking, vehicleProps)
+			TriggerServerEvent('esx_garage:setParking', name, parking, vehicleProps)
 
 			if Config.EnableOwnedVehicles then
 				TriggerServerEvent('esx_garage:updateOwnedVehicle', vehicleProps)
@@ -252,13 +250,7 @@ AddEventHandler('esx_property:hasExitedMarker', function(name, part, parking)
 		local playerPed = PlayerPedId()
 		local garage = thisGarage
 		local parkingPos = garage.Parkings[parking].Pos
-		
-		for i=1, #Config.Garages, 1 do
-			if Config.Garages[i].name ~= garageName then
-				Config.Garages[i].isClosed = false
-				Config.Garages[i].disabled = false
-			end
-		end
+
 		if IsPedInAnyVehicle(playerPed, false) and not IsAnyVehicleNearPoint(parkingPos.x, parkingPos.y, parkingPos.z, 1.0) then
 			TriggerServerEvent('esx_garage:setParking', name, parking, false)
 		end
@@ -351,32 +343,32 @@ Citizen.CreateThread(function()
 			local currentParking = nil
 			
 			for k,v in pairs(Config.Garages) do
-				if v.IsClosed then
-					
-					if (not v.disabled and #(coords - vector3(v.ExteriorEntryPoint.Pos.x, v.ExteriorEntryPoint.Pos.y, v.ExteriorEntryPoint.Pos.z)) < Config.MarkerSize.x) then
-						isInMarker    = true
-						currentGarage = k
-						currentPart   = 'ExteriorEntryPoint'
-						break
-					end
-					
-					if (not v.disabled and #(coords - vector3(v.InteriorExitPoint.Pos.x, v.InteriorExitPoint.Pos.y, v.InteriorExitPoint.Pos.z)) < Config.MarkerSize.x) then
-						isInMarker    = true
-						currentGarage = k
-						currentPart   = 'InteriorExitPoint'
-					end
-					
-					for i=1, #v.Parkings, 1 do
-						local parking = v.Parkings[i]
-						
-						if (not v.disabled and #(coords - vector3(parking.Pos.x, parking.Pos.y, parking.Pos.z)) < Config.ParkingMarkerSize.x) then
-							isInMarker     = true
-							currentGarage  = k
-							currentPart    = 'Parking'
-							currentParking = i
-						end
-					end
-				end
+								if v.IsClosed then
+
+									if (not v.disabled and #(coords - vector3(v.ExteriorEntryPoint.Pos.x, v.ExteriorEntryPoint.Pos.y, v.ExteriorEntryPoint.Pos.z)) < Config.MarkerSize.x) then
+										isInMarker    = true
+										currentGarage = k
+										currentPart   = 'ExteriorEntryPoint'
+										break
+									end
+
+									if (not v.disabled and #(coords - vector3(v.InteriorExitPoint.Pos.x, v.InteriorExitPoint.Pos.y, v.InteriorExitPoint.Pos.z)) < Config.MarkerSize.x) then
+										isInMarker    = true
+										currentGarage = k
+										currentPart   = 'InteriorExitPoint'
+									end
+							
+									for i=1, #v.Parkings, 1 do
+										local parking = v.Parkings[i]
+
+										if (not v.disabled and #(coords - vector3(parking.Pos.x, parking.Pos.y, parking.Pos.z)) < Config.ParkingMarkerSize.x) then
+											isInMarker     = true
+											currentGarage  = k
+											currentPart    = 'Parking'
+											currentParking = i
+										end
+									end
+								end
 			end
 
 			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastGarage ~= currentGarage or LastPart ~= currentPart or LastParking ~= currentParking) ) then
