@@ -6,23 +6,27 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-
+ALTER DATABASE es_extended
+	DEFAULT CHARACTER SET UTF8MB4;
+	
+ALTER DATABASE es_extended
+	DEFAULT COLLATE UTF8MB4_UNICODE_CI;
 
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE IF NOT EXISTS `accounts` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `owner` varchar(64) DEFAULT NULL,
   `money` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `addon_account`;
 CREATE TABLE IF NOT EXISTS `addon_account` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
   `shared` int(11) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
 ('bank_savings', 'Bank Savings', 0),
@@ -39,13 +43,13 @@ INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
 DROP TABLE IF EXISTS `addon_account_data`;
 CREATE TABLE IF NOT EXISTS `addon_account_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `account_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `account_name` varchar(100) DEFAULT NULL,
   `money` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_addon_account_data_account_name_owner` (`account_name`,`owner`),
   KEY `index_addon_account_data_account_name` (`account_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6;
 
 INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 (1, 'society_cardealer', 0, NULL),
@@ -56,11 +60,11 @@ INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 
 DROP TABLE IF EXISTS `addon_inventory`;
 CREATE TABLE IF NOT EXISTS `addon_inventory` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
   `shared` int(11) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 ('property', 'Property', 0),
@@ -73,44 +77,44 @@ INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 DROP TABLE IF EXISTS `addon_inventory_items`;
 CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `inventory_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inventory_name` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `count` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_addon_inventory_items_inventory_name_name` (`inventory_name`,`name`),
   KEY `index_addon_inventory_items_inventory_name_name_owner` (`inventory_name`,`name`,`owner`),
   KEY `index_addon_inventory_inventory_name` (`inventory_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `billing`;
 CREATE TABLE IF NOT EXISTS `billing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sender` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target_type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `sender` varchar(60) NOT NULL,
+  `target_type` varchar(50) NOT NULL,
+  `target` varchar(60) NOT NULL,
+  `label` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `identifier` (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `cardealer_vehicles`;
 CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `vehicle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `datastore`;
 CREATE TABLE IF NOT EXISTS `datastore` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
   `shared` int(11) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 ('property', 'Property', 0),
@@ -125,23 +129,23 @@ INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 
 DROP TABLE IF EXISTS `datastores`;
 CREATE TABLE IF NOT EXISTS `datastores` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `owner` varchar(64) DEFAULT NULL,
+  `data` longtext DEFAULT NULL,
   PRIMARY KEY (`name`),
   KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `datastore_data`;
 CREATE TABLE IF NOT EXISTS `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(60) NOT NULL,
+  `owner` varchar(60) DEFAULT NULL,
+  `data` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
   KEY `index_datastore_data_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5;
 
 INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 (1, 'society_police', NULL, '{}'),
@@ -152,11 +156,11 @@ INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 DROP TABLE IF EXISTS `fine_types`;
 CREATE TABLE IF NOT EXISTS `fine_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53;
 
 INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Misuse of a horn', 30, 0),
@@ -214,25 +218,25 @@ INSERT INTO `fine_types` (label, amount, category) VALUES
 
 DROP TABLE IF EXISTS `inventories`;
 CREATE TABLE IF NOT EXISTS `inventories` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `items` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `owner` varchar(64) DEFAULT NULL,
+  `items` longtext DEFAULT NULL,
   PRIMARY KEY (`name`),
   KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `inventories` (`name`, `owner`, `items`) VALUES
 ('test', NULL, '\"something\"');
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `label` varchar(64) NOT NULL,
   `weight` int(11) NOT NULL,
   `rare` int(11) NOT NULL,
   `can_remove` int(11) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 ('alive_chicken', 'Living chicken', 1, 0, 1),
@@ -271,11 +275,11 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 
 DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(64) NOT NULL,
+  `label` varchar(64) DEFAULT NULL,
   `whitelisted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 ('ambulance', 'EMS', 0),
@@ -297,17 +301,17 @@ INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 DROP TABLE IF EXISTS `job_grades`;
 CREATE TABLE IF NOT EXISTS `job_grades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `job_name` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_name` varchar(32) DEFAULT NULL,
   `grade` int(11) NOT NULL,
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `label` varchar(64) NOT NULL,
   `salary` int(11) NOT NULL,
-  `skin_male` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `skin_female` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `skin_male` longtext NOT NULL,
+  `skin_female` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `job_name` (`job_name`),
   KEY `grade` (`grade`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41;
 
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
 (1, 'unemployed', 0, 'unemployed', 'Unemployed', 200, '{}', '{}'),
@@ -353,10 +357,10 @@ INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, 
 
 DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE IF NOT EXISTS `licenses` (
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(60) NOT NULL,
+  `label` varchar(60) NOT NULL,
   PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
 ('boat', 'Boat License'),
@@ -370,10 +374,10 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `module` varchar(64) DEFAULT NULL,
   `last` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3;
 
 INSERT INTO `migrations` (`id`, `module`, `last`) VALUES
 (1, 'skin', 0),
@@ -382,45 +386,45 @@ INSERT INTO `migrations` (`id`, `module`, `last`) VALUES
 DROP TABLE IF EXISTS `owned_properties`;
 CREATE TABLE IF NOT EXISTS `owned_properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `rented` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(60) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `owned_vehicles`;
 CREATE TABLE IF NOT EXISTS `owned_vehicles` (
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'car',
-  `job` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(60) NOT NULL,
+  `plate` varchar(12) NOT NULL,
+  `vehicle` longtext DEFAULT NULL,
+  `type` varchar(20) NOT NULL DEFAULT 'car',
+  `job` varchar(20) DEFAULT NULL,
   `stored` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`plate`),
   KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `properties`;
 CREATE TABLE IF NOT EXISTS `properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `entering` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `exit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `inside` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `outside` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ipls` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '[]',
-  `gateway` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `entering` varchar(255) DEFAULT NULL,
+  `exit` varchar(255) DEFAULT NULL,
+  `inside` varchar(255) DEFAULT NULL,
+  `outside` varchar(255) DEFAULT NULL,
+  `ipls` varchar(255) DEFAULT '[]',
+  `gateway` varchar(255) DEFAULT NULL,
   `is_single` int(11) DEFAULT NULL,
   `is_room` int(11) DEFAULT NULL,
   `is_gateway` int(11) DEFAULT NULL,
-  `room_menu` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `room_menu` varchar(255) DEFAULT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73;
 
 INSERT INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `outside`, `ipls`, `gateway`, `is_single`, `is_room`, `is_gateway`, `room_menu`, `price`) VALUES
 (1, 'WhispymoundDrive', '2677 Whispymound Drive', '{\"y\":564.89,\"z\":182.959,\"x\":119.384}', '{\"x\":117.347,\"y\":559.506,\"z\":183.304}', '{\"y\":557.032,\"z\":183.301,\"x\":118.037}', '{\"y\":567.798,\"z\":182.131,\"x\":119.249}', '[]', NULL, 1, 1, 0, '{\"x\":118.748,\"y\":566.573,\"z\":175.697}', 1500000),
@@ -498,24 +502,24 @@ INSERT INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `
 
 DROP TABLE IF EXISTS `rented_vehicles`;
 CREATE TABLE IF NOT EXISTS `rented_vehicles` (
-  `vehicle` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `player_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle` varchar(60) NOT NULL,
+  `plate` varchar(12) NOT NULL,
+  `player_name` varchar(255) NOT NULL,
   `base_price` int(11) NOT NULL,
   `rent_price` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(60) NOT NULL,
   PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `shops`;
 CREATE TABLE IF NOT EXISTS `shops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `store` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `store` varchar(100) NOT NULL,
+  `item` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `store` (`store`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10;
 
 INSERT INTO `shops` (`id`, `store`, `item`, `price`) VALUES
 (1, 'TwentyFourSeven', 'bread', 30),
@@ -531,76 +535,76 @@ INSERT INTO `shops` (`id`, `store`, `item`, `price`) VALUES
 DROP TABLE IF EXISTS `society_moneywash`;
 CREATE TABLE IF NOT EXISTS `society_moneywash` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `society` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `society` varchar(60) NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `identifier` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `accounts` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `group` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT 'user',
-  `inventory` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT 'unemployed',
+  `identifier` varchar(40) NOT NULL,
+  `name` longtext DEFAULT NULL,
+  `accounts` longtext DEFAULT NULL,
+  `group` varchar(64) DEFAULT 'user',
+  `inventory` longtext DEFAULT NULL,
+  `job` varchar(32) DEFAULT 'unemployed',
   `job_grade` int(11) DEFAULT 0,
-  `loadout` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
+  `loadout` longtext DEFAULT NULL,
+  `position` varchar(255) DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
   `is_dead` int(11) DEFAULT 0,
-  `dob` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` varchar(10) DEFAULT NULL,
   `is_male` int(11) DEFAULT 1,
-  `accessories` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `firstname` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lastname` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dateofbirth` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sex` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `accessories` longtext DEFAULT NULL,
+  `firstname` varchar(16) DEFAULT NULL,
+  `lastname` varchar(16) DEFAULT NULL,
+  `dateofbirth` varchar(10) DEFAULT NULL,
+  `sex` varchar(1) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
-  `last_property` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `skin` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_property` varchar(255) DEFAULT NULL,
+  `skin` longtext DEFAULT NULL,
+  `status` longtext DEFAULT NULL,
   PRIMARY KEY (`identifier`),
   UNIQUE KEY `index_users_phone_number` (`phone_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `user_contacts`;
 CREATE TABLE IF NOT EXISTS `user_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_user_contacts_identifier_name_number` (`identifier`,`name`,`number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `user_licenses`;
 CREATE TABLE IF NOT EXISTS `user_licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(60) NOT NULL,
+  `owner` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `user_parkings`;
 CREATE TABLE IF NOT EXISTS `user_parkings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `garage` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identifier` varchar(60) DEFAULT NULL,
+  `garage` varchar(60) DEFAULT NULL,
   `zone` int(11) NOT NULL,
-  `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vehicle` longtext DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE IF NOT EXISTS `vehicles` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `model` varchar(60) NOT NULL,
   `price` int(11) NOT NULL,
-  `category` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 ('Adder', 'adder', 900000, 'super'),
@@ -846,10 +850,10 @@ INSERT INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 
 DROP TABLE IF EXISTS `vehicle_categories`;
 CREATE TABLE IF NOT EXISTS `vehicle_categories` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `label` varchar(60) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 INSERT INTO `vehicle_categories` (`name`, `label`) VALUES
 ('compacts', 'Compacts'),
@@ -866,22 +870,22 @@ INSERT INTO `vehicle_categories` (`name`, `label`) VALUES
 
 DROP TABLE IF EXISTS `vehicle_sold`;
 CREATE TABLE IF NOT EXISTS `vehicle_sold` (
-  `client` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `soldby` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `client` varchar(50) NOT NULL,
+  `model` varchar(50) NOT NULL,
+  `plate` varchar(50) NOT NULL,
+  `soldby` varchar(50) NOT NULL,
+  `date` varchar(50) NOT NULL,
   PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `weashops`;
 CREATE TABLE IF NOT EXISTS `weashops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zone` varchar(255) NOT NULL,
+  `item` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41;
 
 INSERT INTO `weashops` (`id`, `zone`, `item`, `price`) VALUES
 (1, 'GunShop', 'WEAPON_PISTOL', 300),
