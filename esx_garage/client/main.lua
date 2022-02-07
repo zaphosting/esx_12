@@ -16,9 +16,9 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		local garage    = Config.Garages[name]
 		thisGarage 		= garage
 		
-		for k,v in pairs(Config.Garages) do
-			if k ~= name then
-				v.disabled = true
+		for i=1, #Config.Garages, 1 do
+			if Config.Garages[i].name ~= name then
+				Config.Garages[i].disabled = true
 			end
 		end
 
@@ -214,9 +214,9 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 
 		end
 		
-		for k,v in pairs(Config.Garages) do
-			if k ~= name then
-				v.disabled = false
+		for i=1, #Config.Garages, 1 do
+			if Config.Garages[i].name ~= name then
+				Config.Garages[i].disabled = false
 			end
 		end
 		
