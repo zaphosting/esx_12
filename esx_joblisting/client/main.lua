@@ -31,15 +31,15 @@ AddEventHandler('esx_joblisting:hasExitedMarker', function(zone)
 end)
 
 -- Activate menu when player is inside marker, and draw markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		Wait(0)
 
 		local coords = GetEntityCoords(PlayerPedId())
 		isInMarker = false
 
 		for i=1, #Config.Zones, 1 do
-			local distance = GetDistanceBetweenCoords(coords, Config.Zones[i], true)
+			local distance = #(coords - Config.Zones[i])
 
 			if distance < Config.DrawDistance then
 				DrawMarker(Config.MarkerType, Config.Zones[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.ZoneSize.x, Config.ZoneSize.y, Config.ZoneSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Create blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	for i=1, #Config.Zones, 1 do
 		local blip = AddBlipForCoord(Config.Zones[i])
 
@@ -80,9 +80,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Menu Controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if IsControlJustReleased(0, 38) and isInMarker and not menuIsShowed then
 			ESX.UI.Menu.CloseAll()

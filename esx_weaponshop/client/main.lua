@@ -90,19 +90,19 @@ function DisplayBoughtScaleform(weaponName, price)
 
 	BeginScaleformMovieMethod(scaleform, 'SHOW_WEAPON_PURCHASED')
 
-	PushScaleformMovieMethodParameterString(_U('weapon_bought', ESX.Math.GroupDigits(price)))
-	PushScaleformMovieMethodParameterString(ESX.GetWeaponLabel(weaponName))
-	PushScaleformMovieMethodParameterInt(GetHashKey(weaponName))
-	PushScaleformMovieMethodParameterString('')
-	PushScaleformMovieMethodParameterInt(100)
+	ScaleformMovieMethodAddParamTextureNameString(_U('weapon_bought', ESX.Math.GroupDigits(price)))
+	ScaleformMovieMethodAddParamTextureNameString(ESX.GetWeaponLabel(weaponName))
+	ScaleformMovieMethodAddParamInt(GetHashKey(weaponName))
+	ScaleformMovieMethodAddParamTextureNameString('')
+	ScaleformMovieMethodAddParamInt(100)
 
 	EndScaleformMovieMethod()
 
 	PlaySoundFrontend(-1, 'WEAPON_PURCHASE', 'HUD_AMMO_SHOP_SOUNDSET', false)
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while sec > 0 do
-			Citizen.Wait(0)
+			Wait(0)
 			sec = sec - 0.01
 	
 			DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
@@ -132,7 +132,7 @@ AddEventHandler('onResourceStop', function(resource)
 end)
 
 -- Create Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,v in pairs(Config.Zones) do
 		if v.Legal then
 			for i = 1, #v.Locations, 1 do
@@ -153,15 +153,15 @@ Citizen.CreateThread(function()
 end)
 
 -- Display markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		local coords = GetEntityCoords(PlayerPedId())
 
 		for k,v in pairs(Config.Zones) do
 			for i = 1, #v.Locations, 1 do
-				if (Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.DrawDistance) then
+				if (Config.Type ~= -1 and #(coords - v.Locations[i]) < Config.DrawDistance) then
 					DrawMarker(Config.Type, v.Locations[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size.x, Config.Size.y, Config.Size.z, Config.Color.r, Config.Color.g, Config.Color.b, 100, false, true, 2, false, false, false, false)
 				end
 			end
@@ -170,15 +170,15 @@ Citizen.CreateThread(function()
 end)
 
 -- Enter / Exit marker events
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
 		local isInMarker, currentZone = false, nil
 
 		for k,v in pairs(Config.Zones) do
 			for i=1, #v.Locations, 1 do
-				if GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.Size.x then
+				if #(coords - v.Locations[i]) < Config.Size.x then
 					isInMarker, ShopItems, currentZone, LastZone = true, v.Items, k, k
 				end
 			end
@@ -196,9 +196,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Key Controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if CurrentAction ~= nil then
 			ESX.ShowHelpNotification(CurrentActionMsg)

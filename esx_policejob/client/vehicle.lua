@@ -143,16 +143,21 @@ function StoreNearbyVehicle(playerCoords)
 			ESX.Game.DeleteVehicle(vehicleId)
 			local isBusy = true
 
-			Citizen.CreateThread(function()
+			CreateThread(function()
+				BeginTextCommandBusyspinnerOn('STRING')
+				AddTextComponentSubstringPlayerName(_U('garage_storing'))
+				EndTextCommandBusyspinnerOn(4)
+
 				while isBusy do
-					Citizen.Wait(0)
-					drawLoadingText(_U('garage_storing'), 255, 255, 255, 255)
+					Wait(100)
 				end
+
+				BusyspinnerOff()
 			end)
 
 			-- Workaround for vehicle not deleting when other players are near it.
 			while DoesEntityExist(vehicleId) do
-				Citizen.Wait(500)
+				Wait(500)
 				attempts = attempts + 1
 
 				-- Give up
@@ -281,15 +286,15 @@ function OpenShopMenu(elements, restoreCoords, shopCoords)
 	end)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if isInShopMenu then
 			DisableControlAction(0, 75, true)  -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
@@ -313,7 +318,7 @@ function WaitForVehicleToLoad(modelHash)
 		EndTextCommandBusyspinnerOn(4)
 
 		while not HasModelLoaded(modelHash) do
-			Citizen.Wait(0)
+			Wait(0)
 			DisableAllControlActions(0)
 		end
 

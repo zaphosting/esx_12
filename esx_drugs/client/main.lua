@@ -1,32 +1,62 @@
 local menuOpen = false
-local wasOpen = false
+local inZoneDrugShop = false
+local inRangeMarkerDrugShop = false
+local cfgMarker = Config.Marker;
 
-Citizen.CreateThread(function()
+--slow loop
+CreateThread(function()
 	while true do
-		local time = 800
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
+		local distDrugShop = #(coords - Config.CircleZones.DrugDealer.coords)
 
-		if #(coords - Config.CircleZones.DrugDealer.coords) < 0.5 then
-			time = 2
-			if not menuOpen then
-				ESX.ShowHelpNotification(_U('dealer_prompt'))
+		inRangeMarkerDrugShop = false
+		if(distDrugShop <= Config.Marker.Distance) then
+			inRangeMarkerDrugShop = true
+		end
 
-				if IsControlJustReleased(0, 38) then
-					wasOpen = true
-					OpenDrugShop()
-				end
-			else
-				Citizen.Wait(500)
-			end
+		if distDrugShop < 1 then
+			inZoneDrugShop = true
 		else
-			if wasOpen then
-				wasOpen = false
+			inZoneDrugShop = false
+			if menuOpen then
+				menuOpen=false
 				ESX.UI.Menu.CloseAll()
 			end
-
-			Citizen.Wait(time)
 		end
+
+		Wait(500)
+	end
+end)
+
+--drawk marker
+CreateThread(function()
+	while true do 
+		if(inRangeMarkerDrugShop) then
+			local coordsMarker = Config.CircleZones.DrugDealer.coords
+			local color = cfgMarker.Color
+			DrawMarker(cfgMarker.Type, coordsMarker.x, coordsMarker.y,coordsMarker.z - 1.0,
+			0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+			cfgMarker.Size, color.r,color.g,color.b,color.a,
+			false, true, 2, false, nil, nil, false)
+		end
+		Wait(0)
+	end
+end)
+
+--main loop
+CreateThread(function ()
+	while true do 
+		if inZoneDrugShop then
+			if(not menuOpen) then
+				ESX.ShowHelpNotification(_U('dealer_prompt'),true)
+				if IsControlJustPressed(0, 38) then
+					OpenDrugShop()
+				end
+			end
+		end
+
+		Wait(15)
 	end
 end)
 
@@ -132,11 +162,11 @@ function CreateBlipCircle(coords, text, radius, color, sprite)
 	SetBlipAsShortRange(blip, true)
 
 	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString(text)
+	AddTextComponentSubstringPlayerName(text)
 	EndTextCommandSetBlipName(blip)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,zone in pairs(Config.CircleZones) do
 		CreateBlipCircle(zone.coords, zone.name, zone.radius, zone.color, zone.sprite)
 	end

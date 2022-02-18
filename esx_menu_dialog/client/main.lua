@@ -1,7 +1,6 @@
-local ESX = exports.es_extended:getSharedObject()
 local Timeouts, OpenedMenus, MenuType = {}, {}, 'dialog'
 
-local openMenu = function(namespace, name, data)
+local function openMenu(namespace, name, data)
 	for i=1, #Timeouts, 1 do
 		ESX.ClearTimeout(Timeouts[i])
 	end
@@ -22,14 +21,13 @@ local openMenu = function(namespace, name, data)
 	table.insert(Timeouts, timeoutId)
 end
 
-local closeMenu = function(namespace, name)
+local function closeMenu(namespace, name)
 	OpenedMenus[namespace .. '_' .. name] = nil
 
 	SendNUIMessage({
 		action = 'closeMenu',
 		namespace = namespace,
 		name = name,
-		data = data
 	})
 
 	if ESX.Table.SizeOf(OpenedMenus) == 0 then
@@ -82,9 +80,9 @@ AddEventHandler('esx_menu_dialog:message:menu_change', function(data)
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(0)
 
 		if ESX.Table.SizeOf(OpenedMenus) > 0 then
 			DisableControlAction(0, 1,   true) -- LookLeftRight
@@ -97,7 +95,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, 16, true) -- SelectNextWeapon
 			DisableControlAction(0, 17, true) -- SelectPrevWeapon
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)

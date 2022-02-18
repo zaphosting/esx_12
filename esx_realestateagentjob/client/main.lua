@@ -208,7 +208,7 @@ AddEventHandler('esx_realestateagentjob:hasExitedMarker', function(zone)
 end)
 
 -- Create Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	local blip = AddBlipForCoord(Config.Zones.OfficeEnter.Pos.x, Config.Zones.OfficeEnter.Pos.y, Config.Zones.OfficeEnter.Pos.z)
 
 	SetBlipSprite (blip, 357)
@@ -223,14 +223,14 @@ Citizen.CreateThread(function()
 end)
 
 -- Display markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		local coords = GetEntityCoords(PlayerPedId())
 
 		for k,v in pairs(Config.Zones) do
-			if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
+			if(v.Type ~= -1 and #(coords - v.Pos) < Config.DrawDistance) then
 				DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
 			end
 		end
@@ -238,16 +238,16 @@ Citizen.CreateThread(function()
 end)
 
 -- Enter / Exit marker events
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		local coords      = GetEntityCoords(PlayerPedId())
 		local isInMarker  = false
 		local currentZone = nil
 
 		for k,v in pairs(Config.Zones) do
-			if GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x then
+			if #(coords - v.Pos) < v.Size.x then
 				isInMarker  = true
 				currentZone = k
 			end
@@ -267,9 +267,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -282,13 +282,13 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
 
 -- Load IPLS
-Citizen.CreateThread(function()
+CreateThread(function()
 	RequestIpl('ex_dt1_02_office_02c')
 end)
 

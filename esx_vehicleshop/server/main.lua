@@ -3,7 +3,7 @@ local categories, vehicles = {}, {}
 TriggerEvent('esx_phone:registerNumber', 'cardealer', _U('dealer_customers'), false, false)
 TriggerEvent('esx_society:registerSociety', 'cardealer', _U('car_dealer'), 'society_cardealer', 'society_cardealer', 'society_cardealer', {type = 'private'})
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	local char = Config.PlateLetters
 	char = char + Config.PlateNumbers
 	if Config.PlateUseSpace then char = char + 1 end
@@ -113,8 +113,8 @@ end)
 
 RegisterNetEvent('esx_vehicleshop:getStockItem')
 AddEventHandler('esx_vehicleshop:getStockItem', function(itemName, count)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+	local source = source
+	local xPlayer = ESX.GetPlayerFromId(source)
 
 	TriggerEvent('esx_addoninventory:getSharedInventory', 'society_cardealer', function(inventory)
 		local item = inventory.getItem(itemName)
@@ -138,8 +138,8 @@ end)
 
 RegisterNetEvent('esx_vehicleshop:putStockItems')
 AddEventHandler('esx_vehicleshop:putStockItems', function(itemName, count)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+	local source = source
+	local xPlayer = ESX.GetPlayerFromId(source)
 
 	TriggerEvent('esx_addoninventory:getSharedInventory', 'society_cardealer', function(inventory)
 		local item = inventory.getItem(itemName)
@@ -242,7 +242,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:getRentedVehicles', function(source,
 		local vehicles = {}
 
 		for i = 1, #result do
-			local vehicle = tab[i]
+			local vehicle = result[i]
 			vehicles[#vehicles + 1] = {
 				name = vehicle.vehicle,
 				plate = vehicle.plate,
@@ -384,7 +384,7 @@ function PayRent()
 		for k, v in pairs(owners) do
 			local sum = 0
 			for i = 1, #v do
-				sum += v[i].rent_price
+				sum = sum + v[i].rent_price
 			end
 			local xPlayer = ESX.GetPlayerFromIdentifier(k)
 
@@ -392,14 +392,14 @@ function PayRent()
 				local bank = xPlayer.getAccount('bank').money
 
 				if bank >= sum and #v > 1 then
-					total += sum
+					total = total + sum
 					xPlayer.removeAccountMoney('bank', sum)
 					xPlayer.showNotification(('You have paid ~g~$%s~s~ for all of your rentals'):format(ESX.Math.GroupDigits(sum)))
 				else
 					for i = 1, #v do
 						local rental = v[i]
 						if xPlayer.getAccount('bank').money >= rental.rent_price then
-							total += rental.rent_price
+							total = total + rental.rent_price
 							xPlayer.removeAccountMoney('bank', rental.rent_price)
 							xPlayer.showNotification(_U('paid_rental', ESX.Math.GroupDigits(rental.rent_price), rental.plate))
 						else
@@ -416,9 +416,9 @@ function PayRent()
 					for i = 1, #v do
 						local rental = v[i]
 						if not limit then
-							sum += rental.rent_price
+							sum = sum + rental.rent_price
 							if sum > accounts.bank then
-								sum -= rental.rent_price
+								sum = sum - rental.rent_price
 								limit = true
 							end
 						else
@@ -427,8 +427,8 @@ function PayRent()
 					end
 				end
 				if sum > 0 then
-					total += sum
-					accounts.bank -= sum
+					total = total + sum
+					accounts.bank = accounts.bank - sum
 					users[#users + 1] = {json.encode(accounts), k}
 				end
 			end

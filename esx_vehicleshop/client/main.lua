@@ -9,8 +9,6 @@ function getVehicleFromModel(model)
 			return vehicle
 		end
 	end
-
-	return
 end
 
 function getVehicles()
@@ -66,7 +64,7 @@ function DeleteDisplayVehicleInsideShop()
 
 	if currentDisplayVehicle and DoesEntityExist(currentDisplayVehicle) then
 		while DoesEntityExist(currentDisplayVehicle) and not NetworkHasControlOfEntity(currentDisplayVehicle) and attempt < 100 do
-			Citizen.Wait(100)
+			Wait(100)
 			NetworkRequestControlOfEntity(currentDisplayVehicle)
 			attempt = attempt + 1
 		end
@@ -98,7 +96,7 @@ function ReturnVehicleProvider()
 		}, function(data, menu)
 			TriggerServerEvent('esx_vehicleshop:returnProvider', data.current.value)
 
-			Citizen.Wait(300)
+			Wait(300)
 			menu.close()
 			ReturnVehicleProvider()
 		end, function(data, menu)
@@ -108,9 +106,9 @@ function ReturnVehicleProvider()
 end
 
 function StartShopRestriction()
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while IsInShopMenu do
-			Citizen.Wait(0)
+			Wait(0)
 
 			DisableControlAction(0, 75,  true) -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
@@ -300,7 +298,7 @@ function WaitForVehicleToLoad(modelHash)
 		EndTextCommandBusyspinnerOn(4)
 
 		while not HasModelLoaded(modelHash) do
-			Citizen.Wait(0)
+			Wait(0)
 			DisableAllControlActions(0)
 		end
 
@@ -328,7 +326,9 @@ function OpenResellerMenu()
 	}}, function(data, menu)
 		local action = data.current.value
 
-		if action == 'buy_vehicle' then
+		if Config.OxInventory and (action == 'put_stock' or action == 'get_stock') then
+			exports.ox_inventory:openInventory('stash', 'society_cardealer')
+		elseif action == 'buy_vehicle' then
 			OpenShopMenu()
 		elseif action == 'put_stock' then
 			OpenPutStocksMenu()
@@ -440,7 +440,7 @@ function OpenPopVehicleMenu()
 		local elements = {}
 
 		for k,v in ipairs(vehicles) do
-			local vehicleLabel = getVehicleLabelFromModel(v.vehicle)
+			local vehicleLabel = getVehicleFromModel(v.vehicle).label
 
 			table.insert(elements, {
 				label = ('%s [MSRP <span style="color:green;">%s</span>]'):format(vehicleLabel, _U('generic_shopitem', ESX.Math.GroupDigits(v.price))),
@@ -477,7 +477,7 @@ function OpenRentedVehiclesMenu()
 		local elements = {}
 
 		for k,v in ipairs(vehicles) do
-			local vehicleLabel = getVehicleLabelFromModel(v.name)
+			local vehicleLabel = getVehicleFromModel(v.name).label
 
 			table.insert(elements, {
 				label = ('%s: %s - <span style="color:orange;">%s</span>'):format(v.playerName, vehicleLabel, v.plate),
@@ -740,7 +740,7 @@ if Config.EnablePlayerManagement then
 end
 
 -- Create Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	local blip = AddBlipForCoord(Config.Zones.ShopEntering.Pos)
 
 	SetBlipSprite (blip, 326)
@@ -754,9 +754,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Enter / Exit marker events & Draw Markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(4)
+		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
 		local isInMarker, letSleep, currentZone = false, true
 
@@ -788,15 +788,15 @@ Citizen.CreateThread(function()
 		end
 
 		if letSleep then
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
 
 -- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		Wait(0)
 
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -841,17 +841,17 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	RequestIpl('shr_int') -- Load walls and floor
 
 	local interiorID = 7170
-	LoadInterior(interiorID)
-	EnableInteriorProp(interiorID, 'csr_beforeMission') -- Load large window
+	PinInteriorInMemory(interiorID)
+	ActivateInteriorEntitySet(interiorID, 'csr_beforeMission') -- Load large window
 	RefreshInterior(interiorID)
 end)
 

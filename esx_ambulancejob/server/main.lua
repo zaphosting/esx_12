@@ -100,6 +100,11 @@ end)
 ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
+	if Config.OxInventory and Config.RemoveItemsAfterRPDeath then
+		exports.ox_inventory:ClearInventory(xPlayer.source)
+		return cb()
+	end
+
 	if Config.RemoveCashAfterRPDeath then
 		if xPlayer.getMoney() > 0 then
 			xPlayer.removeMoney(xPlayer.getMoney())
@@ -118,6 +123,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(
 		end
 	end
 
+	if Config.OxInventory then return cb() end
+
 	local playerLoadout = {}
 	if Config.RemoveWeaponsAfterRPDeath then
 		for i=1, #xPlayer.loadout, 1 do
@@ -129,8 +136,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(
 		end
 
 		-- give back wepaons after a couple of seconds
-		Citizen.CreateThread(function()
-			Citizen.Wait(5000)
+		CreateThread(function()
+			Wait(5000)
 			for i=1, #playerLoadout, 1 do
 				if playerLoadout[i].label ~= nil then
 					xPlayer.addWeapon(playerLoadout[i].name, playerLoadout[i].ammo)
@@ -258,9 +265,7 @@ end, true, {help = _U('revive_help'), validate = true, arguments = {
 }})
 
 ESX.RegisterCommand('reviveall', "admin", function(xPlayer, args, showError)
-	for _, playerId in ipairs(GetPlayers()) do
-		TriggerClientEvent('esx_ambulancejob:revive', playerId)
-	end
+	TriggerClientEvent('esx_ambulancejob:revive', -1)
 end, false)
 
 ESX.RegisterUsableItem('medikit', function(source)
@@ -271,7 +276,7 @@ ESX.RegisterUsableItem('medikit', function(source)
 		playersHealing[source] = true
 		TriggerClientEvent('esx_ambulancejob:useItem', source, 'medikit')
 
-		Citizen.Wait(10000)
+		Wait(10000)
 		playersHealing[source] = nil
 	end
 end)
@@ -284,7 +289,7 @@ ESX.RegisterUsableItem('bandage', function(source)
 		playersHealing[source] = true
 		TriggerClientEvent('esx_ambulancejob:useItem', source, 'bandage')
 
-		Citizen.Wait(10000)
+		Wait(10000)
 		playersHealing[source] = nil
 	end
 end)
@@ -293,11 +298,11 @@ ESX.RegisterServerCallback('esx_ambulancejob:getDeathStatus', function(source, c
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.scalar('SELECT is_dead FROM users WHERE identifier = ?', {xPlayer.identifier}, function(isDead)
 
-		if isDead == 1 then 
+		if isDead == 1 then
 			cb(true)
-		else		
+		else
 			cb(false)
-		end 
+		end
 	end)
 end)
 
