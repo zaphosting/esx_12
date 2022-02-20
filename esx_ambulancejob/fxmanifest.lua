@@ -4,12 +4,12 @@ game 'gta5'
 
 description 'ESX Ambulance Job'
 
-version 'legacy'
+version '1.5.0'
 
 shared_script '@es_extended/imports.lua'
 
 server_scripts {
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'@es_extended/locale.lua',
 	'locales/br.lua',
 	'locales/en.lua',
@@ -22,6 +22,7 @@ server_scripts {
 	'locales/cs.lua',
 	'locales/nl.lua',
 	'locales/tr.lua',
+	'locales/hu.lua',
 	'config.lua',
 	'server/main.lua'
 }
@@ -38,6 +39,7 @@ client_scripts {
 	'locales/cs.lua',
 	'locales/nl.lua',
 	'locales/tr.lua',
+	'locales/hu.lua',
 	'config.lua',
 	'client/main.lua',
 	'client/job.lua',

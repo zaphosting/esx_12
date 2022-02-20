@@ -162,6 +162,10 @@ function OpenMechanicActionsMenu()
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 				TriggerEvent('skinchanger:loadSkin', skin)
 			end)
+
+		elseif Config.OxInventory and (data.current.value == 'put_stock' or data.current.value == 'get_stock') then
+			exports.ox_inventory:openInventory('stash', 'society_mechanic')
+			return ESX.UI.Menu.CloseAll()
 		elseif data.current.value == 'put_stock' then
 			OpenPutStocksMenu()
 		elseif data.current.value == 'get_stock' then
@@ -301,8 +305,8 @@ function OpenMobileMechanicActionsMenu()
 			if DoesEntityExist(vehicle) then
 				isBusy = true
 				TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_WELDING', 0, true)
-				Citizen.CreateThread(function()
-					Citizen.Wait(10000)
+				CreateThread(function()
+					Wait(10000)
 
 					SetVehicleDoorsLocked(vehicle, 1)
 					SetVehicleDoorsLockedForAllPlayers(vehicle, false)
@@ -327,8 +331,8 @@ function OpenMobileMechanicActionsMenu()
 			if DoesEntityExist(vehicle) then
 				isBusy = true
 				TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
-				Citizen.CreateThread(function()
-					Citizen.Wait(20000)
+				CreateThread(function()
+					Wait(20000)
 
 					SetVehicleFixed(vehicle)
 					SetVehicleDeformationFixed(vehicle)
@@ -355,8 +359,8 @@ function OpenMobileMechanicActionsMenu()
 			if DoesEntityExist(vehicle) then
 				isBusy = true
 				TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_MAID_CLEAN', 0, true)
-				Citizen.CreateThread(function()
-					Citizen.Wait(10000)
+				CreateThread(function()
+					Wait(10000)
 
 					SetVehicleDirtLevel(vehicle, 0)
 					ClearPedTasksImmediately(playerPed)
@@ -393,7 +397,7 @@ function OpenMobileMechanicActionsMenu()
 			local playerPed = PlayerPedId()
 			local vehicle = GetVehiclePedIsIn(playerPed, true)
 
-			local towmodel = GetHashKey('flatbed')
+			local towmodel = GetHashKey("flatbed")
 			local isVehicleTow = IsVehicleModel(vehicle, towmodel)
 
 			if isVehicleTow then
@@ -524,7 +528,7 @@ function OpenGetStocksMenu()
 					menu.close()
 					TriggerServerEvent('esx_mechanicjob:getStockItem', itemName, count)
 
-					Citizen.Wait(1000)
+					Wait(1000)
 					OpenGetStocksMenu()
 				end
 			end, function(data2, menu2)
@@ -571,7 +575,7 @@ function OpenPutStocksMenu()
 					menu.close()
 					TriggerServerEvent('esx_mechanicjob:putStockItems', itemName, count)
 
-					Citizen.Wait(1000)
+					Wait(1000)
 					OpenPutStocksMenu()
 				end
 			end, function(data2, menu2)
@@ -608,8 +612,8 @@ AddEventHandler('esx_mechanicjob:onHijack', function()
 
 			TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_WELDING', 0, true)
 
-			Citizen.CreateThread(function()
-				Citizen.Wait(10000)
+			CreateThread(function()
+				Wait(10000)
 				if chance <= 66 then
 					SetVehicleDoorsLocked(vehicle, 1)
 					SetVehicleDoorsLockedForAllPlayers(vehicle, false)
@@ -640,8 +644,8 @@ AddEventHandler('esx_mechanicjob:onCarokit', function()
 
 		if DoesEntityExist(vehicle) then
 			TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_HAMMERING', 0, true)
-			Citizen.CreateThread(function()
-				Citizen.Wait(10000)
+			CreateThread(function()
+				Wait(10000)
 				SetVehicleFixed(vehicle)
 				SetVehicleDeformationFixed(vehicle)
 				ClearPedTasksImmediately(playerPed)
@@ -667,8 +671,8 @@ AddEventHandler('esx_mechanicjob:onFixkit', function()
 
 		if DoesEntityExist(vehicle) then
 			TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
-			Citizen.CreateThread(function()
-				Citizen.Wait(20000)
+			CreateThread(function()
+				Wait(20000)
 				SetVehicleFixed(vehicle)
 				SetVehicleDeformationFixed(vehicle)
 				SetVehicleUndriveable(vehicle, false)
@@ -765,15 +769,15 @@ AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 end)
 
 -- Pop NPC mission vehicle when inside area
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(0)
 
 		if NPCTargetTowableZone and not NPCHasSpawnedTowable then
 			local coords = GetEntityCoords(PlayerPedId())
 			local zone   = Config.Zones[NPCTargetTowableZone]
 
-			if GetDistanceBetweenCoords(coords, zone.Pos.x, zone.Pos.y, zone.Pos.z, true) < Config.NPCSpawnDistance then
+			if #(coords - zone.Pos) < Config.NPCSpawnDistance then
 				local model = Config.Vehicles[GetRandomIntInRange(1,  #Config.Vehicles)]
 
 				ESX.Game.SpawnVehicle(model, zone.Pos, 0, function(vehicle)
@@ -788,7 +792,7 @@ Citizen.CreateThread(function()
 			local coords = GetEntityCoords(PlayerPedId())
 			local zone   = Config.Zones[NPCTargetTowableZone]
 
-			if GetDistanceBetweenCoords(coords, zone.Pos.x, zone.Pos.y, zone.Pos.z, true) < Config.NPCNextToDistance then
+			if #(coords - zone.Pos) < Config.NPCNextToDistance then
 				ESX.ShowNotification(_U('please_tow'))
 				NPCHasBeenNextToTowable = true
 			end
@@ -797,7 +801,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Create Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	local blip = AddBlipForCoord(Config.Zones.MechanicActions.Pos.x, Config.Zones.MechanicActions.Pos.y, Config.Zones.MechanicActions.Pos.z)
 
 	SetBlipSprite (blip, 446)
@@ -812,33 +816,33 @@ Citizen.CreateThread(function()
 end)
 
 -- Display markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if ESX.PlayerData.job and ESX.PlayerData.job.name == 'mechanic' then
 			local coords, letSleep = GetEntityCoords(PlayerPedId()), true
 
 			for k,v in pairs(Config.Zones) do
-				if v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance then
+				if v.Type ~= -1 and #(coords - v.Pos) < Config.DrawDistance then
 					DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, nil, nil, false)
 					letSleep = false
 				end
 			end
 
 			if letSleep then
-				Citizen.Wait(500)
+				Wait(500)
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
 
 -- Enter / Exit marker events
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(0)
 
 		if ESX.PlayerData.job and ESX.PlayerData.job.name == 'mechanic' then
 
@@ -847,7 +851,7 @@ Citizen.CreateThread(function()
 			local currentZone = nil
 
 			for k,v in pairs(Config.Zones) do
-				if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
+				if(#(coords - v.Pos) < v.Size.x) then
 					isInMarker  = true
 					currentZone = k
 				end
@@ -868,14 +872,14 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	local trackedEntities = {
 		'prop_roadcone02a',
 		'prop_toolchest_01'
 	}
 
 	while true do
-		Citizen.Wait(500)
+		Wait(500)
 
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
@@ -888,7 +892,7 @@ Citizen.CreateThread(function()
 
 			if DoesEntityExist(object) then
 				local objCoords = GetEntityCoords(object)
-				local distance  = GetDistanceBetweenCoords(coords, objCoords, true)
+				local distance  = #(coords - objCoords)
 
 				if closestDistance == -1 or closestDistance > distance then
 					closestDistance = distance
@@ -912,9 +916,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Key Controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -935,11 +939,12 @@ Citizen.CreateThread(function()
 						TriggerServerEvent('esx_society:putVehicleInGarage', 'mechanic', vehicleProps)
 
 					else
+						local entityModel = GetEntityModel(CurrentActionData.vehicle)
 
 						if
-							GetEntityModel(vehicle) == GetHashKey('flatbed')   or
-							GetEntityModel(vehicle) == GetHashKey('towtruck2') or
-							GetEntityModel(vehicle) == GetHashKey('slamvan3')
+							entityModel == GetHashKey("flatbed") or
+							entityModel == GetHashKey("towtruck2") or
+							entityModel == GetHashKey("slamvan3")
 						then
 							TriggerServerEvent('esx_service:disableService', 'mechanic')
 						end

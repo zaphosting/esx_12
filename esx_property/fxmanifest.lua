@@ -4,13 +4,13 @@ game 'gta5'
 
 description 'ESX Property'
 
-version 'legacy'
+version '1.5.0'
 
 shared_script '@es_extended/imports.lua'
 
 server_scripts {
 	'@async/async.lua',
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'@es_extended/locale.lua',
 	'locales/tr.lua',
 	'locales/de.lua',

@@ -109,17 +109,17 @@ function OpenVehicleSpawnerMenu(type, hospital, part, partNum)
 end
 
 function StoreNearbyVehicle(playerCoords)
-	local vehicles, vehiclePlates = ESX.Game.GetVehiclesInArea(playerCoords, 30.0), {}
+	local vehicles, plates, index = ESX.Game.GetVehiclesInArea(playerCoords, 30.0), {}, {}
 
-	if #vehicles > 0 then
-		for k,v in ipairs(vehicles) do
-
+	if next(vehicles) then
+		for i = 1, #vehicles do
+			local vehicle = vehicles[i]
+			
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
-			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
-				table.insert(vehiclePlates, {
-					vehicle = v,
-					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
-				})
+			if GetVehicleNumberOfPassengers(vehicle) == 0 and IsVehicleSeatFree(vehicle, -1) then
+				local plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
+				plates[#plates + 1] = plate
+				index[plate] = vehicle
 			end
 		end
 	else
@@ -127,23 +127,28 @@ function StoreNearbyVehicle(playerCoords)
 		return
 	end
 
-	ESX.TriggerServerCallback('esx_ambulancejob:storeNearbyVehicle', function(storeSuccess, foundNum)
-		if storeSuccess then
-			local vehicleId = vehiclePlates[foundNum]
+	ESX.TriggerServerCallback('esx_ambulancejob:storeNearbyVehicle', function(plate)
+		if plate then
+			local vehicleId = index[plate]
 			local attempts = 0
-			ESX.Game.DeleteVehicle(vehicleId.vehicle)
+			ESX.Game.DeleteVehicle(vehicleId)
 			isBusy = true
 
-			Citizen.CreateThread(function()
+			CreateThread(function()
+				BeginTextCommandBusyspinnerOn('STRING')
+				AddTextComponentSubstringPlayerName(_U('garage_storing'))
+				EndTextCommandBusyspinnerOn(4)
+
 				while isBusy do
-					Citizen.Wait(0)
-					drawLoadingText(_U('garage_storing'), 255, 255, 255, 255)
+					Wait(100)
 				end
+
+				BusyspinnerOff()
 			end)
 
 			-- Workaround for vehicle not deleting when other players are near it.
-			while DoesEntityExist(vehicleId.vehicle) do
-				Citizen.Wait(500)
+			while DoesEntityExist(vehicleId) do
+				Wait(500)
 				attempts = attempts + 1
 
 				-- Give up
@@ -153,9 +158,10 @@ function StoreNearbyVehicle(playerCoords)
 
 				vehicles = ESX.Game.GetVehiclesInArea(playerCoords, 30.0)
 				if #vehicles > 0 then
-					for k,v in ipairs(vehicles) do
-						if ESX.Math.Trim(GetVehicleNumberPlateText(v)) == vehicleId.plate then
-							ESX.Game.DeleteVehicle(v)
+					for i = 1, #vehicles do
+						local vehicle = vehicles[i]
+						if ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)) == plate then
+							ESX.Game.DeleteVehicle(vehicle)
 							break
 						end
 					end
@@ -167,7 +173,7 @@ function StoreNearbyVehicle(playerCoords)
 		else
 			ESX.ShowNotification(_U('garage_has_notstored'))
 		end
-	end, vehiclePlates)
+	end, plates)
 end
 
 function GetAvailableVehicleSpawnPoint(hospital, part, partNum)
@@ -272,15 +278,15 @@ function OpenShopMenu(elements, restoreCoords, shopCoords)
 	end)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if isInShopMenu then
 			DisableControlAction(0, 75, true)  -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
@@ -304,7 +310,7 @@ function WaitForVehicleToLoad(modelHash)
 		EndTextCommandBusyspinnerOn(4)
 
 		while not HasModelLoaded(modelHash) do
-			Citizen.Wait(0)
+			Wait(0)
 			DisableAllControlActions(0)
 		end
 

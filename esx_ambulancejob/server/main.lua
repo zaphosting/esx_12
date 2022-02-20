@@ -100,6 +100,11 @@ end)
 ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
+	if Config.OxInventory and Config.RemoveItemsAfterRPDeath then
+		exports.ox_inventory:ClearInventory(xPlayer.source)
+		return cb()
+	end
+
 	if Config.RemoveCashAfterRPDeath then
 		if xPlayer.getMoney() > 0 then
 			xPlayer.removeMoney(xPlayer.getMoney())
@@ -118,6 +123,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(
 		end
 	end
 
+	if Config.OxInventory then return cb() end
+
 	local playerLoadout = {}
 	if Config.RemoveWeaponsAfterRPDeath then
 		for i=1, #xPlayer.loadout, 1 do
@@ -129,8 +136,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(
 		end
 
 		-- give back wepaons after a couple of seconds
-		Citizen.CreateThread(function()
-			Citizen.Wait(5000)
+		CreateThread(function()
+			Wait(5000)
 			for i=1, #playerLoadout, 1 do
 				if playerLoadout[i].label ~= nil then
 					xPlayer.addWeapon(playerLoadout[i].name, playerLoadout[i].ammo)
@@ -178,14 +185,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:buyJobVehicle', function(source, cb
 		if xPlayer.getMoney() >= price then
 			xPlayer.removeMoney(price)
 
-			MySQL.Async.execute('INSERT INTO owned_vehicles (owner, vehicle, plate, type, job, `stored`) VALUES (@owner, @vehicle, @plate, @type, @job, @stored)', {
-				['@owner'] = xPlayer.identifier,
-				['@vehicle'] = json.encode(vehicleProps),
-				['@plate'] = vehicleProps.plate,
-				['@type'] = type,
-				['@job'] = xPlayer.job.name,
-				['@stored'] = true
-			}, function (rowsChanged)
+			MySQL.insert('INSERT INTO owned_vehicles (owner, vehicle, plate, type, job, `stored`) VALUES (?, ?, ?, ?, ?, ?)', {xPlayer.identifier, json.encode(vehicleProps), vehicleProps.plate, type, xPlayer.job.name, true},
+			function (rowsChanged)
 				cb(true)
 			end)
 		else
@@ -194,46 +195,32 @@ ESX.RegisterServerCallback('esx_ambulancejob:buyJobVehicle', function(source, cb
 	end
 end)
 
-ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(source, cb, nearbyVehicles)
+ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(source, cb, plates)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local foundPlate, foundNum
 
-	for k,v in ipairs(nearbyVehicles) do
-		local result = MySQL.Sync.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND plate = @plate AND job = @job', {
-			['@owner'] = xPlayer.identifier,
-			['@plate'] = v.plate,
-			['@job'] = xPlayer.job.name
-		})
+	local plate = MySQL.scalar.await('SELECT plate FROM owned_vehicles WHERE owner = ? AND plate IN (?) AND job = ?', {xPlayer.identifier, plates, xPlayer.job.name})
 
-		if result[1] then
-			foundPlate, foundNum = result[1].plate, k
-			break
-		end
-	end
-
-	if not foundPlate then
-		cb(false)
-	else
-		MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true WHERE owner = @owner AND plate = @plate AND job = @job', {
-			['@owner'] = xPlayer.identifier,
-			['@plate'] = foundPlate,
-			['@job'] = xPlayer.job.name
-		}, function (rowsChanged)
+	if plate then
+		MySQL.update('UPDATE owned_vehicles SET `stored` = true WHERE owner = ? AND plate = ? AND job = ?', {xPlayer.identifier, plate, xPlayer.job.name},
+		function(rowsChanged)
 			if rowsChanged == 0 then
 				cb(false)
 			else
-				cb(true, foundNum)
+				cb(plate)
 			end
 		end)
+	else
+		cb(false)
 	end
 end)
 
 function getPriceFromHash(vehicleHash, jobGrade, type)
 	local vehicles = Config.AuthorizedVehicles[type][jobGrade]
 
-	for k,v in ipairs(vehicles) do
-		if GetHashKey(v.model) == vehicleHash then
-			return v.price
+	for i = 1, #vehicles do
+		local vehicle = vehicles[i]
+		if GetHashKey(vehicle.model) == vehicleHash then
+			return vehicle.price
 		end
 	end
 
@@ -277,6 +264,10 @@ end, true, {help = _U('revive_help'), validate = true, arguments = {
 	{name = 'playerId', help = 'The player id', type = 'player'}
 }})
 
+ESX.RegisterCommand('reviveall', "admin", function(xPlayer, args, showError)
+	TriggerClientEvent('esx_ambulancejob:revive', -1)
+end, false)
+
 ESX.RegisterUsableItem('medikit', function(source)
 	if not playersHealing[source] then
 		local xPlayer = ESX.GetPlayerFromId(source)
@@ -285,7 +276,7 @@ ESX.RegisterUsableItem('medikit', function(source)
 		playersHealing[source] = true
 		TriggerClientEvent('esx_ambulancejob:useItem', source, 'medikit')
 
-		Citizen.Wait(10000)
+		Wait(10000)
 		playersHealing[source] = nil
 	end
 end)
@@ -298,24 +289,20 @@ ESX.RegisterUsableItem('bandage', function(source)
 		playersHealing[source] = true
 		TriggerClientEvent('esx_ambulancejob:useItem', source, 'bandage')
 
-		Citizen.Wait(10000)
+		Wait(10000)
 		playersHealing[source] = nil
 	end
 end)
 
 ESX.RegisterServerCallback('esx_ambulancejob:getDeathStatus', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
+	MySQL.scalar('SELECT is_dead FROM users WHERE identifier = ?', {xPlayer.identifier}, function(isDead)
 
-	MySQL.Async.fetchScalar('SELECT is_dead FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(isDead)
-		local isDead = isDead == 1 and true or false
-				
-		if isDead then
-			print(('[esx_ambulancejob] [^2INFO^7] "%s" attempted combat logging'):format(xPlayer.identifier))
+		if isDead == 1 then
+			cb(true)
+		else
+			cb(false)
 		end
-
-		cb(isDead)
 	end)
 end)
 
@@ -324,9 +311,6 @@ AddEventHandler('esx_ambulancejob:setDeathStatus', function(isDead)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if type(isDead) == 'boolean' then
-		MySQL.Sync.execute('UPDATE users SET is_dead = @isDead WHERE identifier = @identifier', {
-			['@identifier'] = xPlayer.identifier,
-			['@isDead'] = isDead
-		})
+		MySQL.update('UPDATE users SET is_dead = ? WHERE identifier = ?', {isDead, xPlayer.identifier})
 	end
 end)

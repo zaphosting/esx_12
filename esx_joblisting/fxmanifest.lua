@@ -4,12 +4,12 @@ game 'gta5'
 
 description 'ESX Job Listing'
 
-version 'legacy'
+version '1.5.0'
 
 shared_script '@es_extended/imports.lua'
 
 server_scripts {
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'@es_extended/locale.lua',
 	'config.lua',
 	'locales/de.lua',

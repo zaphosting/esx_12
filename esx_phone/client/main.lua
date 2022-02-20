@@ -42,7 +42,7 @@ AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 	PhoneData.contacts = {}
 
 	for i=1, #contacts, 1 do
-		contacts[i].online = (PhoneNumberSources[contacts[i].number] == nil and false or NetworkIsPlayerActive(GetPlayerFromServerId(PhoneNumberSources[contacts[i].number]))),
+		contacts[i].online = (PhoneNumberSources[contacts[i].number] == nil and false or NetworkIsPlayerActive(GetPlayerFromServerId(PhoneNumberSources[contacts[i].number])))
 		table.insert(PhoneData.contacts, contacts[i])
 	end
 
@@ -215,9 +215,9 @@ RegisterNUICallback('escape', function()
 	ESX.UI.Menu.Close('phone', GetCurrentResourceName(), 'main')
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if GUI.PhoneIsShowed then -- codes here: https://pastebin.com/guYd0ht4
 			DisableControlAction(0, 1,    true) -- LookLeftRight
@@ -241,7 +241,7 @@ Citizen.CreateThread(function()
 		else
 			-- open phone
 			-- todo: is player busy (handcuffed, etc)
-			if IsControlJustReleased(0, 288) and IsInputDisabled(0) then
+			if IsControlJustReleased(0, 288) and IsUsingKeyboard(0) then
 				if not ESX.UI.Menu.IsOpen('phone', GetCurrentResourceName(), 'main') then
 					ESX.UI.Menu.CloseAll()
 					ESX.UI.Menu.Open('phone', GetCurrentResourceName(), 'main')
@@ -260,14 +260,14 @@ AddEventHandler('onResourceStop', function(resource)
 end)
 
 -- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
 
-			if IsControlJustReleased(0, 38) and IsInputDisabled(0) then
+			if IsControlJustReleased(0, 38) and IsUsingKeyboard(0) then
 				if CurrentAction == 'dispatch' then
 					TriggerServerEvent('esx_phone:stopDispatch', CurrentDispatchRequestId)
 					SetNewWaypoint(CurrentActionData.position.x, CurrentActionData.position.y)
@@ -276,7 +276,7 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)

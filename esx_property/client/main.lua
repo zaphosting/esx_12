@@ -103,18 +103,18 @@ function EnterProperty(name, owner)
 
 	TriggerServerEvent('esx_property:saveLastProperty', name)
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		DoScreenFadeOut(800)
 
 		while not IsScreenFadedOut() do
-			Citizen.Wait(0)
+			Wait(0)
 		end
 
 		for i=1, #property.ipls, 1 do
 			RequestIpl(property.ipls[i])
 
 			while not IsIplActive(property.ipls[i]) do
-				Citizen.Wait(0)
+				Wait(0)
 			end
 		end
 
@@ -139,11 +139,11 @@ function ExitProperty(name)
 
 	TriggerServerEvent('esx_property:deleteLastProperty')
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		DoScreenFadeOut(800)
 
 		while not IsScreenFadedOut() do
-			Citizen.Wait(0)
+			Wait(0)
 		end
 
 		SetEntityCoords(playerPed, outside.x, outside.y, outside.z)
@@ -272,7 +272,7 @@ end
 
 function OpenGatewayMenu(property)
 	if Config.EnablePlayerManagement then
-		OpenGatewayOwnedPropertiesMenu(gatewayProperties)
+		OpenGatewayOwnedPropertiesMenu(property)
 	else
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'gateway', {
 			title    = property.name,
@@ -400,8 +400,12 @@ function OpenRoomMenu(property, owner)
 		table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
 	end
 
-	table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
-	table.insert(elements, {label = _U('deposit_object'), value = 'player_inventory'})
+	if Config.OxInventory then
+		table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
+	else
+		table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
+		table.insert(elements, {label = _U('deposit_object'), value = 'player_inventory'})
+	end
 
 	ESX.UI.Menu.CloseAll()
 
@@ -506,6 +510,11 @@ function OpenRoomMenu(property, owner)
 end
 
 function OpenRoomInventoryMenu(property, owner)
+	if Config.OxInventory then
+		exports.ox_inventory:openInventory('stash', {id = property.name, owner = owner})
+		return ESX.UI.Menu.CloseAll()
+	end
+
 	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 		local elements = {}
 
@@ -663,9 +672,9 @@ end)
 
 AddEventHandler('esx:onPlayerSpawn', function()
 	if firstSpawn then
-		Citizen.CreateThread(function()
+		CreateThread(function()
 			while not ESX.IsPlayerLoaded() do
-				Citizen.Wait(0)
+				Wait(0)
 			end
 
 			ESX.TriggerServerCallback('esx_property:getLastProperty', function(propertyName)
@@ -677,7 +686,7 @@ AddEventHandler('esx:onPlayerSpawn', function()
 							RequestIpl(property.ipls[i])
 
 							while not IsIplActive(property.ipls[i]) do
-								Citizen.Wait(0)
+								Wait(0)
 							end
 						end
 
@@ -771,9 +780,9 @@ AddEventHandler('esx_property:hasExitedMarker', function(name, part)
 end)
 
 -- Enter / Exit marker events & Draw markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		local coords = GetEntityCoords(PlayerPedId())
 		local isInMarker, letSleep = false, true
@@ -784,7 +793,8 @@ Citizen.CreateThread(function()
 
 			-- Entering
 			if property.entering and not property.disabled then
-				local distance = GetDistanceBetweenCoords(coords, property.entering.x, property.entering.y, property.entering.z, true)
+				local Pos = vector3(property.entering.x, property.entering.y, property.entering.z)
+				local distance = #(coords - Pos)
 
 				if distance < Config.DrawDistance then
 					DrawMarker(Config.MarkerType, property.entering.x, property.entering.y, property.entering.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, nil, nil, false)
@@ -803,7 +813,8 @@ Citizen.CreateThread(function()
 
 			-- Exit
 			if property.exit and not property.disabled then
-				local distance = GetDistanceBetweenCoords(coords, property.exit.x, property.exit.y, property.exit.z, true)
+				local Pos = vector3(property.exit.x, property.exit.y, property.exit.z)
+				local distance = #(coords - Pos)
 
 				if distance < Config.DrawDistance then
 					DrawMarker(Config.MarkerType, property.exit.x, property.exit.y, property.exit.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, nil, nil, false)
@@ -819,7 +830,8 @@ Citizen.CreateThread(function()
 
 			-- Room menu
 			if property.roomMenu and hasChest and not property.disabled then
-				local distance = GetDistanceBetweenCoords(coords, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, true)
+				local Pos = vector3(property.roomMenu.x, property.roomMenu.y, property.roomMenu.z)
+				local distance = #(coords - Pos)
 
 				if distance < Config.DrawDistance then
 					DrawMarker(Config.MarkerType, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.RoomMenuMarkerColor.r, Config.RoomMenuMarkerColor.g, Config.RoomMenuMarkerColor.b, 100, false, true, 2, false, nil, nil, false)
@@ -848,15 +860,15 @@ Citizen.CreateThread(function()
 		end
 
 		if letSleep then
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
 
 -- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -879,7 +891,7 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)

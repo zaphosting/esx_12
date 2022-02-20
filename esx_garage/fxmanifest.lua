@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'ESX Garage'
 
-version 'legacy'
+version '1.5.0'
 
 shared_script '@es_extended/imports.lua'
 
@@ -17,7 +17,7 @@ server_scripts {
 	'locales/fr.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'config.lua',
 	'server/main.lua'
 }

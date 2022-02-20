@@ -361,7 +361,7 @@ function GetAction(data)
 end
 
 -- Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,v in pairs(Config.Zones) do
 		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
 
@@ -376,18 +376,19 @@ Citizen.CreateThread(function()
 end)
 
 -- Activate menu when player is inside marker
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPed = PlayerPedId()
 
 		if IsPedInAnyVehicle(playerPed, false) then
-			local coords = GetEntityCoords(PlayerPedId())
+			local coords = GetEntityCoords(playerPed)
 			local currentZone, zone, lastZone
 
 			if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'mechanic') or not Config.IsMechanicJobOnly then
 				for k,v in pairs(Config.Zones) do
-					if GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x and not lsMenuIsShowed then
+					local zonePos = vector3(v.Pos.x, v.Pos.y, v.Pos.z)
+					if #(coords - zonePos) < v.Size.x and not lsMenuIsShowed then
 						isInLSMarker  = true
 						ESX.ShowHelpNotification(v.Hint)
 						break
@@ -424,9 +425,9 @@ Citizen.CreateThread(function()
 end)
 
 -- Prevent Free Tunning Bug
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 
 		if lsMenuIsShowed then
 			DisableControlAction(2, 288, true)
@@ -438,7 +439,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, 75, true)  -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)

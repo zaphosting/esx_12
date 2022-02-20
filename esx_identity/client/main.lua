@@ -1,9 +1,10 @@
 local loadingScreenFinished = false
+local ready = false
 
 RegisterNetEvent('esx_identity:alreadyRegistered')
 AddEventHandler('esx_identity:alreadyRegistered', function()
 	while not loadingScreenFinished do
-		Citizen.Wait(100)
+		Wait(100)
 	end
 
 	TriggerEvent('esx_skin:playerRegistered')
@@ -13,21 +14,20 @@ AddEventHandler('esx:loadingScreenOff', function()
 	loadingScreenFinished = true
 end)
 
+RegisterNUICallback('ready', function(data, cb)
+	ready = true
+	cb(1)
+end)
+
 if not Config.UseDeferrals then
-	local guiEnabled, isDead = false, false
-
-	AddEventHandler('esx:onPlayerDeath', function(data)
-		isDead = true
-	end)
-
-	AddEventHandler('esx:onPlayerSpawn', function(spawn)
-		isDead = false
-	end)
+	local guiEnabled = false
 
 	function EnableGui(state)
 		SetNuiFocus(state, state)
 		guiEnabled = state
-
+		while not ready do
+			Citizen.Wait(500)
+		end
 		SendNUIMessage({
 			type = "enableui",
 			enable = state
@@ -38,7 +38,7 @@ if not Config.UseDeferrals then
 	AddEventHandler('esx_identity:showRegisterIdentity', function()
 		TriggerEvent('esx_skin:resetFirstSpawn')
 
-		if not isDead then
+		if not ESX.GetPlayerData().dead then
 			EnableGui(true)
 		end
 	end)
@@ -55,9 +55,9 @@ if not Config.UseDeferrals then
 		end, data)
 	end)
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while true do
-			Citizen.Wait(5)
+			Wait(0)
 
 			if guiEnabled then
 				DisableControlAction(0, 1,   true) -- LookLeftRight
@@ -79,6 +79,8 @@ if not Config.UseDeferrals then
 				DisableControlAction(0, 143, true) -- disable melee
 				DisableControlAction(0, 75,  true) -- disable exit vehicle
 				DisableControlAction(27, 75, true) -- disable exit vehicle
+			else 
+				Wait(500)
 			end
 		end
 	end)

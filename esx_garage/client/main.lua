@@ -16,9 +16,9 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 		local garage    = Config.Garages[name]
 		thisGarage 		= garage
 		
-		for k,v in pairs(Config.Garages) do
-			if k ~= name then
-				v.disabled = true
+		for i=1, #Config.Garages, 1 do
+			if Config.Garages[i].name ~= name then
+				Config.Garages[i].disabled = true
 			end
 		end
 
@@ -59,7 +59,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 								for j=1, #vehicles, 1 do
 
 									if i == vehicles[j].zone then
-										local spawn = function(j)
+										local function spawn(j)
 
 											local vehicle = GetClosestVehicle(garage.Parkings[i].Pos.x,  garage.Parkings[i].Pos.y,  garage.Parkings[i].Pos.z,  2.0,  0,  71)
 
@@ -97,7 +97,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 								for j=1, #vehicles, 1 do
 
 									if i == vehicles[j].zone then
-										local spawn = function(j)
+										local function spawn(j)
 
 											local vehicle = GetClosestVehicle(garage.Parkings[i].Pos.x,  garage.Parkings[i].Pos.garage.Parkings[i].Pos.y,  garage.Parkings[i].Pos.z,  2.0,  0,  71)
 
@@ -138,7 +138,7 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 						for j=1, #vehicles, 1 do
 
 							if i == vehicles[j].zone then
-								local spawn = function(j)
+								local function spawn(j)
 
 									local vehicle = GetClosestVehicle(garage.Parkings[i].Pos.x,  garage.Parkings[i].Pos.y,  garage.Parkings[i].Pos.z,  2.0,  0,  71)
 
@@ -214,9 +214,9 @@ AddEventHandler('esx_garage:hasEnteredMarker', function(name, part, parking)
 
 		end
 		
-		for k,v in pairs(Config.Garages) do
-			if k ~= name then
-				v.disabled = false
+		for i=1, #Config.Garages, 1 do
+			if Config.Garages[i].name ~= name then
+				Config.Garages[i].disabled = false
 			end
 		end
 		
@@ -258,7 +258,7 @@ AddEventHandler('esx_property:hasExitedMarker', function(name, part, parking)
 end)
 
 -- Create Blips
-Citizen.CreateThread(function()
+CreateThread(function()
 		
 	for k,v in pairs(Config.Garages) do
 
@@ -273,7 +273,7 @@ Citizen.CreateThread(function()
 			SetBlipAsShortRange(blip, true)
 
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Garage")
+			AddTextComponentSubstringPlayerName("Garage")
 			EndTextCommandSetBlipName(blip)
 
 		end
@@ -284,7 +284,7 @@ end)
 
 local nearMarker = false
 -- Display markers
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		local sleep = 500
 		
@@ -327,12 +327,12 @@ Citizen.CreateThread(function()
 
 		end
 		if sleep == 0 then nearMarker = true else nearMarker = false end
-		Citizen.Wait(sleep)
+		Wait(sleep)
 	end
 end)
 
 -- Enter / Exit marker events
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		if nearMarker then
 			local playerPed      = PlayerPedId()
@@ -390,7 +390,7 @@ Citizen.CreateThread(function()
 
 				TriggerEvent('esx_property:hasExitedMarker', LastGarage, LastPart, LastParking)
 			end
-			Citizen.Wait(1)
-		else Citizen.Wait(500) end
+			Wait(0)
+		else Wait(500) end
 	end
 end)
