@@ -124,14 +124,14 @@ function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion)
 				if playerId == 0 then
 					print(('[^3WARNING^7] %s^7'):format(error))
 				else
-					xPlayer.triggerEvent('chat:addMessage', {args = {'^1SYSTEM', error}})
+					xPlayer.showNotification(error)
 				end
 			else
 				cb(xPlayer or false, args, function(msg)
 					if playerId == 0 then
 						print(('[^3WARNING^7] %s^7'):format(msg))
 					else
-						xPlayer.triggerEvent('chat:addMessage', {args = {'^1SYSTEM', msg}})
+						xPlayer.showNotification(msg)
 					end
 				end)
 			end
@@ -213,7 +213,7 @@ function ESX.GetPlayers()
 	local sources = {}
 
 	for k,v in pairs(ESX.Players) do
-		table.insert(sources, k)
+		sources[#sources + 1] = k
 	end
 
 	return sources
@@ -224,10 +224,10 @@ function ESX.GetExtendedPlayers(key, val)
 	for k, v in pairs(ESX.Players) do
 		if key then
 			if (key == 'job' and v.job.name == val) or v[key] == val then
-				table.insert(xPlayers, v)
+				xPlayers[#xPlayers + 1] = v
 			end
 		else
-			table.insert(xPlayers, v)
+			xPlayers[#xPlayers + 1] = v
 		end
 	end
 	return xPlayers

@@ -167,7 +167,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 					for k2,component in ipairs(v.components) do
 						if component ~= 'clip_default' then
-							table.insert(components, component)
+							components[#components + 1] = component
 						end
 					end
 
@@ -196,13 +196,12 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 			local account = self.getAccount(accountName)
 
 			if account then
-				local prevMoney = account.money
 				local newMoney = ESX.Math.Round(money)
 				account.money = newMoney
 
 				self.triggerEvent('esx:setAccountMoney', account)
 
-				if Inventory and (accountName == 'money' or accountName == 'black_money') then
+				if Inventory and Inventory.accounts[accountName] then
 					Inventory.SetItem(self.source, accountName, money)
 				end
 			end
@@ -219,7 +218,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 				self.triggerEvent('esx:setAccountMoney', account)
 
-				if Inventory and (accountName == 'money' or accountName == 'black_money') then
+				if Inventory and Inventory.accounts[accountName] then
 					Inventory.AddItem(self.source, accountName, money)
 				end
 			end
@@ -236,7 +235,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 				self.triggerEvent('esx:setAccountMoney', account)
 
-				if Inventory and (accountName == 'money' or accountName == 'black_money') then
+				if Inventory and Inventory.accounts[accountName] then
 					Inventory.RemoveItem(self.source, accountName, money)
 				end
 			end
@@ -421,7 +420,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 			if component then
 				if not self.hasWeaponComponent(weaponName, weaponComponent) then
-					table.insert(self.loadout[loadoutNum].components, weaponComponent)
+					self.loadout[loadoutNum].components[#self.loadout[loadoutNum].components + 1] = weaponComponent
 					self.triggerEvent('esx:addWeaponComponent', weaponName, weaponComponent)
 					self.triggerEvent('esx:addInventoryItem', component.label, false, true)
 				end
@@ -568,6 +567,21 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 		return false
 	end
+
+	function self.hasItem(item, metadata)
+		if Inventory then
+			return Inventory.GetItem(self.source, name, metadata)
+		end
+
+		for k,v in ipairs(self.inventory) do
+			if (v.name == name) and (v.count >= 1) then
+				return v, v.count
+			end
+		end
+
+		return false
+	end
+
 
 	function self.getWeapon(weaponName)
 		if Inventory then return end
