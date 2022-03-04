@@ -1,8 +1,12 @@
 local playersHealing, deadPlayers = {}, {}
 
+if GetResourceState("esx_phone") ~= 'missing' then
 TriggerEvent('esx_phone:registerNumber', 'ambulance', _U('alert_ambulance'), true, true)
+end
 
+if GetResourceState("esx_society") ~= 'missing' then
 TriggerEvent('esx_society:registerSociety', 'ambulance', 'Ambulance', 'society_ambulance', 'society_ambulance', 'society_ambulance', {type = 'public'})
+end
 
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
@@ -297,12 +301,7 @@ end)
 ESX.RegisterServerCallback('esx_ambulancejob:getDeathStatus', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.scalar('SELECT is_dead FROM users WHERE identifier = ?', {xPlayer.identifier}, function(isDead)
-
-		if isDead == 1 then
-			cb(true)
-		else
-			cb(false)
-		end
+		cb(isDead)
 	end)
 end)
 
