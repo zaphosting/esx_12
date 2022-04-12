@@ -548,7 +548,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `job_grade` int(11) DEFAULT 0,
   `loadout` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
-  `is_dead` int(1) DEFAULT 0,
+  `is_dead` tinyint(1) DEFAULT 0,
   `is_male` int(11) DEFAULT 1,
   `accessories` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `firstname` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
