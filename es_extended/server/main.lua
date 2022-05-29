@@ -223,6 +223,7 @@ function loadESXPlayer(identifier, playerId, isNew)
         else
             userData.group = result.group
         end
+        ExecuteCommand(('add_principal identifier.license:%s group.%s'):format(identifier, userData.group))
     else
         userData.group = 'user'
     end
