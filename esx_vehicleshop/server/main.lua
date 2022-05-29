@@ -84,7 +84,7 @@ AddEventHandler('esx_vehicleshop:setVehicleOwnedPlayerId', function(playerId, ve
 end)
 
 ESX.RegisterServerCallback('esx_vehicleshop:getSoldVehicles', function(source, cb)
-	MySQL.query('SELECT client, model, plate, soldby, date FROM vehicle_sold', function(result)
+	MySQL.query('SELECT client, model, plate, soldby, date FROM vehicle_sold ORDER BY DATE DESC', function(result)
 		cb(result)
 	end)
 end)
@@ -394,7 +394,7 @@ function PayRent()
 				if bank >= sum and #v > 1 then
 					total = total + sum
 					xPlayer.removeAccountMoney('bank', sum)
-					xPlayer.showNotification(('You have paid ~g~$%s~s~ for all of your rentals'):format(ESX.Math.GroupDigits(sum)))
+					xPlayer.showNotification(('You have paid $%s for all of your rentals'):format(ESX.Math.GroupDigits(sum)))
 				else
 					for i = 1, #v do
 						local rental = v[i]

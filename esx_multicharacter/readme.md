@@ -1,82 +1,49 @@
-### Requirements (ensure you are using the latest)
-- [ESX Legacy](https://github.com/esx-framework/esx-legacy)
-- [Spawnmanager](https://github.com/citizenfx/cfx-server-data/tree/master/resources/%5Bmanagers%5D/spawnmanager)
 
-- [OxMySQL](https://github.com/overextended/oxmysql/) or [MySQL Async 3.3.2](https://github.com/brouznouf/fivem-mysql-async/releases/tag/3.3.2)
+# Preview
 
-### Installation
-- Modify your ESX config with `Config.Multichar = true`
-- Set your database name for `Config.Database` in server/main.lua
-- Run `esx_multicharacter.sql` into your database
-- All owner and identifier columns should be set to `VARCHAR(60)` to ensure correct data entry
-	- The resource will attempt to set columns automatically
-
-### Changing character prefix
-- Each character is created a modified identifier (char#:identifier)
-- Due to an oversight, ESX Legacy only supports a prefix with a length of 4
-- If you change the length, refer to https://github.com/esx-framework/esx-legacy/blob/main/%5Besx%5D/es_extended/server/classes/player.lua#L17
-- Modify this line to the following
-```lua
-if Config.Multichar then self.license = 'license:'..identifier:sub(identifier:find(':'), identifier:len()) else self.license = 'license:'..identifier end
-```
-
-### Conflicts
-* The following resources should not be used with ESX Legacy and can result in errors
-	- essentialmode
-	- basic-gamemode
-	- fivem-map-skater
-	- fivem-map-hipster
-	- default_spawnpoint
-
-### Common issues
-#### Black screen / loading scripts
-	- Download and run all requirements
-	- Use a fresh spawnmanager as many people alter the code
-	- Ensure none of the conflicting resources are enabled
-
-#### The menu interface is esx_menu_default - you can use any version if you want a different appearance
 ![image](https://user-images.githubusercontent.com/65407488/126976325-17cc3241-bb9e-451f-a6ed-610a8ef52fa5.png)
 
+## Installation
+
+- Modify your ESX config with `Config.Multichar = true`
+- All owner and identifier columns should be set to `VARCHAR(60)` to ensure correct data entry
+  - The resource will attempt to set columns automatically
+
 ### Relogging
+
 - Do not enable this setting if you do not intend to properly set up relog support
 - Requires the latest update for ESX Status (prevents multiple status ticks from running)
 - Add the following events to resources that require support for relogging, or
-- Add them to [@esx/imports.lua](https://github.com/esx-framework/es_extended/blob/legacy/imports.lua) (and use the imports in your resources)
+- Add them to [@es_extended/imports.lua](https://github.com/esx-framework/esx-legacy/blob/main/[esx]/es_extended/imports.lua) (and use the imports in your resources)
+
 ```lua
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-	ESX.PlayerData = xPlayer
- 	ESX.PlayerLoaded = true
+RegisterNetEvent('esx:playerLoaded', function(xPlayer)
+ ESX.PlayerData = xPlayer
+  ESX.PlayerLoaded = true
 end)
 
-RegisterNetEvent('esx:onPlayerLogout')
-AddEventHandler('esx:onPlayerLogout', function()
-	ESX.PlayerLoaded = false
-	ESX.PlayerData = {}
+RegisterNetEvent('esx:onPlayerLogout', function()
+ ESX.PlayerLoaded = false
+ ESX.PlayerData = {}
 end)
 ```
-- Any threads using ESX.PlayerData in a loop should check if ESX.PlayerLoaded is true
-	- This ensures the resource does not error after relogging, or while on character selection
-	- Setup correctly you can break your loops and trigger them again after loading
-	- Refer to my [boilerplate](https://github.com/thelindat/esx_legacy_boilerplate) for more information and usage examples
 
 ### Notes
-- This resource is not compatible with ExtendedMode or previous versions of ESX
-- Legacy, skin, and identity must be updated to at least the minimum commits specified above
+
 - Characters are stored in the users table as `char#:license` - if you need to use a different identifier then you need to modify ESX itself
 - Character deletion does not require manual entries for the tables to remove
 - As characters are stored with unique identifiers, there is no excessive queries being executed
-	
+
 ### Kashacters
+
 - This project is forked from the [kashacters multicharacter resource](https://github.com/FiveEYZ/esx_kashacter)
 - Most of the code has been entirely rewritten
 - KASH has given permission for this resource to use his code and the addition of a license
 - The license obviously does not apply to previous versions and KASH has stated his resource is free to be used however
 
-
-
 ## Notice
-Copyright© 2021 Linden and KASH
+
+Copyright © 2022 [Linden](https://github.com/thelindat/), ESX-Framework (fournier Brice & Jérémie N'gadi) and KASH
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -89,7 +56,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see https://www.gnu.org/licenses.
-
-
-### Thanks to KASH, XxFri3ndlyxX, and all those who have contributed
+along with this program.  If not, see <https://www.gnu.org/licenses>.

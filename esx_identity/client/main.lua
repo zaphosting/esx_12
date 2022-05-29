@@ -26,22 +26,26 @@ if not Config.UseDeferrals then
 		SetNuiFocus(state, state)
 		guiEnabled = state
 		while not ready do
-			Citizen.Wait(500)
+			Wait(500)
 		end
 		SendNUIMessage({
 			type = "enableui",
 			enable = state
 		})
+		if state == false then ClearTimecycleModifier() end
 	end
 
 	RegisterNetEvent('esx_identity:showRegisterIdentity')
 	AddEventHandler('esx_identity:showRegisterIdentity', function()
 		TriggerEvent('esx_skin:resetFirstSpawn')
 
-		if not ESX.GetPlayerData().dead then
+		if not ESX.PlayerData.dead then
 			EnableGui(true)
+			SetTimecycleModifier("hud_def_blur")
+		SetTimecycleModifierStrength(1)
 		end
 	end)
+
 
 	RegisterNUICallback('register', function(data, cb)
 		ESX.TriggerServerCallback('esx_identity:registerIdentity', function(callback)
@@ -50,7 +54,7 @@ if not Config.UseDeferrals then
 				EnableGui(false)
 				if not ESX.GetConfig().Multichar then TriggerEvent('esx_skin:playerRegistered') end
 			else
-				ESX.ShowNotification(_U('registration_error'))
+				ESX.ShowNotification(_U('registration_error'), "error",5000)
 			end
 		end, data)
 	end)

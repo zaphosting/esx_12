@@ -253,7 +253,7 @@ function OpenPropertyMenu(property)
 		menu.close()
 
 		if data.current.value == 'enter' then
-			TriggerEvent('instance:create', 'property', {property = property.name, owner = ESX.GetPlayerData().identifier})
+			TriggerEvent('instance:create', 'property', {property = property.name, owner = ESX.PlayerData.identifier})
 		elseif data.current.value == 'leave' then
 			TriggerServerEvent('esx_property:removeOwnedProperty', property.name)
 		elseif data.current.value == 'buy' then
@@ -318,7 +318,7 @@ function OpenGatewayOwnedPropertiesMenu(property)
 		local elements = {{label = _U('enter'), value = 'enter'}}
 
 		if not Config.EnablePlayerManagement then
-			table.insert(elements, {label = _U('leave'), value = 'leave'})
+			table.insert(elements, {label = _U('move_out'), value = 'leave'})
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'gateway_owned_properties_actions', {
@@ -329,7 +329,7 @@ function OpenGatewayOwnedPropertiesMenu(property)
 			menu2.close()
 
 			if data2.current.value == 'enter' then
-				TriggerEvent('instance:create', 'property', {property = data.current.value, owner = ESX.GetPlayerData().identifier})
+				TriggerEvent('instance:create', 'property', {property = data.current.value, owner = ESX.PlayerData.identifier})
 				ESX.UI.Menu.CloseAll()
 			elseif data2.current.value == 'leave' then
 				TriggerServerEvent('esx_property:removeOwnedProperty', data.current.value)
@@ -690,7 +690,7 @@ AddEventHandler('esx:onPlayerSpawn', function()
 							end
 						end
 
-						TriggerEvent('instance:create', 'property', {property = propertyName, owner = ESX.GetPlayerData().identifier})
+						TriggerEvent('instance:create', 'property', {property = propertyName, owner = ESX.PlayerData.identifier})
 					end
 				end
 			end)
@@ -860,7 +860,7 @@ CreateThread(function()
 		end
 
 		if letSleep then
-			Wait(500)
+			Wait(1500)
 		end
 	end
 end)
@@ -868,9 +868,9 @@ end)
 -- Key controls
 CreateThread(function()
 	while true do
-		Wait(0)
-
-		if CurrentAction then
+		local Sleep = 1500
+		if CurrentAction then 
+			Sleep = 0
 			ESX.ShowHelpNotification(CurrentActionMsg)
 
 			if IsControlJustReleased(0, 38) then
@@ -890,8 +890,7 @@ CreateThread(function()
 
 				CurrentAction = nil
 			end
-		else
-			Wait(500)
-		end
 	end
+	Wait(Sleep)
+end
 end)

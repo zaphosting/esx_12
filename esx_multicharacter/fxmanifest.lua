@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
-description 'https://github.com/thelindat/esx_multicharacter'
-version '1.4.2'
+description 'Official Multicharacter System For ESX Legacy'
+version '1.7.5'
 lua54 'yes'
 
 dependencies {
@@ -19,7 +19,7 @@ shared_scripts {
 
 server_scripts {
 	'@es_extended/imports.lua',
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'server/*.lua',
 }
 

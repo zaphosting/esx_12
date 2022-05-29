@@ -51,7 +51,7 @@ if ESX.GetConfig().Multichar then
 			local keys = {18, 27, 172, 173, 174, 175, 176, 177, 187, 188, 191, 201, 108, 109}
 			while hidePlayers do
 				DisableAllControlActions(0)
-				for i=1, #keys do
+				for i = 1, #keys do
 					EnableControlAction(0, keys[i], true)
 				end
 				SetEntityVisible(PlayerPedId(), 0, 0)
@@ -64,7 +64,7 @@ if ESX.GetConfig().Multichar then
 				HideHudAndRadarThisFrame()
 				Citizen.Wait(0)
 				local vehicles = GetGamePool('CVehicle')
-				for i=1, #vehicles do
+				for i = 1, #vehicles do
 					SetEntityLocallyInvisible(vehicles[i])
 				end
 			end
@@ -80,7 +80,7 @@ if ESX.GetConfig().Multichar then
 			local playerPool = {}
 			while hidePlayers do
 				local players = GetActivePlayers()
-				for i=1, #players do
+				for i = 1, #players do
 					local player = players[i]
 					if player ~= PlayerId() and not playerPool[player] then
 						playerPool[player] = true
@@ -102,7 +102,7 @@ if ESX.GetConfig().Multichar then
 				y = Config.Spawn.y,
 				z = Config.Spawn.z,
 				heading = Config.Spawn.w,
-				model = Characters[index].model or `mp_m_freemode_01`,
+				model = Characters[index].model or GetHashKey("mp_m_freemode_01"),
 				skipFade = true
 			}, function()
 				canRelog = false
@@ -158,7 +158,7 @@ if ESX.GetConfig().Multichar then
 				y = Config.Spawn.y,
 				z = Config.Spawn.z,
 				heading = Config.Spawn.w,
-				model = `mp_m_freemode_01`,
+				model = GetHashKey("mp_m_freemode_01"),
 				skipFade = true
 			}, function()
 				canRelog = false
@@ -173,7 +173,7 @@ if ESX.GetConfig().Multichar then
 		else
 			for k,v in pairs(Characters) do
 				if not v.model and v.skin then
-					if v.skin.model then v.model = v.skin.model elseif v.skin.sex == 1 then v.model =  `mp_f_freemode_01` else v.model = `mp_m_freemode_01` end
+					if v.skin.model then v.model = v.skin.model elseif v.skin.sex == 1 then v.model = GetHashKey("mp_m_freemode_01") else v.model = GetHashKey("mp_m_freemode_01") end
 				end
 				if spawned == false then SetupCharacter(Character) end
 				local label = v.firstname..' '..v.lastname
@@ -236,7 +236,7 @@ if ESX.GetConfig().Multichar then
 				else
 					ESX.UI.Menu.CloseAll()
 					local GetSlot = function()
-						for i=1, slots do
+						for i = 1, slots do
 							if not Characters[i] then
 								return i
 							end
@@ -272,7 +272,7 @@ if ESX.GetConfig().Multichar then
 		if isNew or not skin or #skin == 1 then
 			local finished = false
 			local sex = skin.sex or 0
-			if sex == 0 then model = `mp_m_freemode_01` else model = `mp_f_freemode_01` end
+			if sex == 0 then model = GetHashKey("mp_m_freemode_01") else model = GetHashKey("mp_f_freemode_01") end
 			RequestModel(model)
 			while not HasModelLoaded(model) do
 				RequestModel(model)

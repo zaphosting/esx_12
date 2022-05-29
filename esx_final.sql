@@ -1,66 +1,64 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+CREATE TABLE `addon_account` (
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `shared` int(11) NOT NULL
+) ENGINE=InnoDB;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
-
-
-DROP TABLE IF EXISTS `accounts`;
-CREATE TABLE IF NOT EXISTS `accounts` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `money` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-DROP TABLE IF EXISTS `addon_account`;
-CREATE TABLE IF NOT EXISTS `addon_account` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shared` int(11) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Dumping data for table `addon_account`
+--
 
 INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
-('bank_savings', 'Bank Savings', 0),
 ('caution', 'caution', 0),
-('property_black_money', 'Dirty Money Property', 0),
+('property_black_money', 'Argent Sale Propriété', 0),
 ('society_ambulance', 'EMS', 1),
-('society_banker', 'Banker', 1),
 ('society_cardealer', 'Cardealer', 1),
 ('society_mechanic', 'Mechanic', 1),
 ('society_police', 'Police', 1),
-('society_realestateagent', 'Agent immobilier', 1),
 ('society_taxi', 'Taxi', 1);
 
-DROP TABLE IF EXISTS `addon_account_data`;
-CREATE TABLE IF NOT EXISTS `addon_account_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `account_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addon_account_data`
+--
+
+CREATE TABLE `addon_account_data` (
+  `id` int(11) NOT NULL,
+  `account_name` varchar(100) DEFAULT NULL,
   `money` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_addon_account_data_account_name_owner` (`account_name`,`owner`),
-  KEY `index_addon_account_data_account_name` (`account_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `owner` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `addon_account_data`
+--
 
 INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 (1, 'society_cardealer', 0, NULL),
 (2, 'society_police', 0, NULL),
 (3, 'society_ambulance', 0, NULL),
 (4, 'society_mechanic', 0, NULL),
-(5, 'society_taxi', 0, NULL);
+(5, 'society_taxi', 0, NULL),
+(6, 'caution', 0, 'dd5a2e91e9aa1b6c4fc1f66e44f949954c733450'),
+(7, 'caution', 0, 'char1:5e396ab5a00ebd7885ae4df5771b1e79535be6f6'),
+(8, 'property_black_money', 0, 'char1:5e396ab5a00ebd7885ae4df5771b1e79535be6f6');
 
-DROP TABLE IF EXISTS `addon_inventory`;
-CREATE TABLE IF NOT EXISTS `addon_inventory` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shared` int(11) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addon_inventory`
+--
+
+CREATE TABLE `addon_inventory` (
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `shared` int(11) NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `addon_inventory`
+--
 
 INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 ('property', 'Property', 0),
@@ -70,174 +68,136 @@ INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 ('society_police', 'Police', 1),
 ('society_taxi', 'Taxi', 1);
 
-DROP TABLE IF EXISTS `addon_inventory_items`;
-CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `inventory_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addon_inventory_items`
+--
+
+CREATE TABLE `addon_inventory_items` (
+  `id` int(11) NOT NULL,
+  `inventory_name` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `count` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_addon_inventory_items_inventory_name_name` (`inventory_name`,`name`),
-  KEY `index_addon_inventory_items_inventory_name_name_owner` (`inventory_name`,`name`,`owner`),
-  KEY `index_addon_inventory_inventory_name` (`inventory_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `owner` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `billing`;
-CREATE TABLE IF NOT EXISTS `billing` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sender` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target_type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amount` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `identifier` (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `cardealer_vehicles`;
-CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `vehicle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Table structure for table `billing`
+--
 
-DROP TABLE IF EXISTS `datastore`;
-CREATE TABLE IF NOT EXISTS `datastore` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shared` int(11) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `billing` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `sender` varchar(60) NOT NULL,
+  `target_type` varchar(50) NOT NULL,
+  `target` varchar(40) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cardealer_vehicles`
+--
+
+CREATE TABLE `cardealer_vehicles` (
+  `id` int(11) NOT NULL,
+  `vehicle` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `multicharacter_slots`
+--
+
+CREATE TABLE `multicharacter_slots` (
+	`identifier` VARCHAR(60) NOT NULL,
+	`slots` INT(11) NOT NULL,
+	PRIMARY KEY (`identifier`) USING BTREE,
+	INDEX `slots` (`slots`) USING BTREE
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `datastore`
+--
+
+CREATE TABLE `datastore` (
+  `name` varchar(60) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `shared` int(11) NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `datastore`
+--
 
 INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
-('property', 'Property', 0),
+('property', 'Propriété', 0),
 ('society_ambulance', 'EMS', 1),
 ('society_mechanic', 'Mechanic', 1),
 ('society_police', 'Police', 1),
-('society_taxi', 'Taxi', 1),
-('user_ears', 'Ears', 0),
-('user_glasses', 'Glasses', 0),
-('user_helmet', 'Helmet', 0),
-('user_mask', 'Mask', 0);
+('society_taxi', 'Taxi', 1);
 
-DROP TABLE IF EXISTS `datastores`;
-CREATE TABLE IF NOT EXISTS `datastores` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS `datastore_data`;
-CREATE TABLE IF NOT EXISTS `datastore_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
-  KEY `index_datastore_data_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
+    ('user_ears', 'Ears', 0),
+    ('user_glasses', 'Glasses', 0),
+    ('user_helmet', 'Helmet', 0),
+    ('user_mask', 'Mask', 0);
+    
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `datastore_data`
+--
+
+CREATE TABLE `datastore_data` (
+  `id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `owner` varchar(60) DEFAULT NULL,
+  `data` longtext DEFAULT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `datastore_data`
+--
 
 INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 (1, 'society_police', NULL, '{}'),
 (2, 'society_ambulance', NULL, '{}'),
 (3, 'society_mechanic', NULL, '{}'),
-(4, 'society_taxi', NULL, '{}');
+(4, 'society_taxi', NULL, '{}'),
+(5, 'property', 'char1:5e396ab5a00ebd7885ae4df5771b1e79535be6f6', '{}');
 
-DROP TABLE IF EXISTS `fine_types`;
-CREATE TABLE IF NOT EXISTS `fine_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `category` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-INSERT INTO `fine_types` (label, amount, category) VALUES
-	('Misuse of a horn', 30, 0),
-	('Illegally Crossing a continuous Line', 40, 0),
-	('Driving on the wrong side of the road', 250, 0),
-	('Illegal U-Turn', 250, 0),
-	('Illegally Driving Off-road', 170, 0),
-	('Refusing a Lawful Command', 30, 0),
-	('Illegally Stopping a Vehicle', 150, 0),
-	('Illegal Parking', 70, 0),
-	('Failing to Yield to the right', 70, 0),
-	('Failure to comply with Vehicle Information', 90, 0),
-	('Failing to stop at a Stop Sign ', 105, 0),
-	('Failing to stop at a Red Light', 130, 0),
-	('Illegal Passing', 100, 0),
-	('Driving an illegal Vehicle', 100, 0),
-	('Driving without a License', 1500, 0),
-	('Hit and Run', 800, 0),
-	('Exceeding Speeds Over < 5 mph', 90, 0),
-	('Exceeding Speeds Over 5-15 mph', 120, 0),
-	('Exceeding Speeds Over 15-30 mph', 180, 0),
-	('Exceeding Speeds Over > 30 mph', 300, 0),
-	('Impeding traffic flow', 110, 1),
-	('Public Intoxication', 90, 1),
-	('Disorderly conduct', 90, 1),
-	('Obstruction of Justice', 130, 1),
-	('Insults towards Civilans', 75, 1),
-	('Disrespecting of an LEO', 110, 1),
-	('Verbal Threat towards a Civilan', 90, 1),
-	('Verbal Threat towards an LEO', 150, 1),
-	('Providing False Information', 250, 1),
-	('Attempt of Corruption', 1500, 1),
-	('Brandishing a weapon in city Limits', 120, 2),
-	('Brandishing a Lethal Weapon in city Limits', 300, 2),
-	('No Firearms License', 600, 2),
-	('Possession of an Illegal Weapon', 700, 2),
-	('Possession of Burglary Tools', 300, 2),
-	('Grand Theft Auto', 1800, 2),
-	('Intent to Sell/Distrube of an illegal Substance', 1500, 2),
-	('Frabrication of an Illegal Substance', 1500, 2),
-	('Possession of an Illegal Substance ', 650, 2),
-	('Kidnapping of a Civilan', 1500, 2),
-	('Kidnapping of an LEO', 2000, 2),
-	('Robbery', 650, 2),
-	('Armed Robbery of a Store', 650, 2),
-	('Armed Robbery of a Bank', 1500, 2),
-	('Assault on a Civilian', 2000, 3),
-	('Assault of an LEO', 2500, 3),
-	('Attempt of Murder of a Civilian', 3000, 3),
-	('Attempt of Murder of an LEO', 5000, 3),
-	('Murder of a Civilian', 10000, 3),
-	('Murder of an LEO', 30000, 3),
-	('Involuntary manslaughter', 1800, 3),
-	('Fraud', 2000, 2);
+--
+-- Table structure for table `items`
+--
 
-DROP TABLE IF EXISTS `inventories`;
-CREATE TABLE IF NOT EXISTS `inventories` (
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `items` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `items` (
+  `name` varchar(50) NOT NULL,
+  `label` varchar(50) NOT NULL,
+  `weight` int(11) NOT NULL DEFAULT 1,
+  `rare` tinyint(4) NOT NULL DEFAULT 0,
+  `can_remove` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB;
 
-INSERT INTO `inventories` (`name`, `owner`, `items`) VALUES
-('test', NULL, '\"something\"');
-
-DROP TABLE IF EXISTS `items`;
-CREATE TABLE IF NOT EXISTS `items` (
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `weight` int(11) NOT NULL,
-  `rare` int(11) NOT NULL,
-  `can_remove` int(11) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Dumping data for table `items`
+--
 
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 ('alive_chicken', 'Living chicken', 1, 0, 1),
 ('bandage', 'Bandage', 2, 0, 1),
-('beer', 'Beer', 1, 0, 0),
 ('blowpipe', 'Blowtorch', 2, 0, 1),
 ('bread', 'Bread', 1, 0, 1),
 ('cannabis', 'Cannabis', 3, 0, 1),
@@ -269,17 +229,24 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 ('wood', 'Wood', 1, 0, 1),
 ('wool', 'Wool', 1, 0, 1);
 
-DROP TABLE IF EXISTS `jobs`;
-CREATE TABLE IF NOT EXISTS `jobs` (
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `whitelisted` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `name` varchar(50) NOT NULL,
+  `label` varchar(50) DEFAULT NULL,
+  `whitelisted` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `jobs`
+--
 
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 ('ambulance', 'EMS', 0),
-('banker', 'Banker', 0),
 ('cardealer', 'Cardealer', 0),
 ('fisherman', 'Fisherman', 0),
 ('fueler', 'Fueler', 0),
@@ -287,140 +254,145 @@ INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 ('mechanic', 'Mechanic', 0),
 ('miner', 'Miner', 0),
 ('police', 'LSPD', 0),
-('realestateagent', 'Real Estate Agent', 0),
 ('reporter', 'Reporter', 0),
 ('slaughterer', 'Butcher', 0),
 ('tailor', 'Tailor', 0),
 ('taxi', 'Taxi', 0),
 ('unemployed', 'Unemployed', 0);
 
-DROP TABLE IF EXISTS `job_grades`;
-CREATE TABLE IF NOT EXISTS `job_grades` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `job_name` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_grades`
+--
+
+CREATE TABLE `job_grades` (
+  `id` int(11) NOT NULL,
+  `job_name` varchar(50) DEFAULT NULL,
   `grade` int(11) NOT NULL,
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `label` varchar(50) NOT NULL,
   `salary` int(11) NOT NULL,
-  `skin_male` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `skin_female` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `job_name` (`job_name`),
-  KEY `grade` (`grade`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `skin_male` longtext NOT NULL,
+  `skin_female` longtext NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `job_grades`
+--
 
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
 (1, 'unemployed', 0, 'unemployed', 'Unemployed', 200, '{}', '{}'),
-(2, 'ambulance', 0, 'ambulance', 'Paramedic', 20, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-(3, 'ambulance', 1, 'doctor', 'Doctor', 40, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-(4, 'ambulance', 2, 'chief_doctor', 'Chief doctor', 60, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-(5, 'ambulance', 3, 'boss', 'Surgeon', 80, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-(6, 'banker', 0, 'advisor', 'Advisor', 10, '{}', '{}'),
-(7, 'banker', 1, 'banker', 'Banker', 20, '{}', '{}'),
-(8, 'banker', 2, 'business_banker', 'Investment banker', 30, '{}', '{}'),
-(9, 'banker', 3, 'trader', 'Trader', 40, '{}', '{}'),
-(10, 'banker', 4, 'boss', 'Boss', 0, '{}', '{}'),
-(11, 'lumberjack', 0, 'employee', 'Employee', 0, '{}', '{}'),
-(12, 'fisherman', 0, 'employee', 'Employee', 0, '{}', '{}'),
-(13, 'fueler', 0, 'employee', 'Employee', 0, '{}', '{}'),
-(14, 'reporter', 0, 'employee', 'Employee', 0, '{}', '{}'),
-(15, 'tailor', 0, 'employee', 'Employee', 0, '{\"mask_1\":0,\"arms\":1,\"glasses_1\":0,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":0,\"torso_1\":24,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":0,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":0,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":36,\"tshirt_2\":0,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":48,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}', '{\"mask_1\":0,\"arms\":5,\"glasses_1\":5,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":1,\"torso_1\":52,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":1,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":23,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":42,\"tshirt_2\":4,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":36,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}'),
-(16, 'miner', 0, 'employee', 'Employee', 0, '{\"tshirt_2\":1,\"ears_1\":8,\"glasses_1\":15,\"torso_2\":0,\"ears_2\":2,\"glasses_2\":3,\"shoes_2\":1,\"pants_1\":75,\"shoes_1\":51,\"bags_1\":0,\"helmet_2\":0,\"pants_2\":7,\"torso_1\":71,\"tshirt_1\":59,\"arms\":2,\"bags_2\":0,\"helmet_1\":0}', '{}'),
-(17, 'slaughterer', 0, 'employee', 'Employee', 0, '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}', '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}'),
-(18, 'mechanic', 0, 'recrue', 'Recruit', 12, '{}', '{}'),
-(19, 'mechanic', 1, 'novice', 'beginner', 24, '{}', '{}'),
-(20, 'mechanic', 2, 'experimente', 'experienced', 36, '{}', '{}'),
-(21, 'mechanic', 3, 'chief', 'Leader', 48, '{}', '{}'),
-(22, 'mechanic', 4, 'boss', 'Boss', 0, '{}', '{}'),
-(23, 'police', 0, 'recruit', 'Recruit', 20, '{}', '{}'),
-(24, 'police', 1, 'officer', 'Officier', 40, '{}', '{}'),
-(25, 'police', 2, 'sergeant', 'Sergent', 60, '{}', '{}'),
-(26, 'police', 3, 'lieutenant', 'Lieutenant', 85, '{}', '{}'),
-(27, 'police', 4, 'boss', 'Commandant', 100, '{}', '{}'),
-(28, 'realestateagent', 0, 'location', 'Employee', 10, '{}', '{}'),
-(29, 'realestateagent', 1, 'vendeur', 'Seller', 25, '{}', '{}'),
-(30, 'realestateagent', 2, 'gestion', 'Management', 40, '{}', '{}'),
-(31, 'realestateagent', 3, 'boss', 'Boss', 0, '{}', '{}'),
-(32, 'taxi', 0, 'recrue', 'Recruit', 12, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":32,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":0,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":27,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
-(33, 'taxi', 1, 'novice', 'Novice', 24, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":32,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":0,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":27,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
-(34, 'taxi', 2, 'experimente', 'Experienced', 36, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":26,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":57,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":11,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
-(35, 'taxi', 3, 'uber', 'Uber', 48, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":26,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":57,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":11,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
-(36, 'taxi', 4, 'boss', 'Boss', 0, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":29,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":1,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":4,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
-(37, 'cardealer', 0, 'recruit', 'Recruit', 10, '{}', '{}'),
-(38, 'cardealer', 1, 'novice', 'Novice', 25, '{}', '{}'),
-(39, 'cardealer', 2, 'experienced', 'Experienced', 40, '{}', '{}'),
-(40, 'cardealer', 3, 'boss', 'Boss', 0, '{}', '{}');
+(2, 'police', 0, 'recruit', 'Recrue', 20, '{}', '{}'),
+(3, 'police', 1, 'officer', 'Officier', 40, '{}', '{}'),
+(4, 'police', 2, 'sergeant', 'Sergent', 60, '{}', '{}'),
+(5, 'police', 3, 'lieutenant', 'Lieutenant', 85, '{}', '{}'),
+(6, 'police', 4, 'boss', 'Commandant', 100, '{}', '{}'),
+(11, 'cardealer', 0, 'recruit', 'Recruit', 10, '{}', '{}'),
+(12, 'cardealer', 1, 'novice', 'Novice', 25, '{}', '{}'),
+(13, 'cardealer', 2, 'experienced', 'Experienced', 40, '{}', '{}'),
+(14, 'cardealer', 3, 'boss', 'Boss', 0, '{}', '{}'),
+(15, 'lumberjack', 0, 'employee', 'Employee', 0, '{}', '{}'),
+(16, 'fisherman', 0, 'employee', 'Employee', 0, '{}', '{}'),
+(17, 'fueler', 0, 'employee', 'Employee', 0, '{}', '{}'),
+(18, 'reporter', 0, 'employee', 'Employee', 0, '{}', '{}'),
+(19, 'tailor', 0, 'employee', 'Employee', 0, '{\"mask_1\":0,\"arms\":1,\"glasses_1\":0,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":0,\"torso_1\":24,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":0,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":0,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":36,\"tshirt_2\":0,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":48,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}', '{\"mask_1\":0,\"arms\":5,\"glasses_1\":5,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":1,\"torso_1\":52,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":1,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":23,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":42,\"tshirt_2\":4,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":36,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}'),
+(20, 'miner', 0, 'employee', 'Employee', 0, '{\"tshirt_2\":1,\"ears_1\":8,\"glasses_1\":15,\"torso_2\":0,\"ears_2\":2,\"glasses_2\":3,\"shoes_2\":1,\"pants_1\":75,\"shoes_1\":51,\"bags_1\":0,\"helmet_2\":0,\"pants_2\":7,\"torso_1\":71,\"tshirt_1\":59,\"arms\":2,\"bags_2\":0,\"helmet_1\":0}', '{}'),
+(21, 'slaughterer', 0, 'employee', 'Employee', 0, '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}', '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}'),
+(22, 'ambulance', 0, 'ambulance', 'Jr. EMT', 20, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+(23, 'ambulance', 1, 'doctor', 'EMT', 40, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+(24, 'ambulance', 2, 'chief_doctor', 'Sr. EMT', 60, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+(25, 'ambulance', 3, 'boss', 'EMT Supervisor', 80, '{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}', '{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+(26, 'mechanic', 0, 'recrue', 'Recruit', 12, '{}', '{}'),
+(27, 'mechanic', 1, 'novice', 'Novice', 24, '{}', '{}'),
+(28, 'mechanic', 2, 'experimente', 'Experienced', 36, '{}', '{}'),
+(29, 'mechanic', 3, 'chief', 'Leader', 48, '{}', '{}'),
+(30, 'mechanic', 4, 'boss', 'Boss', 0, '{}', '{}'),
+(31, 'taxi', 0, 'recrue', 'Recruit', 12, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":32,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":0,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":27,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
+(32, 'taxi', 1, 'novice', 'Cabby', 24, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":32,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":0,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":27,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
+(33, 'taxi', 2, 'experimente', 'Experienced', 36, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":26,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":57,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":11,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
+(34, 'taxi', 3, 'uber', 'Uber Cabby', 48, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":26,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":57,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":11,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}'),
+(35, 'taxi', 4, 'boss', 'Lead Cabby', 0, '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":29,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":31,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":4,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":1,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":0,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":0,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":0,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":4,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":10,\"pants_1\":24}', '{\"hair_2\":0,\"hair_color_2\":0,\"torso_1\":57,\"bags_1\":0,\"helmet_2\":0,\"chain_2\":0,\"eyebrows_3\":0,\"makeup_3\":0,\"makeup_2\":0,\"tshirt_1\":38,\"makeup_1\":0,\"bags_2\":0,\"makeup_4\":0,\"eyebrows_4\":0,\"chain_1\":0,\"lipstick_4\":0,\"bproof_2\":0,\"hair_color_1\":0,\"decals_2\":0,\"pants_2\":1,\"age_2\":0,\"glasses_2\":0,\"ears_2\":0,\"arms\":21,\"lipstick_1\":0,\"ears_1\":-1,\"mask_2\":0,\"sex\":1,\"lipstick_3\":0,\"helmet_1\":-1,\"shoes_2\":0,\"beard_2\":0,\"beard_1\":0,\"lipstick_2\":0,\"beard_4\":0,\"glasses_1\":5,\"bproof_1\":0,\"mask_1\":0,\"decals_1\":1,\"hair_1\":0,\"eyebrows_2\":0,\"beard_3\":0,\"age_1\":0,\"tshirt_2\":0,\"skin\":0,\"torso_2\":0,\"eyebrows_1\":0,\"face\":0,\"shoes_1\":49,\"pants_1\":11}');
 
-DROP TABLE IF EXISTS `licenses`;
-CREATE TABLE IF NOT EXISTS `licenses` (
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `licenses`
+--
+
+CREATE TABLE `licenses` (
+  `type` varchar(60) NOT NULL,
+  `label` varchar(60) NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `licenses`
+--
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
-('boat', 'Boat License'),
-('dmv', 'Traffic Laws'),
-('drive', 'Drivers license'),
-('drive_bike', 'Motorcycle licence'),
-('drive_truck', 'Truck license'),
-('weapon', 'Weapon License'),
+('dmv', 'Driving Permit'),
+('drive', 'Drivers License'),
+('drive_bike', 'Motorcycle License'),
+('drive_truck', 'Commercial Drivers License'),
 ('weed_processing', 'Weed Processing License');
 
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-INSERT INTO `migrations` (`id`, `module`, `last`) VALUES
-(1, 'skin', 0),
-(2, 'society', 0);
+--
+-- Table structure for table `owned_properties`
+--
 
-DROP TABLE IF EXISTS `owned_properties`;
-CREATE TABLE IF NOT EXISTS `owned_properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `owned_properties` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `rented` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `owner` varchar(60) NOT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `owned_vehicles`;
-CREATE TABLE IF NOT EXISTS `owned_vehicles` (
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'car',
-  `job` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stored` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`plate`),
-  KEY `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `properties`;
-CREATE TABLE IF NOT EXISTS `properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `entering` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `exit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `inside` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `outside` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ipls` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '[]',
-  `gateway` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--
+-- Table structure for table `owned_vehicles`
+--
+
+CREATE TABLE `owned_vehicles` (
+  `owner` varchar(60) DEFAULT NULL,
+  `plate` varchar(12) NOT NULL,
+  `vehicle` longtext DEFAULT NULL,
+  `type` varchar(20) NOT NULL DEFAULT 'car',
+  `job` varchar(20) DEFAULT NULL,
+  `stored` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `properties`
+--
+
+CREATE TABLE `properties` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `entering` varchar(255) DEFAULT NULL,
+  `exit` varchar(255) DEFAULT NULL,
+  `inside` varchar(255) DEFAULT NULL,
+  `outside` varchar(255) DEFAULT NULL,
+  `ipls` varchar(255) DEFAULT '[]',
+  `gateway` varchar(255) DEFAULT NULL,
   `is_single` int(11) DEFAULT NULL,
   `is_room` int(11) DEFAULT NULL,
   `is_gateway` int(11) DEFAULT NULL,
-  `room_menu` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `room_menu` varchar(255) DEFAULT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `properties`
+--
 
 INSERT INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `outside`, `ipls`, `gateway`, `is_single`, `is_room`, `is_gateway`, `room_menu`, `price`) VALUES
 (1, 'WhispymoundDrive', '2677 Whispymound Drive', '{\"y\":564.89,\"z\":182.959,\"x\":119.384}', '{\"x\":117.347,\"y\":559.506,\"z\":183.304}', '{\"y\":557.032,\"z\":183.301,\"x\":118.037}', '{\"y\":567.798,\"z\":182.131,\"x\":119.249}', '[]', NULL, 1, 1, 0, '{\"x\":118.748,\"y\":566.573,\"z\":175.697}', 1500000),
@@ -496,110 +468,102 @@ INSERT INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `
 (71, 'MBWPowerBrokerConvservative', 'MBW Power Broker Convservative', NULL, '{\"x\":-1392.74,\"y\":-480.18,\"z\":71.14}', '{\"x\":-1389.43,\"y\":-479.01,\"z\":71.14}', NULL, '[\"ex_sm_15_office_03b\"]', 'MazeBankWest', 0, 1, 0, '{\"x\":-1390.76,\"y\":-479.22,\"z\":72.04}', 2700000),
 (72, 'MBWPowerBrokerPolished', 'MBW Power Broker Polished', NULL, '{\"x\":-1392.74,\"y\":-480.18,\"z\":71.14}', '{\"x\":-1389.43,\"y\":-479.01,\"z\":71.14}', NULL, '[\"ex_sm_15_office_03c\"]', 'MazeBankWest', 0, 1, 0, '{\"x\":-1390.76,\"y\":-479.22,\"z\":72.04}', 2700000);
 
-DROP TABLE IF EXISTS `rented_vehicles`;
-CREATE TABLE IF NOT EXISTS `rented_vehicles` (
-  `vehicle` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `player_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rented_vehicles`
+--
+
+CREATE TABLE `rented_vehicles` (
+  `vehicle` varchar(60) NOT NULL,
+  `plate` varchar(12) NOT NULL,
+  `player_name` varchar(255) NOT NULL,
   `base_price` int(11) NOT NULL,
   `rent_price` int(11) NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `owner` varchar(22) NOT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `shops`;
-CREATE TABLE IF NOT EXISTS `shops` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `store` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `store` (`store`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Table structure for table `society_moneywash`
+--
 
-INSERT INTO `shops` (`id`, `store`, `item`, `price`) VALUES
-(1, 'TwentyFourSeven', 'bread', 30),
-(2, 'TwentyFourSeven', 'water', 15),
-(3, 'RobsLiquor', 'bread', 30),
-(4, 'RobsLiquor', 'water', 15),
-(5, 'LTDgasoline', 'bread', 30),
-(6, 'LTDgasoline', 'water', 15),
-(7, 'TwentyFourSeven', 'beer', 45),
-(8, 'RobsLiquor', 'beer', 45),
-(9, 'LTDgasoline', 'beer', 45);
+CREATE TABLE `society_moneywash` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `society` varchar(60) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `society_moneywash`;
-CREATE TABLE IF NOT EXISTS `society_moneywash` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `society` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amount` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `identifier` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `accounts` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `group` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT 'user',
-  `inventory` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT 'unemployed',
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `identifier` varchar(60) NOT NULL,
+  `accounts` longtext DEFAULT NULL,
+  `group` varchar(50) DEFAULT 'user',
+  `inventory` longtext DEFAULT NULL,
+  `job` varchar(20) DEFAULT 'unemployed',
   `job_grade` int(11) DEFAULT 0,
-  `loadout` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
-  `is_dead` tinyint(1) DEFAULT 0,
-  `is_male` int(11) DEFAULT 1,
-  `accessories` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `firstname` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lastname` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dateofbirth` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sex` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loadout` longtext DEFAULT NULL,
+  `position` varchar(255) DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
+  `firstname` varchar(16) DEFAULT NULL,
+  `lastname` varchar(16) DEFAULT NULL,
+  `dateofbirth` varchar(10) DEFAULT NULL,
+  `sex` varchar(1) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
-  `phone_number` varchar(20) DEFAULT NULL,
-  `last_property` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `skin` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`identifier`),
-  UNIQUE KEY `index_users_phone_number` (`phone_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `skin` longtext DEFAULT NULL,
+  `status` longtext DEFAULT NULL,
+  `is_dead` tinyint(1) DEFAULT 0,
+  `id` int(11) NOT NULL,
+  `disabled` TINYINT(1) NULL DEFAULT '0',
+  `last_property` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `user_contacts`;
-CREATE TABLE IF NOT EXISTS `user_contacts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_user_contacts_identifier_name_number` (`identifier`,`name`,`number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `user_licenses`;
-CREATE TABLE IF NOT EXISTS `user_licenses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Table structure for table `user_licenses`
+--
 
-DROP TABLE IF EXISTS `user_parkings`;
-CREATE TABLE IF NOT EXISTS `user_parkings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `garage` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+CREATE TABLE `user_licenses` (
+  `id` int(11) NOT NULL,
+  `type` varchar(60) NOT NULL,
+  `owner` varchar(60) NOT NULL
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_parkings`
+--
+
+CREATE TABLE `user_parkings` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(60) NOT NULL,
+  `garage` varchar(60) DEFAULT NULL,
   `zone` int(11) NOT NULL,
-  `vehicle` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `vehicle` longtext DEFAULT NULL
+) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `vehicles`;
-CREATE TABLE IF NOT EXISTS `vehicles` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicles`
+--
+
+CREATE TABLE `vehicles` (
+  `name` varchar(60) NOT NULL,
+  `model` varchar(60) NOT NULL,
   `price` int(11) NOT NULL,
-  `category` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `category` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `vehicles`
+--
 
 INSERT INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 ('Adder', 'adder', 900000, 'super'),
@@ -843,12 +807,20 @@ INSERT INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 ('Zombie Luxuary', 'zombieb', 12000, 'motorcycles'),
 ('Z-Type', 'ztype', 220000, 'sportsclassics');
 
-DROP TABLE IF EXISTS `vehicle_categories`;
-CREATE TABLE IF NOT EXISTS `vehicle_categories` (
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_categories`
+--
+
+CREATE TABLE `vehicle_categories` (
+  `name` varchar(60) NOT NULL,
+  `label` varchar(60) NOT NULL
+) ENGINE=InnoDB;
+
+--
+-- Dumping data for table `vehicle_categories`
+--
 
 INSERT INTO `vehicle_categories` (`name`, `label`) VALUES
 ('compacts', 'Compacts'),
@@ -863,67 +835,365 @@ INSERT INTO `vehicle_categories` (`name`, `label`) VALUES
 ('suvs', 'SUVs'),
 ('vans', 'Vans');
 
-DROP TABLE IF EXISTS `vehicle_sold`;
-CREATE TABLE IF NOT EXISTS `vehicle_sold` (
-  `client` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `soldby` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `weashops`;
-CREATE TABLE IF NOT EXISTS `weashops` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+--
+-- Table structure for table `vehicle_sold`
+--
 
-INSERT INTO `weashops` (`id`, `zone`, `item`, `price`) VALUES
-(1, 'GunShop', 'WEAPON_PISTOL', 300),
-(2, 'BlackWeashop', 'WEAPON_PISTOL', 500),
-(3, 'GunShop', 'WEAPON_FLASHLIGHT', 60),
-(4, 'BlackWeashop', 'WEAPON_FLASHLIGHT', 70),
-(5, 'GunShop', 'WEAPON_MACHETE', 90),
-(6, 'BlackWeashop', 'WEAPON_MACHETE', 110),
-(7, 'GunShop', 'WEAPON_NIGHTSTICK', 150),
-(8, 'BlackWeashop', 'WEAPON_NIGHTSTICK', 150),
-(9, 'GunShop', 'WEAPON_BAT', 100),
-(10, 'BlackWeashop', 'WEAPON_BAT', 100),
-(11, 'GunShop', 'WEAPON_STUNGUN', 50),
-(12, 'BlackWeashop', 'WEAPON_STUNGUN', 50),
-(13, 'GunShop', 'WEAPON_MICROSMG', 1400),
-(14, 'BlackWeashop', 'WEAPON_MICROSMG', 1700),
-(15, 'GunShop', 'WEAPON_PUMPSHOTGUN', 3400),
-(16, 'BlackWeashop', 'WEAPON_PUMPSHOTGUN', 3500),
-(17, 'GunShop', 'WEAPON_ASSAULTRIFLE', 10000),
-(18, 'BlackWeashop', 'WEAPON_ASSAULTRIFLE', 11000),
-(19, 'GunShop', 'WEAPON_SPECIALCARBINE', 15000),
-(20, 'BlackWeashop', 'WEAPON_SPECIALCARBINE', 16500),
-(21, 'GunShop', 'WEAPON_SNIPERRIFLE', 22000),
-(22, 'BlackWeashop', 'WEAPON_SNIPERRIFLE', 24000),
-(23, 'GunShop', 'WEAPON_FIREWORK', 18000),
-(24, 'BlackWeashop', 'WEAPON_FIREWORK', 20000),
-(25, 'GunShop', 'WEAPON_GRENADE', 500),
-(26, 'BlackWeashop', 'WEAPON_GRENADE', 650),
-(27, 'GunShop', 'WEAPON_BZGAS', 200),
-(28, 'BlackWeashop', 'WEAPON_BZGAS', 350),
-(29, 'GunShop', 'WEAPON_FIREEXTINGUISHER', 100),
-(30, 'BlackWeashop', 'WEAPON_FIREEXTINGUISHER', 100),
-(31, 'GunShop', 'WEAPON_BALL', 50),
-(32, 'BlackWeashop', 'WEAPON_BALL', 50),
-(33, 'GunShop', 'WEAPON_SMOKEGRENADE', 100),
-(34, 'BlackWeashop', 'WEAPON_SMOKEGRENADE', 100),
-(35, 'BlackWeashop', 'WEAPON_APPISTOL', 1100),
-(36, 'BlackWeashop', 'WEAPON_CARBINERIFLE', 12000),
-(37, 'BlackWeashop', 'WEAPON_HEAVYSNIPER', 30000),
-(38, 'BlackWeashop', 'WEAPON_MINIGUN', 45000),
-(39, 'BlackWeashop', 'WEAPON_RAILGUN', 50000),
-(40, 'BlackWeashop', 'WEAPON_STICKYBOMB', 500);
+CREATE TABLE `vehicle_sold` (
+  `client` varchar(50) NOT NULL,
+  `model` varchar(50) NOT NULL,
+  `plate` varchar(50) NOT NULL,
+  `soldby` varchar(50) NOT NULL,
+  `date` varchar(50) NOT NULL
+) ENGINE=InnoDB;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Table structure for table `whitelist`
+--
+
+CREATE TABLE `whitelist` (
+	`identifier` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `addon_account`
+--
+ALTER TABLE `addon_account`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `user_parkings`
+--
+ALTER TABLE `user_parkings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `addon_account_data`
+--
+ALTER TABLE `addon_account_data`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `index_addon_account_data_account_name_owner` (`account_name`,`owner`),
+  ADD KEY `index_addon_account_data_account_name` (`account_name`);
+
+--
+-- Indexes for table `addon_inventory`
+--
+ALTER TABLE `addon_inventory`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `addon_inventory_items`
+--
+ALTER TABLE `addon_inventory_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_addon_inventory_items_inventory_name_name` (`inventory_name`,`name`),
+  ADD KEY `index_addon_inventory_items_inventory_name_name_owner` (`inventory_name`,`name`,`owner`),
+  ADD KEY `index_addon_inventory_inventory_name` (`inventory_name`);
+
+--
+-- Indexes for table `billing`
+--
+ALTER TABLE `billing`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cardealer_vehicles`
+--
+ALTER TABLE `cardealer_vehicles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `datastore`
+--
+ALTER TABLE `datastore`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `datastore_data`
+--
+ALTER TABLE `datastore_data`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
+  ADD KEY `index_datastore_data_name` (`name`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `job_grades`
+--
+ALTER TABLE `job_grades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `licenses`
+--
+ALTER TABLE `licenses`
+  ADD PRIMARY KEY (`type`);
+
+--
+
+--
+-- Indexes for table `owned_properties`
+--
+ALTER TABLE `owned_properties`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `owned_vehicles`
+--
+ALTER TABLE `owned_vehicles`
+  ADD PRIMARY KEY (`plate`);
+
+--
+-- Indexes for table `properties`
+--
+ALTER TABLE `properties`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rented_vehicles`
+--
+ALTER TABLE `rented_vehicles`
+  ADD PRIMARY KEY (`plate`);
+
+--
+-- Indexes for table `society_moneywash`
+--
+ALTER TABLE `society_moneywash`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`identifier`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `user_licenses`
+--
+ALTER TABLE `user_licenses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vehicle_categories`
+--
+ALTER TABLE `vehicle_categories`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `vehicle_sold`
+--
+ALTER TABLE `vehicle_sold`
+  ADD PRIMARY KEY (`plate`);
+
+--
+-- Indexes for table `whitelist`
+--
+ALTER TABLE `whitelist`
+  ADD PRIMARY KEY (`identifier`);
+
+--
+-- AUTO_INCREMENT for table `addon_account_data`
+--
+ALTER TABLE `addon_account_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `addon_inventory_items`
+--
+ALTER TABLE `addon_inventory_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `billing`
+--
+ALTER TABLE `billing`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cardealer_vehicles`
+--
+ALTER TABLE `cardealer_vehicles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `datastore_data`
+--
+ALTER TABLE `datastore_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `job_grades`
+--
+ALTER TABLE `job_grades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `owned_properties`
+--
+ALTER TABLE `owned_properties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `properties`
+--
+ALTER TABLE `properties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  
+--
+-- AUTO_INCREMENT for table `society_moneywash`
+--
+ALTER TABLE `society_moneywash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_licenses`
+--
+ALTER TABLE `user_licenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_parkings`
+--
+ALTER TABLE `user_parkings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- ESX Phone
+--
+CREATE TABLE `user_contacts` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`identifier` VARCHAR(60) NOT NULL,
+	`name` VARCHAR(100) NOT NULL,
+	`number` INT(11) NOT NULL,
+
+	PRIMARY KEY (`id`),
+	INDEX `index_user_contacts_identifier_name_number` (`identifier`, `name`, `number`)
+) ENGINE=InnoDB;
+
+
+ALTER TABLE `users`
+	ADD COLUMN `phone_number` INT(11) NULL,
+	ADD UNIQUE INDEX `index_users_phone_number` (`phone_number`);
+
+--
+-- Fine Types
+--
+	CREATE TABLE `fine_types` (
+	`id` int NOT NULL AUTO_INCREMENT,
+	`label` varchar(255) DEFAULT NULL,
+	`amount` int DEFAULT NULL,
+	`category` int DEFAULT NULL,
+
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+INSERT INTO `fine_types` (label, amount, category) VALUES
+	('Misuse of a horn', 30, 0),
+	('Illegally Crossing a continuous Line', 40, 0),
+	('Driving on the wrong side of the road', 250, 0),
+	('Illegal U-Turn', 250, 0),
+	('Illegally Driving Off-road', 170, 0),
+	('Refusing a Lawful Command', 30, 0),
+	('Illegally Stopping a Vehicle', 150, 0),
+	('Illegal Parking', 70, 0),
+	('Failing to Yield to the right', 70, 0),
+	('Failure to comply with Vehicle Information', 90, 0),
+	('Failing to stop at a Stop Sign ', 105, 0),
+	('Failing to stop at a Red Light', 130, 0),
+	('Illegal Passing', 100, 0),
+	('Driving an illegal Vehicle', 100, 0),
+	('Driving without a License', 1500, 0),
+	('Hit and Run', 800, 0),
+	('Exceeding Speeds Over < 5 mph', 90, 0),
+	('Exceeding Speeds Over 5-15 mph', 120, 0),
+	('Exceeding Speeds Over 15-30 mph', 180, 0),
+	('Exceeding Speeds Over > 30 mph', 300, 0),
+	('Impeding traffic flow', 110, 1),
+	('Public Intoxication', 90, 1),
+	('Disorderly conduct', 90, 1),
+	('Obstruction of Justice', 130, 1),
+	('Insults towards Civilans', 75, 1),
+	('Disrespecting of an LEO', 110, 1),
+	('Verbal Threat towards a Civilan', 90, 1),
+	('Verbal Threat towards an LEO', 150, 1),
+	('Providing False Information', 250, 1),
+	('Attempt of Corruption', 1500, 1),
+	('Brandishing a weapon in city Limits', 120, 2),
+	('Brandishing a Lethal Weapon in city Limits', 300, 2),
+	('No Firearms License', 600, 2),
+	('Possession of an Illegal Weapon', 700, 2),
+	('Possession of Burglary Tools', 300, 2),
+	('Grand Theft Auto', 1800, 2),
+	('Intent to Sell/Distrube of an illegal Substance', 1500, 2),
+	('Frabrication of an Illegal Substance', 1500, 2),
+	('Possession of an Illegal Substance ', 650, 2),
+	('Kidnapping of a Civilan', 1500, 2),
+	('Kidnapping of an LEO', 2000, 2),
+	('Robbery', 650, 2),
+	('Armed Robbery of a Store', 650, 2),
+	('Armed Robbery of a Bank', 1500, 2),
+	('Assault on a Civilian', 2000, 3),
+	('Assault of an LEO', 2500, 3),
+	('Attempt of Murder of a Civilian', 3000, 3),
+	('Attempt of Murder of an LEO', 5000, 3),
+	('Murder of a Civilian', 10000, 3),
+	('Murder of an LEO', 30000, 3),
+	('Involuntary manslaughter', 1800, 3),
+	('Fraud', 2000, 2);
+
+
+--
+-- ESX Bankerjob
+--
+
+INSERT INTO `addon_account` (name, label, shared) VALUES
+	('society_banker','Banque',1),
+	('bank_savings','Livret Bleu',0)
+;
+
+INSERT INTO `jobs` (name, label) VALUES
+	('banker','Banquier')
+;
+
+INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
+	('banker',0,'advisor','Conseiller',10,'{}','{}'),
+	('banker',1,'banker','Banquier',20,'{}','{}'),
+	('banker',2,'business_banker',"Banquier d\'affaire",30,'{}','{}'),
+	('banker',3,'trader','Trader',40,'{}','{}'),
+	('banker',4,'boss','Patron',0,'{}','{}')
+;
+
+--
+-- ESX Banking
+--
+
+CREATE TABLE IF NOT EXISTS `banking` (
+  `identifier` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `amount` int(64) DEFAULT NULL,
+  `time` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
