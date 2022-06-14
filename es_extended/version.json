@@ -1,5 +1,5 @@
 {
 	"version": "legacy",
-	"commit" : "1.4.2",
-	"changelog": "\n- Updated `Car` Command. Fixed some vulnerabilities. Fix SQL. Updated Commands."
+	"commit" : "1.7.5",
+	"changelog": "\n- Add PlayerOveride System, ESX Notify, ESX Progressbar and ESX TextUI"
 }

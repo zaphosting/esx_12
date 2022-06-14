@@ -3,10 +3,17 @@ local HasAlreadyEnteredMarker, LastHospital, LastPart, LastPartNum
 local isBusy, deadPlayers, deadPlayerBlips, isOnDuty = false, {}, {}, false
 isInShopMenu = false
 
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+	ESX.PlayerData = xPlayer
+	ESX.PlayerLoaded = true
+end)
+
+
 function OpenAmbulanceActionsMenu()
 	local elements = {{label = _U('cloakroom'), value = 'cloakroom'}}
 
-	if Config.EnablePlayerManagement and ESX.GetPlayerData().job.grade_name == 'boss' then
+	if Config.EnablePlayerManagement and ESX.PlayerData.job.grade_name == 'boss' then
 		table.insert(elements, {label = _U('boss_actions'), value = 'boss_actions'})
 	end
 
@@ -146,6 +153,7 @@ function revivePlayer(closestPlayer)
 
 					ESX.Streaming.RequestAnimDict(lib, function()
 						TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0.0, false, false, false)
+						RemoveAnimDict(lib)
 					end)
 				end
 
@@ -184,7 +192,7 @@ CreateThread(function()
 	while true do
 		local sleep = 1500
 
-		if ESX.GetPlayerData().job and ESX.GetPlayerData().job.name == 'ambulance' then
+		if ESX.PlayerData.job and ESX.PlayerData.job.name == 'ambulance' then
 			local playerCoords = GetEntityCoords(PlayerPedId())
 			local isInMarker, hasExited = false, false
 			local currentHospital, currentPart, currentPartNum
@@ -373,12 +381,12 @@ CreateThread(function()
 end)
 
 RegisterCommand("ambulance", function(src)
-	if ESX.GetPlayerData().job and ESX.GetPlayerData().job.name == 'ambulance' and not ESX.GetPlayerData().dead then 
+	if ESX.PlayerData.job and ESX.PlayerData.job.name == 'ambulance' and not ESX.PlayerData.dead then
 		OpenMobileAmbulanceActionsMenu()
 	end
 end)
 
-RegisterKeyMapping("ambulance", "Open Ambulance Actions Menu", "keyboard", "k")
+RegisterKeyMapping("ambulance", "Open Ambulance Actions Menu", "keyboard", "F6")
 
 RegisterNetEvent('esx_ambulancejob:putInVehicle')
 AddEventHandler('esx_ambulancejob:putInVehicle', function()

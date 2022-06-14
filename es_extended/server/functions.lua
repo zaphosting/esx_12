@@ -30,7 +30,7 @@ function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion)
 	end
 
 	if Core.RegisteredCommands[name] then
-		print(('[^3WARNING^7] Command ^5"%s" already registered, overriding command'):format(name))
+        print(('[^3WARNING^7] Command ^5"%s" ^7already registered, overriding command'):format(name))
 
 		if Core.RegisteredCommands[name].suggestion then
 			TriggerClientEvent('chat:removeSuggestion', -1, ('/%s'):format(name))
@@ -176,6 +176,7 @@ function Core.SavePlayer(xPlayer, cb)
 	}, function(affectedRows)
 		if affectedRows == 1 then
 			print(('[^2INFO^7] Saved player ^5"%s^7"'):format(xPlayer.name))
+			TriggerEvent('esx:playerSaved', xPlayer.playerId, xPlayer)
 		end
 		if cb then cb() end
 	end)
@@ -254,12 +255,76 @@ function ESX.GetIdentifier(playerId)
 	end
 end
 
+function ESX.RefreshJobs() 
+	local Jobs = {}
+	local jobs = MySQL.query.await('SELECT * FROM jobs')
+
+	for _, v in ipairs(jobs) do
+		Jobs[v.name] = v
+		Jobs[v.name].grades = {}
+	end
+
+	local jobGrades = MySQL.query.await('SELECT * FROM job_grades')
+
+	for _, v in ipairs(jobGrades) do
+		if Jobs[v.job_name] then
+			Jobs[v.job_name].grades[tostring(v.grade)] = v
+		else
+			print(('[^3WARNING^7] Ignoring job grades for ^5"%s"^0 due to missing job'):format(v.job_name))
+		end
+	end
+
+	for _, v in pairs(Jobs) do
+		if ESX.Table.SizeOf(v.grades) == 0 then
+			Jobs[v.name] = nil
+			print(('[^3WARNING^7] Ignoring job ^5"%s"^0 due to no job grades found'):format(v.name))
+		end
+	end
+
+	if not Jobs then
+		-- Fallback data, if no jobs exist
+		ESX.Jobs['unemployed'] = {
+			label = 'Unemployed',
+			grades = {
+				['0'] = {
+					grade = 0,
+					label = 'Unemployed',
+					salary = 200,
+                    onDuty = false,
+					skin_male = {},
+					skin_female = {}
+				}
+			}
+		}
+	else
+		ESX.Jobs = Jobs
+	end
+end
+
 function ESX.RegisterUsableItem(item, cb)
 	Core.UsableItemsCallbacks[item] = cb
 end
 
-function ESX.UseItem(source, item, data)
-	Core.UsableItemsCallbacks[item](source, item, data)
+function ESX.UseItem(source, item, ...)
+	if ESX.Items[item] then
+		Core.UsableItemsCallbacks[item](source, item, ...)
+	else
+		print(('[^3WARNING^7] Item ^5"%s"^7 was used but does not exist!'):format(item))
+	end
+end
+
+function ESX.RegisterPlayerFunctionOverrides(index,overrides)
+	Core.PlayerFunctionOverrides[index] = overrides
+end
+
+function ESX.SetPlayerFunctionOverride(index)
+	if not index
+	or not Core.PlayerFunctionOverrides[index] 
+	then
+		return print('[^3WARNING^7] No valid index provided.')
+	end
+
+	Config.PlayerFunctionOverride = index
 end
 
 function ESX.GetItemLabel(item)

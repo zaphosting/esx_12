@@ -9,6 +9,7 @@ end
 function startAnim(lib, anim)
 	ESX.Streaming.RequestAnimDict(lib, function()
 		TaskPlayAnim(PlayerPedId(), lib, anim, 8.0, -8.0, -1, 0, 0.0, false, false, false)
+		RemoveAnimDict(lib)
 	end)
 end
 
@@ -78,13 +79,13 @@ end
 
 -- Key Controls
 RegisterCommand('animmenu', function()
-	if not ESX.GetPlayerData().dead then 
+	if not ESX.PlayerData.dead then
 		OpenAnimationsMenu()
 	end
 end, false)
 
 RegisterCommand('cleartasks', function()
-	if not ESX.GetPlayerData().dead then 
+	if not ESX.PlayerData.dead then
 	ClearPedTasks(PlayerPedId())
 	end
 end, false)
