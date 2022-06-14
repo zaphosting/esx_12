@@ -153,6 +153,7 @@ function revivePlayer(closestPlayer)
 
 					ESX.Streaming.RequestAnimDict(lib, function()
 						TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0.0, false, false, false)
+						RemoveAnimDict(lib)
 					end)
 				end
 
@@ -385,7 +386,7 @@ RegisterCommand("ambulance", function(src)
 	end
 end)
 
-RegisterKeyMapping("ambulance", "Open Ambulance Actions Menu", "keyboard", "k")
+RegisterKeyMapping("ambulance", "Open Ambulance Actions Menu", "keyboard", "F6")
 
 RegisterNetEvent('esx_ambulancejob:putInVehicle')
 AddEventHandler('esx_ambulancejob:putInVehicle', function()
