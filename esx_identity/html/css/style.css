@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
 
 body {
 	font-family: sans-serif;
 	overflow: hidden;
 	display: none;
-	background: linear-gradient(to right, #1488cc, #2b32b2);;
+	background: linear-gradient(135deg, rgba(33, 47, 63, 1) 51%, hsla(214, 33%, 22%, 1) 100%);
 }
 
 .dialog {
@@ -27,7 +28,7 @@ body {
 }
 
 .aa {
-	font-family: 'Oswald', sans-serif;
+	font-family: "Gill Sans", sans-serif;
 	font-size: 22px;
 	text-align: center;
 	padding: 5px;
@@ -42,7 +43,6 @@ input {
 	outline: none;
 	padding: 10px;
 	padding-left:0;
-	font-family: 'Oswald', sans-serif;
 	color: #ffffff;
 	text-align:left;
 	background-color: #152029;
@@ -50,8 +50,6 @@ input {
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: rgba(84,97,105,255);
-	font-family: 'Oswald', sans-serif;
-	font-weight: 200;
 	opacity: 1; /* Firefox */
 }
 
@@ -66,8 +64,7 @@ input {
 	margin-top: 5px;
     background-color: rgba(15,15,15,0.9);
     padding: 10px 20px;
-    font-family: 'Oswald', sans-serif;
-		font-weight: 500;
+    font-family: sans-serif, Arial;
 	font-size: 16px;
 	color: #FFFFFF;
     border: none;

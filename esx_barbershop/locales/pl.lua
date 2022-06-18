@@ -3,7 +3,7 @@ Locales['pl'] = {
   ['yes'] = 'tak',
   ['no'] = 'nie',
   ['not_enough_money'] = 'nie posiadasz wystarczająco pieniędzy',
-  ['press_access'] = 'naciśnij [E] aby otworzyć Fryziera.',
+  ['press_access'] = 'naciśnij ~INPUT_CONTEXT~ aby otworzyć ~y~Fryziera~s~.',
   ['barber_blip'] = 'fryzjer',
-  ['you_paid'] = 'zapłaciłeś/aś $%s',
+  ['you_paid'] = 'zapłaciłeś/aś ~g~$%s~s~',
 }

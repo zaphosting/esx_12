@@ -6,8 +6,6 @@ local function Notify(type, length, message)
     }))
 end
 
-
-
-
 exports('Notify', Notify)
 RegisterNetEvent("ESX:Notify", Notify)
+

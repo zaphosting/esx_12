@@ -1,10 +1,10 @@
-Locales['si'] = {
+Locales['en'] = {
   ['by_default'] = 'privzeto',
   ['installed'] = 'nameščen',
-  ['already_own'] = 'že imaš: %s',
+  ['already_own'] = 'že imaš: ~b~%s~s~',
   ['not_enough_money'] = 'tega modusa si ne moreš privoščiti!',
   ['purchased'] = 'kupili ste mod!',
-  ['press_custom'] = 'pritisnite ~INPUT_PICKUP~, da personalizirate~ svoje vozilo.',
+  ['press_custom'] = 'pritisnite ~INPUT_PICKUP~, da ~y~personalizirate~ svoje vozilo.',
   ['level'] = 'raven %s',
   ['neon'] = 'neon',
   ['blip_name'] = 'los Santos Customs',

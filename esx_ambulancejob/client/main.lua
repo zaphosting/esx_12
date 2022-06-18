@@ -115,7 +115,6 @@ AddEventHandler('esx_ambulancejob:useItem', function(itemName)
 
 		ESX.Streaming.RequestAnimDict(lib, function()
 			TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
-			RemoveAnimDict(lib)
 
 			Wait(500)
 			while IsEntityPlayingAnim(playerPed, lib, anim, 3) do
@@ -133,7 +132,6 @@ AddEventHandler('esx_ambulancejob:useItem', function(itemName)
 
 		ESX.Streaming.RequestAnimDict(lib, function()
 			TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
-			RemoveAnimDict(lib)
 
 			Wait(500)
 			while IsEntityPlayingAnim(playerPed, lib, anim, 3) do

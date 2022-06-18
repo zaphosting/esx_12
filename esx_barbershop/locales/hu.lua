@@ -3,7 +3,7 @@ Locales['hu'] = {
   ['yes'] = 'Igen',
   ['no'] = 'Nem',
   ['not_enough_money'] = 'Nincsen elég pénzed',
-  ['press_access'] = 'Nyomj [E] hogy megnyisd a Fodrászatot.',
+  ['press_access'] = 'Nyomj ~INPUT_CONTEXT~ hogy megnyisd a ~y~Fodrászatot~s~.',
   ['barber_blip'] = 'Fodrászat',
-  ['you_paid'] = 'Fizettél $%s',
+  ['you_paid'] = 'Fizettél ~g~$%s~s~',
 }

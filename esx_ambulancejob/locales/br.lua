@@ -5,8 +5,8 @@ Locales['br'] = {
   ['ems_clothes_ems'] = 'entrar como socorrista',
   -- Vehicles
   ['ambulance'] = 'ambulancia',
-  ['helicopter_prompt'] = 'pressione [E] para acessar a Helicopter Actions.',
-  ['garage_prompt'] = 'pressione [E] para entra no Vehicle Actions.',
+  ['helicopter_prompt'] = 'pressione ~INPUT_CONTEXT~ para acessar a Helicopter Actions.',
+  ['garage_prompt'] = 'pressione ~INPUT_CONTEXT~ para entra no Vehicle Actions.',
   ['garage_title'] = 'ações do veiculo',
   ['garage_stored'] = 'guardado',
   ['garage_notstored'] = 'não foi guardado',
@@ -43,11 +43,11 @@ Locales['br'] = {
   ['boss_actions'] = 'menu administração',
   -- Misc
   ['invalid_amount'] = ' dade inválida',
-  ['actions_prompt'] = 'aperte [E] para entra Ambulance Actions.',
+  ['actions_prompt'] = 'aperte ~INPUT_CONTEXT~ para entra Ambulance Actions.',
   ['deposit_amount'] = 'quantidade inválida para deposito',
   ['money_withdraw'] = 'quantidade a ser retirada',
-  ['fast_travel'] = 'aperte [E] para mover-se rapidamente.',
-  ['open_pharmacy'] = 'aperte [E] para abrir a farmácia.',
+  ['fast_travel'] = 'aperte ~INPUT_CONTEXT~ para mover-se rapidamente.',
+  ['open_pharmacy'] = 'aperte ~INPUT_CONTEXT~ para abrir a farmácia.',
   ['pharmacy_menu_title'] = 'farmácia',
   ['pharmacy_take'] = 'tomar <span style="color:blue;">%s</span>',
   ['medikit'] = 'seringa',
@@ -64,12 +64,12 @@ Locales['br'] = {
   -- Phone
   ['alert_ambulance'] = 'alerta socorrista',
   -- Death
-  ['respawn_available_in'] = 'você irar reviver em %s minutos %s segundos',
-  ['respawn_bleedout_in'] = 'você vai sangrar %s minutos %s segundos\n',
-  ['respawn_bleedout_prompt'] = 'aguarde [E] para reviver',
-  ['respawn_bleedout_fine'] = 'aguarde [E] para reviver por $%s',
-  ['respawn_bleedout_fine_msg'] = 'você precisa pagar $%s para reviver',
-  ['distress_send'] = 'pressione [G] enviar sinal de socorro',
+  ['respawn_available_in'] = 'você irar reviver em  %s minutos %s segundos',
+  ['respawn_bleedout_in'] = 'você vai sangrar  %s minutos %s segundos\n',
+  ['respawn_bleedout_prompt'] = 'aguarde [ E] para reviver',
+  ['respawn_bleedout_fine'] = 'aguarde [ E] para reviver por $%s',
+  ['respawn_bleedout_fine_msg'] = 'você precisa pagar   para reviver',
+  ['distress_send'] = 'pressione [~bs~] enviar sinal de socorro',
   ['distress_sent'] = 'sinal de socorro foi enviado para as unidades disponíveis!',
 
   -- Revive
@@ -77,8 +77,8 @@ Locales['br'] = {
   -- Item
   ['used_medikit'] = 'você usou 1x Seringa',
   ['used_bandage'] = 'você usou 1x Vendagem',
-  ['not_enough_medikit'] = 'você não tem seringa.',
-  ['not_enough_bandage'] = 'você não tem vendagem.',
+  ['not_enough_medikit'] = 'você não tem  Seringa.',
+  ['not_enough_bandage'] = 'você não tem  Vendagem.',
   ['healed'] = 'você foi tratado.',
   -- Blips
   ['blip_hospital'] = 'hospital',

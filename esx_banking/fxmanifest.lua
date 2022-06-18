@@ -27,6 +27,7 @@ ui_page 'html/ui.html'
 files {
 	'html/ui.html',
 	'html/roboto.ttf',
+	'html/img/fleeca.png',
 	'html/css/app.css',
 	'html/scripts/app.js'
 }

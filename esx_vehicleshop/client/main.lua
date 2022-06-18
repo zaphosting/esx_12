@@ -706,7 +706,7 @@ AddEventHandler('esx_vehicleshop:hasExitedMarker', function(zone)
 	if not IsInShopMenu then
 		ESX.UI.Menu.CloseAll()
 	end
-	ESX.HideUI()
+
 	CurrentAction = nil
 end)
 
@@ -741,18 +741,16 @@ end
 
 -- Create Blips
 CreateThread(function()
-	if Config.Blip.show then
-		local blip = AddBlipForCoord(Config.Zones.ShopEntering.Pos)
+	local blip = AddBlipForCoord(Config.Zones.ShopEntering.Pos)
 
-		SetBlipSprite (blip, Config.Blip.Sprite)
-		SetBlipDisplay(blip, Config.Blip.Display)
-		SetBlipScale  (blip, Config.Blip.Scale)
-		SetBlipAsShortRange(blip, true)
+	SetBlipSprite (blip, 326)
+	SetBlipDisplay(blip, 4)
+	SetBlipScale  (blip, 1.0)
+	SetBlipAsShortRange(blip, true)
 
-		BeginTextCommandSetBlipName('STRING')
-		AddTextComponentSubstringPlayerName(_U('car_dealer'))
-		EndTextCommandSetBlipName(blip)
-	end
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentSubstringPlayerName(_U('car_dealer'))
+	EndTextCommandSetBlipName(blip)
 end)
 
 -- Enter / Exit marker events & Draw Markers
@@ -801,7 +799,7 @@ CreateThread(function()
 		Wait(0)
 
 		if CurrentAction then
-			ESX.TextUI(CurrentActionMsg)
+			ESX.ShowHelpNotification(CurrentActionMsg)
 
 			if IsControlJustReleased(0, 38) then
 				if CurrentAction == 'shop_menu' then
@@ -839,7 +837,7 @@ CreateThread(function()
 				elseif CurrentAction == 'boss_actions_menu' then
 					OpenBossActionsMenu()
 				end
-				ESX.HideUI()
+
 				CurrentAction = nil
 			end
 		else
